@@ -1,0 +1,20 @@
+keys;es;en
+start_bton;"Nueva Partida";"New Game"
+continue_bton;"Continuar Partida";"Continue Game"
+options_bton;"Opciones";"Options"
+credits_bton;"Créditos";"Credits"
+exit_bton;"Salir";"Exit"
+return_bton;"Volver";"Back"
+
+graphics_settings_title;"Gráficos";"Graphics"
+resolution_options;"Resolución";"Resolution"
+fullscreen_options;"Pantalla Completa";"Fullscreen"
+fps_options;"FPS";"FPS"
+
+audio_settings_title;"Audio";"Audio"
+general_audio_options;"General";"Master"
+vfx_audio_options;"Efectos";"Sound Effects"
+voices_audio_options;"Voces";"Voices"
+music_audio_options;"Música";"Music"
+
+lenguage_settings_title;"Idioma";"Lenguage"

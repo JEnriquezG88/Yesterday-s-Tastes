@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bvqb766wmw2f2"]
+
+[ext_resource type="Script" uid="uid://da5cjokn2ky2h" path="res://UI/MainMenu/Code/main_menu.gd" id="1_3jj5y"]
+[ext_resource type="Texture2D" uid="uid://csgqe7fy42xke" path="res://Global/LogoAndIcons/FullLogo.png" id="1_jld46"]
+[ext_resource type="Script" uid="uid://bnkphhegigvao" path="res://UI/code/first_element_focus.gd" id="2_t17p2"]
+[ext_resource type="Script" uid="uid://by6284nhq0d8h" path="res://UI/code/fade_manager.gd" id="4_h8rmy"]
+[ext_resource type="PackedScene" uid="uid://c5egtgx5m65pv" path="res://UI/OptionsMenu/options_menu.tscn" id="4_iyy2y"]
+
+[node name="MainMenu" type="Control" unique_id=832887947]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1291508949]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="CenterContainer" unique_id=379795890]
+layout_mode = 2
+theme_override_constants/separation = -68
+script = ExtResource("1_3jj5y")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/MainMenu" unique_id=264337580]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+texture = ExtResource("1_jld46")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MainMenu" unique_id=1989869193 node_paths=PackedStringArray("current_first_element")]
+layout_mode = 2
+script = ExtResource("2_t17p2")
+current_first_element = NodePath("StartButton")
+
+[node name="StartButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=776333511]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+mouse_filter = 2
+text = "start_bton"
+flat = true
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=141925269]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+text = "continue_bton"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1989113158]
+layout_mode = 2
+mouse_filter = 2
+text = "options_bton"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1729995350]
+layout_mode = 2
+mouse_filter = 2
+text = "credits_bton"
+flat = true
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1824752271]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "exit_bton"
+flat = true
+
+[node name="OptionsMenu" parent="CenterContainer" unique_id=930145588 node_paths=PackedStringArray("previous_menu") instance=ExtResource("4_iyy2y")]
+layout_mode = 2
+previous_menu = NodePath("../MainMenu")
+
+[node name="FadeManager" type="ColorRect" parent="." unique_id=748250182]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_h8rmy")
+metadata/_custom_type_script = "uid://by6284nhq0d8h"

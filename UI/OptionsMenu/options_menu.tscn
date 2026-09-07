@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://c5egtgx5m65pv"]
+
+[ext_resource type="Script" uid="uid://nrttqslwpw62" path="res://UI/OptionsMenu/Code/options_code.gd" id="1_3gdf6"]
+[ext_resource type="Texture2D" uid="uid://dj8lbfbkuk0ti" path="res://UI/MainMenu/Imgs/separator.png" id="1_a44bu"]
+[ext_resource type="Texture2D" uid="uid://cwegajgbnkmc7" path="res://UI/Decorators/plant_01.png" id="2_vqoel"]
+[ext_resource type="Script" uid="uid://bnkphhegigvao" path="res://UI/code/first_element_focus.gd" id="2_w5ifl"]
+[ext_resource type="Script" uid="uid://74fpuat1ixlj" path="res://UI/OptionsMenu/Code/graphics_settings.gd" id="4_hv12t"]
+[ext_resource type="Script" uid="uid://cpdgr62jwlsom" path="res://UI/OptionsMenu/Code/audio_settings.gd" id="6_ahwyd"]
+[ext_resource type="Script" uid="uid://c2riby1pkvct0" path="res://UI/OptionsMenu/Code/lenguage_settings.gd" id="7_w2bn0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_61a82"]
+font_size = 100
+font_color = Color(0.42352942, 0.3372549, 0.44313726, 1)
+outline_size = 30
+
+[node name="OptionsMenu" type="VBoxContainer" unique_id=930145588]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.5
+offset_top = -81.0
+offset_right = 380.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gdf6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1869249490]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=576373300]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+texture = ExtResource("2_vqoel")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="options" type="Label" parent="HBoxContainer" unique_id=278570764]
+layout_mode = 2
+text = "options_bton"
+label_settings = SubResource("LabelSettings_61a82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="graphics" type="Label" parent="HBoxContainer" unique_id=281173634]
+visible = false
+layout_mode = 2
+text = "graphics_settings_title"
+label_settings = SubResource("LabelSettings_61a82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="audio" type="Label" parent="HBoxContainer" unique_id=1835394850]
+visible = false
+layout_mode = 2
+text = "audio_settings_title"
+label_settings = SubResource("LabelSettings_61a82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lenguage" type="Label" parent="HBoxContainer" unique_id=69962455]
+visible = false
+layout_mode = 2
+text = "lenguage_settings_title"
+label_settings = SubResource("LabelSettings_61a82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=2127258935]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+texture = ExtResource("2_vqoel")
+expand_mode = 5
+stretch_mode = 5
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1878308800]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_a44bu")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=1370588048 node_paths=PackedStringArray("current_first_element")]
+layout_mode = 2
+script = ExtResource("2_w5ifl")
+current_first_element = NodePath("GraphicsButton")
+
+[node name="GraphicsButton" type="Button" parent="ButtonsContainer" unique_id=1604631513]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ReturnButton")
+mouse_filter = 2
+text = "graphics_settings_title"
+flat = true
+
+[node name="AudioButton" type="Button" parent="ButtonsContainer" unique_id=263690807]
+layout_mode = 2
+mouse_filter = 2
+text = "audio_settings_title"
+flat = true
+
+[node name="LenguageButton" type="Button" parent="ButtonsContainer" unique_id=1451603876]
+layout_mode = 2
+mouse_filter = 2
+text = "lenguage_settings_title"
+flat = true
+
+[node name="ReturnButton" type="Button" parent="ButtonsContainer" unique_id=1951910856]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../GraphicsButton")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "return_bton"
+flat = true
+
+[node name="GraphicsSettings" type="VBoxContainer" parent="." unique_id=2006779906 node_paths=PackedStringArray("previous_menu")]
+layout_mode = 2
+script = ExtResource("4_hv12t")
+previous_menu = NodePath("..")
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="GraphicsSettings" unique_id=1813156832]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/ResolutionContainer" unique_id=1747546515]
+layout_mode = 2
+text = "resolution_options"
+
+[node name="Resolutions" type="OptionButton" parent="GraphicsSettings/ResolutionContainer" unique_id=1365536678]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_top = NodePath("../../ReturnButton")
+selected = 1
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "2560x1440"
+popup/item_2/id = 2
+popup/item_3/text = "3840x2160"
+popup/item_3/id = 3
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="GraphicsSettings" unique_id=1333764260]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/FullscreenContainer" unique_id=1328038567]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fullscreen_options"
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="GraphicsSettings/FullscreenContainer" unique_id=595271463]
+custom_maximum_size = Vector2(67, 67)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="FpsContainer" type="HBoxContainer" parent="GraphicsSettings" unique_id=104975776]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/FpsContainer" unique_id=158730185]
+layout_mode = 2
+text = "fps_options"
+
+[node name="FpsOptions" type="OptionButton" parent="GraphicsSettings/FpsContainer" unique_id=1327721408]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+selected = 1
+item_count = 4
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "120"
+popup/item_2/id = 2
+popup/item_3/text = "Sin Límite"
+popup/item_3/id = 3
+
+[node name="ReturnButton" type="Button" parent="GraphicsSettings" unique_id=569592658]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResolutionContainer/Resolutions")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "return_bton"
+flat = true
+
+[node name="AudioSettings" type="VBoxContainer" parent="." unique_id=1707053028 node_paths=PackedStringArray("previous_menu")]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+script = ExtResource("6_ahwyd")
+previous_menu = NodePath("..")
+
+[node name="MasterVolume" type="HBoxContainer" parent="AudioSettings" unique_id=180369162]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="AudioSettings/MasterVolume" unique_id=1793044889]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "general_audio_options"
+
+[node name="HSlider" type="HSlider" parent="AudioSettings/MasterVolume" unique_id=339798542]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_neighbor_top = NodePath("../../ReturnButton")
+step = 2.0
+value = 100.0
+
+[node name="VFXVolume" type="HBoxContainer" parent="AudioSettings" unique_id=1906996838]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="AudioSettings/VFXVolume" unique_id=138663691]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "vfx_audio_options"
+
+[node name="HSlider" type="HSlider" parent="AudioSettings/VFXVolume" unique_id=1245257398]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="VoicesVolume" type="HBoxContainer" parent="AudioSettings" unique_id=546713788]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="AudioSettings/VoicesVolume" unique_id=2060294979]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "voices_audio_options"
+
+[node name="HSlider" type="HSlider" parent="AudioSettings/VoicesVolume" unique_id=847942743]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="AudioSettings" unique_id=1196785422]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="AudioSettings/MusicVolume" unique_id=721031173]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "music_audio_options"
+
+[node name="HSlider" type="HSlider" parent="AudioSettings/MusicVolume" unique_id=327712792]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="ReturnButton" type="Button" parent="AudioSettings" unique_id=308680239]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../MasterVolume/HSlider")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "return_bton"
+flat = true
+
+[node name="LenguageSettings" type="VBoxContainer" parent="." unique_id=1026702002 node_paths=PackedStringArray("previous_menu")]
+layout_mode = 2
+script = ExtResource("7_w2bn0")
+previous_menu = NodePath("..")
+
+[node name="Lenguages" type="OptionButton" parent="LenguageSettings" unique_id=178238906]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+focus_neighbor_top = NodePath("../ReturnButton")
+item_count = 2
+popup/item_0/text = "Español"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="ReturnButton" type="Button" parent="LenguageSettings" unique_id=1394894945]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Lenguages")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "return_bton"
+flat = true
+
+[connection signal="value_changed" from="AudioSettings/MasterVolume/HSlider" to="AudioSettings" method="_on_h_slider_value_changed"]

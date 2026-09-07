@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dr3x2e25y5jxk"]
+
+[ext_resource type="PackedScene" uid="uid://bvqb766wmw2f2" path="res://UI/MainMenu/main_menu.tscn" id="1_117gq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_117gq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s1vto"]
+sky_material = SubResource("ProceduralSkyMaterial_117gq")
+
+[sub_resource type="Environment" id="Environment_3ix6r"]
+background_mode = 2
+sky = SubResource("Sky_s1vto")
+ssao_enabled = true
+glow_enabled = true
+
+[node name="FirstGameMenu" type="Node3D" unique_id=1843136564]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=806827239]
+environment = SubResource("Environment_3ix6r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=36063692]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=208158803]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, -0.7071067, 0, 0.7071067, 0.7071068, 0, 2, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=848419385]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer" unique_id=606021531]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="MainMenu" parent="CanvasLayer" unique_id=832887947 instance=ExtResource("1_117gq")]

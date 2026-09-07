@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://ca4u1h6ekqbpb"]
+
+[ext_resource type="Script" uid="uid://6wo06x1it0eu" path="res://UI/code/splash_screen.gd" id="1_0scbf"]
+[ext_resource type="Texture2D" uid="uid://fq64l3h1y7h1" path="res://Global/LogoAndIcons/splash_screen.png" id="1_ianbf"]
+[ext_resource type="Script" uid="uid://by6284nhq0d8h" path="res://UI/code/fade_manager.gd" id="2_0scbf"]
+[ext_resource type="Texture2D" uid="uid://b35dv7wwvgwul" path="res://Global/LogoAndIcons/logo_vertical_monochrome_dark.png" id="3_bww02"]
+
+[node name="SplashScreen" type="Control" unique_id=573606027]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0scbf")
+
+[node name="JMDEV" type="TextureRect" parent="." unique_id=1126617033]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ianbf")
+
+[node name="GodotLogoContainer" type="ColorRect" parent="." unique_id=1440017625]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GodotLogo" type="TextureRect" parent="GodotLogoContainer" unique_id=1980880701]
+custom_minimum_size = Vector2(538.905, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.4525
+offset_top = -308.1337
+offset_right = 269.4525
+offset_bottom = 308.1337
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bww02")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="FadeManager" type="ColorRect" parent="." unique_id=422902294]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_0scbf")
+ready_fade_in = false
+metadata/_custom_type_script = "uid://by6284nhq0d8h"
