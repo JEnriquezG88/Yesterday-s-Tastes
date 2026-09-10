@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0klgmqo7lqu2"]
+
+[ext_resource type="Shader" uid="uid://c1xpc8jjay788" path="res://Global/VFX/Smoke/Shader/smoke_shader.tres" id="1_3bs8l"]
+[ext_resource type="Texture2D" uid="uid://c4fg57wuvrkcq" path="res://Global/VFX/Smoke/Textures/T_Noise_001R.png" id="2_3y77a"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3bs8l")
+shader_parameter/Vector2Parameter = Vector2(1, 1)
+shader_parameter/disolver_texture = ExtResource("2_3y77a")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnuw52j1womnh"]
+
+[ext_resource type="Material" uid="uid://d0klgmqo7lqu2" path="res://Global/VFX/Smoke/Shader/smoke_shader_material.tres" id="1_awpkv"]
+[ext_resource type="Material" uid="uid://cqnf6a8q2m85v" path="res://Global/VFX/Smoke/ProcessMaterials/dash_process_material.tres" id="2_awpkv"]
+[ext_resource type="ArrayMesh" uid="uid://b1v4u1wlxeel" path="res://Global/VFX/Smoke/Mesh/static_mesh_cloud.glb" id="3_lf3n7"]
+
+[node name="Node3D" type="Node3D" unique_id=2044047606]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=972212502]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+material_override = ExtResource("1_awpkv")
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.65
+fixed_fps = 60
+process_material = ExtResource("2_awpkv")
+draw_pass_1 = ExtResource("3_lf3n7")

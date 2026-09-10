@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b06vixdeb65mj"]
+
+[ext_resource type="Material" uid="uid://d0klgmqo7lqu2" path="res://Global/VFX/Smoke/Shader/smoke_shader_material.tres" id="1_kw348"]
+[ext_resource type="Script" uid="uid://sxabvasy05vm" path="res://Global/VFX/Smoke/Code/particles_base.gd" id="3_s621y"]
+[ext_resource type="ArrayMesh" uid="uid://dvdfi0kj1sbca" path="res://Global/VFX/Smoke/Mesh/static_mesh_cloud.glb" id="3_t3fr4"]
+
+[node name="smoke_particles_base" type="GPUParticles3D" unique_id=1190728079]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+material_override = ExtResource("1_kw348")
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+randomness = 1.0
+draw_pass_1 = ExtResource("3_t3fr4")
+script = ExtResource("3_s621y")

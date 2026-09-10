@@ -46,6 +46,7 @@ func _on_continue_button_up() -> void:
 	visible = false
 
 func _on_options_button_up() -> void:
+	buttons_container.change_first_element(options_button)
 	_finish_button_signals()
 	visible = false
 	options_menu.start_menu()

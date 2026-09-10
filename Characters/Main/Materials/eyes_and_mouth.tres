@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqbqraltnd6mb"]
+
+[ext_resource type="Texture2D" uid="uid://din246w4pfnj6" path="res://Characters/Main/Imported/main_character_EyesAndMouth.png" id="1_cbq3j"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_cbq3j")
+texture_filter = 0

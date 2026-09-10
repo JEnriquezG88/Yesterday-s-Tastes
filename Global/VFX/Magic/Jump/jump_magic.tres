@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwtmoqaefy4f3"]
+
+[ext_resource type="Texture2D" uid="uid://c4jpwgt0nr5q6" path="res://Global/VFX/Magic/Jump/jump_magic_particles.png" id="1_rp603"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_rp603")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false

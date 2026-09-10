@@ -1,7 +1,7 @@
 extends VBoxContainer
 class_name OptionsMenuManager
 
-@export var previous_menu : VBoxContainer = null
+@export var previous_menu : Control = null
 @onready var buttons_container: ButtonsContainer = $ButtonsContainer
 
 @onready var graphics_button: Button = $ButtonsContainer/GraphicsButton
@@ -22,7 +22,6 @@ class_name OptionsMenuManager
 
 func _ready() -> void:
 	visible = false
-
 
 func start_menu() -> void:
 	visible = true
@@ -48,24 +47,28 @@ func _finish_button_signals() -> void:
 	return_button.button_up.disconnect(_on_exit_button_up)
 
 func _on_graphics_button_up() -> void:
+	buttons_container.change_first_element(graphics_button)
 	options.visible = false
 	graphics.visible = true
 	buttons_container.visible = false
 	graphics_settings.start_menu()
 
 func _on_audio_button_up() -> void:
+	buttons_container.change_first_element(audio_button)
 	options.visible = false
 	audio.visible = true
 	buttons_container.visible = false
 	audio_settings.start_menu()
 
 func _on_lenguage_button_up() -> void:
+	buttons_container.change_first_element(lenguage_button)
 	options.visible = false
 	lenguage.visible = true
 	buttons_container.visible = false
 	lenguage_settings.start_menu()
 
 func _on_exit_button_up() -> void:
+	buttons_container.change_first_element(graphics_button)
 	_finish_button_signals()
 	visible = false
 	if previous_menu:

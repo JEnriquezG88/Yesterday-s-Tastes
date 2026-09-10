@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://blvr4oigc0f3t"]
+
+[ext_resource type="Material" uid="uid://dwtmoqaefy4f3" path="res://Global/VFX/Magic/Jump/jump_magic.tres" id="1_ahqe4"]
+[ext_resource type="Script" uid="uid://cciw8rg5adaip" path="res://Global/VFX/Magic/Jump/jump_magic_fx.gd" id="1_arobu"]
+[ext_resource type="Texture2D" uid="uid://c4jpwgt0nr5q6" path="res://Global/VFX/Magic/Jump/jump_magic_particles.png" id="2_arobu"]
+
+[sub_resource type="Curve" id="Curve_rdi7m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_arobu"]
+curve = SubResource("Curve_rdi7m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dpkh5"]
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 5, 0)
+scale_curve = SubResource("CurveTexture_arobu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2pcgd"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdi7m"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_arobu")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.5, 0, 0)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lre8a"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_arobu")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, 0.5, 0)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72ked"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_arobu")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.5, 0.5, 0)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="JumpMagicFX" type="Node3D" unique_id=222638895]
+script = ExtResource("1_arobu")
+
+[node name="01" type="GPUParticles3D" parent="." unique_id=2111250694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15208963, 0)
+material_override = ExtResource("1_ahqe4")
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_dpkh5")
+draw_pass_1 = SubResource("QuadMesh_2pcgd")
+
+[node name="02" type="GPUParticles3D" parent="." unique_id=2099744466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07237247, 0)
+material_override = SubResource("StandardMaterial3D_rdi7m")
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_dpkh5")
+draw_pass_1 = SubResource("QuadMesh_2pcgd")
+
+[node name="03" type="GPUParticles3D" parent="." unique_id=236276116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11710444, 0)
+material_override = SubResource("StandardMaterial3D_lre8a")
+emitting = false
+amount = 4
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_dpkh5")
+draw_pass_1 = SubResource("QuadMesh_2pcgd")
+
+[node name="04" type="GPUParticles3D" parent="." unique_id=143234924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16479793, 0)
+material_override = SubResource("StandardMaterial3D_72ked")
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_dpkh5")
+draw_pass_1 = SubResource("QuadMesh_2pcgd")

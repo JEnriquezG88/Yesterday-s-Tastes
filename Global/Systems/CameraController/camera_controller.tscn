@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cjo05qhqnpf2"]
+
+[ext_resource type="Script" uid="uid://bim7okrg4oe8n" path="res://Global/Systems/CameraController/Code/camera_controller.gd" id="1_vepqa"]
+
+[node name="CameraController" type="Node3D" unique_id=660868539]
+script = ExtResource("1_vepqa")
+
+[node name="Horizontal" type="Node3D" parent="." unique_id=1710322058]
+
+[node name="Vertical" type="Node3D" parent="Horizontal" unique_id=1936378283]
+transform = Transform3D(1, 0, 0, 0, 0.8484074, 0.5293437, 0, -0.5293437, 0.8484074, 0, 1.5743504, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Horizontal/Vertical" unique_id=532458669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+current = true
+
+[node name="Follow" type="Node3D" parent="." unique_id=671158540]

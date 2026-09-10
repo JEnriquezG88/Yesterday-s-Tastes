@@ -18,3 +18,7 @@ voices_audio_options;"Voces";"Voices"
 music_audio_options;"Música";"Music"
 
 lenguage_settings_title;"Idioma";"Lenguage"
+
+pause_tittle;"Pausa";"Pause"
+continue_button;"Continuar Partida";"Resume";
+exit_to_main_menu_button;"Menú Principal";"Main Menu"
