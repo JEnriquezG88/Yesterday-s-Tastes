@@ -38,6 +38,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://Characters/": "red",
 "res://Global/": "green",
+"res://Levels/": "orange",
 "res://Test/": "gray",
 "res://UI/": "blue"
 }
@@ -125,4 +126,5 @@ locale/translations=PackedStringArray("res://UI/Translations/ui_translations.en.
 rendering_device/driver.windows="d3d12"
 lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
-anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/screen_space_aa=2
+occlusion_culling/use_occlusion_culling=true

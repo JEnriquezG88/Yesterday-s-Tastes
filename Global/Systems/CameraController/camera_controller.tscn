@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://cjo05qhqnpf2"]
 
 [ext_resource type="Script" uid="uid://bim7okrg4oe8n" path="res://Global/Systems/CameraController/Code/camera_controller.gd" id="1_vepqa"]
+[ext_resource type="Shader" uid="uid://e4aihjq20vfq" path="res://Global/VFX/TiltShift/tilt_shift_shader.gdshader" id="2_erv6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61a82"]
+shader = ExtResource("2_erv6c")
+shader_parameter/limit = 0.2
+shader_parameter/blur = 1.5000000712500001
+shader_parameter/intensity = 0.19
+shader_parameter/debug = false
 
 [node name="CameraController" type="Node3D" unique_id=660868539]
 script = ExtResource("1_vepqa")
@@ -13,5 +21,16 @@ transform = Transform3D(1, 0, 0, 0, 0.8484074, 0.5293437, 0, -0.5293437, 0.84840
 [node name="Camera3D" type="Camera3D" parent="Horizontal/Vertical" unique_id=532458669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
 current = true
+far = 128.0
 
 [node name="Follow" type="Node3D" parent="." unique_id=671158540]
+
+[node name="FX" type="CanvasLayer" parent="." unique_id=654061217]
+
+[node name="ColorRect" type="ColorRect" parent="FX" unique_id=1883138690]
+material = SubResource("ShaderMaterial_61a82")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

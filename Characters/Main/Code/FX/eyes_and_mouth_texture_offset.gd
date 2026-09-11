@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 		var attachment : BoneAttachment3D = mesehs_attachments[mesh]
 		
 		var offset : Vector3 = Vector3(
-			round(-attachment.position.y / 0.25) * 0.25,
 			round(attachment.position.x / 0.25) * 0.25,
+			round(-attachment.position.y / 0.25) * 0.25,
 			0.0
 		)
 		

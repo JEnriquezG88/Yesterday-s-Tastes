@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://gb2eemdxlgko"]
+
+[ext_resource type="Shader" uid="uid://dlvb80qlo6b6y" path="res://Levels/GeneralAssets/Trees/Materials/tree_shader.gdshader" id="1_3a65w"]
+[ext_resource type="Texture2D" uid="uid://dqgnjuogysu8e" path="res://Levels/GeneralAssets/Trees/Imported/tree_01_trees.png" id="2_dnin7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3a65w")
+shader_parameter/albedo_texture = ExtResource("2_dnin7")
+shader_parameter/wind_amplitude = 0.1
+shader_parameter/wind_frecuency = 2.0

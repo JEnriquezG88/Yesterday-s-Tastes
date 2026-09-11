@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bivqeu3d0hugl"]
+
+[ext_resource type="Texture2D" uid="uid://cca05niu3b3qc" path="res://Levels/GeneralAssets/Trees/Imported/rock_01_rocks_and_fungus.png" id="1_vslrp"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_vslrp")

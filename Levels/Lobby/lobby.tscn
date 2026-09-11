@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c55jeqmc1lpm8"]
+
+[ext_resource type="PackedScene" uid="uid://jm4o5ljyci1d" path="res://Levels/Lobby/Imported/GeneralWord.glb" id="1_cwgtc"]
+
+[node name="GeneralWord" unique_id=1718757020 instance=ExtResource("1_cwgtc")]

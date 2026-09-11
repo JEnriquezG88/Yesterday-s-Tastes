@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ccqcxc7yqnna6"]
+
+[ext_resource type="Shader" uid="uid://duu0tmou3as6h" path="res://Levels/GeneralAssets/Water/Materials/water_shader.gdshader" id="1_7rlx4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7rlx4")
+shader_parameter/WATER_COL = Color(0.6745098, 0.8, 0.89411765, 1)
+shader_parameter/WATER2_COL = Color(0.7019608, 0.8901961, 0.85490197, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 3.0
+shader_parameter/tile = Vector2(30, 30)
+shader_parameter/wave_speed = 3.0

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://q6g4c1hyvakf"]
+
+[ext_resource type="Shader" uid="uid://cja1do3xrgecd" path="res://Levels/GeneralAssets/Trees/Materials/grass_and_flowers_shader.gdshader" id="1_f0kr7"]
+[ext_resource type="Texture2D" uid="uid://ckm71ecqk3ffy" path="res://Levels/GeneralAssets/Trees/Imported/grass_01_grass_and_flowers.png" id="2_bq1td"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f0kr7")
+shader_parameter/albedo_texture = ExtResource("2_bq1td")
+shader_parameter/wind_amplitube = 0.15
+shader_parameter/wind_speed = 1.5

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ghhahuqhg7k4"]
+
+[ext_resource type="PackedScene" uid="uid://c55jeqmc1lpm8" path="res://Levels/Lobby/lobby.tscn" id="1_ugnrm"]
+[ext_resource type="PackedScene" uid="uid://dfukhh8tswmh7" path="res://Characters/Main/main_character.tscn" id="2_h85mm"]
+[ext_resource type="Script" uid="uid://dbfo1jbjejb2c" path="res://Global/VFX/Code/particles_manager.gd" id="3_4qrw4"]
+[ext_resource type="PackedScene" uid="uid://cjo05qhqnpf2" path="res://Global/Systems/CameraController/camera_controller.tscn" id="4_onvn5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h85mm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_h58vn"]
+sky_material = SubResource("ProceduralSkyMaterial_h85mm")
+
+[sub_resource type="Environment" id="Environment_4qrw4"]
+background_mode = 2
+sky = SubResource("Sky_h58vn")
+ssao_enabled = true
+
+[node name="WorldManager" type="Node3D" unique_id=1290443672]
+
+[node name="Scenario" type="Node3D" parent="." unique_id=398695725]
+
+[node name="GeneralWord" parent="Scenario" unique_id=1718757020 instance=ExtResource("1_ugnrm")]
+
+[node name="Characters" type="Node3D" parent="." unique_id=521545670]
+
+[node name="MainCharacter" parent="Characters" unique_id=84610017 instance=ExtResource("2_h85mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="GlobalParticlesManager" type="Node3D" parent="Characters" unique_id=142390747]
+script = ExtResource("3_4qrw4")
+metadata/_custom_type_script = "uid://dbfo1jbjejb2c"
+
+[node name="CameraController" parent="Characters" unique_id=660868539 node_paths=PackedStringArray("target") instance=ExtResource("4_onvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+target = NodePath("../MainCharacter")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1936761924]
+environment = SubResource("Environment_4qrw4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=298990391]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 0.5
