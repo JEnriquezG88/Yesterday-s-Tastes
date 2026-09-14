@@ -2,9 +2,20 @@ extends VBoxContainer
 class_name MainMenu
 
 @onready var buttons_container: ButtonsContainer = $ButtonsContainer
-@onready var fade_manager: FadeManager = $"../../FadeManager"
+
+@onready var new_game_warning: NewGameWarning = $"../NewGameWarning"
+
+@onready var fade_manager: FadeManager = $"../../../FadeManager"
 
 func _ready() -> void:
+	if DirAccess.dir_exists_absolute("user://save"):
+		if buttons_container.current_first_element == start_button:
+			buttons_container.change_first_element(continue_button)
+		continue_button.visible = true
+	else:
+		if buttons_container.current_first_element == continue_button:
+			buttons_container.change_first_element(start_button)
+		continue_button.visible = false
 	start_menu()
 
 @onready var start_button: Button = $ButtonsContainer/StartButton
@@ -14,7 +25,7 @@ func _ready() -> void:
 @onready var exit_button: Button = $ButtonsContainer/ExitButton
 
 
-@onready var options_menu: OptionsMenuManager = $"../OptionsMenu"
+@onready var options_menu: OptionsMenuManager = $"../../OptionsMenu"
 
 
 
@@ -38,12 +49,24 @@ func _finish_button_signals() -> void:
 	exit_button.button_up.disconnect(_on_exit_button_up)
 
 func _on_start_button_up() -> void:
+	buttons_container.change_first_element(start_button)
 	_finish_button_signals()
-	visible = false
+	
+	if DirAccess.dir_exists_absolute("user://save"):
+		_finish_button_signals()
+		visible = false
+		new_game_warning.start_menu()
+	else:
+		await fade_manager._fade_out()
+		visible = false
+		get_tree().change_scene_to_file("uid://ghhahuqhg7k4")
 
 func _on_continue_button_up() -> void:
+	buttons_container.change_first_element(continue_button)
 	_finish_button_signals()
+	await fade_manager._fade_out()
 	visible = false
+	get_tree().change_scene_to_file("uid://ghhahuqhg7k4")
 
 func _on_options_button_up() -> void:
 	buttons_container.change_first_element(options_button)

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bykmsijavvcdo"]
+
+[ext_resource type="Script" uid="uid://4nlnenp3gswe" path="res://Global/Code/Interactions/Code/interaction_system.gd" id="1_2c0t2"]
+[ext_resource type="Texture2D" uid="uid://d0pdgnwbutq6p" path="res://UI/Controls/Imgs/x.png" id="2_p803t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2c0t2"]
+radius = 3.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2c0t2"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c0t2"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_p803t")
+billboard_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(9.794922, 9.133057, 1)
+
+[node name="InteractionSystem" type="Node3D" unique_id=1678312802]
+script = ExtResource("1_2c0t2")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1474053959]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=2141372917]
+shape = SubResource("SphereShape3D_2c0t2")
+
+[node name="Icon" type="MeshInstance3D" parent="." unique_id=1282147040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("QuadMesh_2c0t2")
+surface_material_override/0 = SubResource("StandardMaterial3D_2c0t2")
+
+[node name="BlockPath" type="StaticBody3D" parent="." unique_id=886869682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockPath" unique_id=780815723]
+shape = SubResource("BoxShape3D_61a82")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

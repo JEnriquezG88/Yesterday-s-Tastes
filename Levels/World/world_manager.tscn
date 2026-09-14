@@ -1,46 +1,149 @@
 [gd_scene format=3 uid="uid://ghhahuqhg7k4"]
 
-[ext_resource type="PackedScene" uid="uid://c55jeqmc1lpm8" path="res://Levels/Lobby/lobby.tscn" id="1_ugnrm"]
+[ext_resource type="PackedScene" uid="uid://8cm2ewo5h8ru" path="res://Levels/GeneralAssets/Water/water.glb" id="1_onvn5"]
+[ext_resource type="Script" uid="uid://ckjcaicwv1ofu" path="res://Global/Code/Config/lights_and_enviroment_manager.gd" id="1_tv0hc"]
 [ext_resource type="PackedScene" uid="uid://dfukhh8tswmh7" path="res://Characters/Main/main_character.tscn" id="2_h85mm"]
 [ext_resource type="Script" uid="uid://dbfo1jbjejb2c" path="res://Global/VFX/Code/particles_manager.gd" id="3_4qrw4"]
 [ext_resource type="PackedScene" uid="uid://cjo05qhqnpf2" path="res://Global/Systems/CameraController/camera_controller.tscn" id="4_onvn5"]
+[ext_resource type="Script" uid="uid://5nhb676ogx0u" path="res://Levels/Code/first_level_sections_manager.gd" id="5_4qrw4"]
+[ext_resource type="Script" uid="uid://bog5ub2y3olpt" path="res://Levels/Code/general_level_charge_manager.gd" id="5_tv0hc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h85mm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-energy_multiplier = 1.5
 
-[sub_resource type="Sky" id="Sky_h58vn"]
+[sub_resource type="Sky" id="Sky_4qrw4"]
 sky_material = SubResource("ProceduralSkyMaterial_h85mm")
 
-[sub_resource type="Environment" id="Environment_4qrw4"]
+[sub_resource type="Environment" id="Environment_onvn5"]
 background_mode = 2
-sky = SubResource("Sky_h58vn")
+sky = SubResource("Sky_4qrw4")
 ssao_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_light_energy = 2.6
+fog_density = 4.43
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1g7ov"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3xco"]
+size = Vector3(45.094, 100, 59.762)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbc0n"]
+size = Vector3(20.853, 100, 44.436462)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpkh5"]
+size = Vector3(23.983, 100, 9.52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xed8g"]
+size = Vector3(42.039154, 100, 30.125448)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6gdm"]
+size = Vector3(74.59847, 100, 29.42044)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lo7k1"]
+size = Vector3(88.832, 100, 41.396)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ccxt"]
+size = Vector3(8.703, 100, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2ab1"]
+size = Vector3(20.17, 100, 51.383)
 
 [node name="WorldManager" type="Node3D" unique_id=1290443672]
 
+[node name="LightsAndEnviromentManager" type="Node3D" parent="." unique_id=946183520]
+script = ExtResource("1_tv0hc")
+metadata/_custom_type_script = "uid://ckjcaicwv1ofu"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LightsAndEnviromentManager" unique_id=1034764993]
+environment = SubResource("Environment_onvn5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightsAndEnviromentManager" unique_id=174068036]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Scenario" type="Node3D" parent="." unique_id=398695725]
 
-[node name="GeneralWord" parent="Scenario" unique_id=1718757020 instance=ExtResource("1_ugnrm")]
+[node name="StaticBody3D" type="StaticBody3D" parent="Scenario" unique_id=1089785477]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenario/StaticBody3D" unique_id=1954679454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1g7ov")
+
+[node name="water2" parent="Scenario" unique_id=814209026 instance=ExtResource("1_onvn5")]
 
 [node name="Characters" type="Node3D" parent="." unique_id=521545670]
 
 [node name="MainCharacter" parent="Characters" unique_id=84610017 instance=ExtResource("2_h85mm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="GlobalParticlesManager" type="Node3D" parent="Characters" unique_id=142390747]
 script = ExtResource("3_4qrw4")
 metadata/_custom_type_script = "uid://dbfo1jbjejb2c"
 
 [node name="CameraController" parent="Characters" unique_id=660868539 node_paths=PackedStringArray("target") instance=ExtResource("4_onvn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 target = NodePath("../MainCharacter")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1936761924]
-environment = SubResource("Environment_4qrw4")
+[node name="LevelChargeManager" type="Node3D" parent="." unique_id=931881807]
+script = ExtResource("5_tv0hc")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=298990391]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-shadow_blur = 0.5
+[node name="FirstLevel" type="Node3D" parent="LevelChargeManager" unique_id=1755866695]
+script = ExtResource("5_4qrw4")
+
+[node name="ChargeLevel1Section1" type="Area3D" parent="LevelChargeManager/FirstLevel" unique_id=152838071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.860638, 0, 1.4050488)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section1" unique_id=1798270998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.650536, 2.7434082, -25.762222)
+shape = SubResource("BoxShape3D_i3xco")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section1" unique_id=605062007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.770897, 2.7434082, -60.04656)
+shape = SubResource("BoxShape3D_lbc0n")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section1" unique_id=1389746330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.983959, 0, 2.5871737)
+shape = SubResource("BoxShape3D_dpkh5")
+
+[node name="ChargeLevel1Section2" type="Area3D" parent="LevelChargeManager/FirstLevel" unique_id=303481536]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.03281, 0, -36.807194)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section2" unique_id=14969042]
+transform = Transform3D(0.9873531, 0, 0.15853703, 0, 1, 0, -0.15853703, 0, 0.9873531, -12.051712, 2.7434082, 10.232773)
+shape = SubResource("BoxShape3D_xed8g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section2" unique_id=93078797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.653606, 2.7434082, 14.633911)
+shape = SubResource("BoxShape3D_p6gdm")
+
+[node name="SecondLevel" type="Node3D" parent="LevelChargeManager" unique_id=371486595]
+
+[node name="ThirdLevel" type="Node3D" parent="LevelChargeManager" unique_id=721003436]
+
+[node name="ChargeLobby" type="Area3D" parent="LevelChargeManager" unique_id=465387344]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/ChargeLobby" unique_id=1032061336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.014, 0, -0.619)
+shape = SubResource("BoxShape3D_lo7k1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/ChargeLobby" unique_id=1687181639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.831284, 0, -19.13695)
+shape = SubResource("BoxShape3D_6ccxt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/ChargeLobby" unique_id=1577942285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1055679, 999.71497, 38.58015)
+shape = SubResource("BoxShape3D_i2ab1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1693055395]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 65.27289, -9.549989)
+
+[node name="DebugCamera" type="Camera3D" parent="." unique_id=957990340]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 96, 43)
+visible = false

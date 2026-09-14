@@ -3,8 +3,16 @@
 [ext_resource type="Script" uid="uid://da5cjokn2ky2h" path="res://UI/MainMenu/Code/main_menu.gd" id="1_3jj5y"]
 [ext_resource type="Texture2D" uid="uid://csgqe7fy42xke" path="res://Global/LogoAndIcons/FullLogo.png" id="1_jld46"]
 [ext_resource type="Script" uid="uid://bnkphhegigvao" path="res://UI/code/first_element_focus.gd" id="2_t17p2"]
+[ext_resource type="Texture2D" uid="uid://cwegajgbnkmc7" path="res://UI/Decorators/plant_01.png" id="4_bddxb"]
 [ext_resource type="Script" uid="uid://by6284nhq0d8h" path="res://UI/code/fade_manager.gd" id="4_h8rmy"]
+[ext_resource type="Script" uid="uid://b876q38ykue1f" path="res://UI/MainMenu/Code/new_game_warning.gd" id="4_iau2q"]
 [ext_resource type="PackedScene" uid="uid://c5egtgx5m65pv" path="res://UI/OptionsMenu/options_menu.tscn" id="4_iyy2y"]
+[ext_resource type="Texture2D" uid="uid://dj8lbfbkuk0ti" path="res://UI/MainMenu/Imgs/separator.png" id="5_iau2q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbebc"]
+font_size = 100
+font_color = Color(0.42352942, 0.3372549, 0.44313726, 1)
+outline_size = 30
 
 [node name="MainMenu" type="Control" unique_id=832887947]
 layout_mode = 3
@@ -13,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1291508949]
 layout_mode = 1
@@ -22,50 +31,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="VBoxContainer" parent="CenterContainer" unique_id=379795890]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=125118292]
+layout_mode = 2
+theme_override_constants/margin_top = -128
+
+[node name="MainMenu" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=379795890]
 layout_mode = 2
 theme_override_constants/separation = -68
 script = ExtResource("1_3jj5y")
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/MainMenu" unique_id=264337580]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/MainMenu" unique_id=264337580]
 custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
 texture = ExtResource("1_jld46")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MainMenu" unique_id=1989869193 node_paths=PackedStringArray("current_first_element")]
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MainMenu" unique_id=1989869193 node_paths=PackedStringArray("current_first_element")]
 layout_mode = 2
 script = ExtResource("2_t17p2")
 current_first_element = NodePath("StartButton")
 
-[node name="StartButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=776333511]
+[node name="StartButton" type="Button" parent="CenterContainer/MarginContainer/MainMenu/ButtonsContainer" unique_id=776333511]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
 mouse_filter = 2
 text = "start_bton"
 flat = true
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=141925269]
+[node name="ContinueButton" type="Button" parent="CenterContainer/MarginContainer/MainMenu/ButtonsContainer" unique_id=141925269]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 text = "continue_bton"
 flat = true
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1989113158]
+[node name="OptionsButton" type="Button" parent="CenterContainer/MarginContainer/MainMenu/ButtonsContainer" unique_id=1989113158]
 layout_mode = 2
 mouse_filter = 2
 text = "options_bton"
 flat = true
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1729995350]
+[node name="CreditsButton" type="Button" parent="CenterContainer/MarginContainer/MainMenu/ButtonsContainer" unique_id=1729995350]
 layout_mode = 2
 mouse_filter = 2
 text = "credits_bton"
 flat = true
 
-[node name="ExitButton" type="Button" parent="CenterContainer/MainMenu/ButtonsContainer" unique_id=1824752271]
+[node name="ExitButton" type="Button" parent="CenterContainer/MarginContainer/MainMenu/ButtonsContainer" unique_id=1824752271]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
 mouse_filter = 2
@@ -74,9 +87,82 @@ theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833
 text = "exit_bton"
 flat = true
 
-[node name="OptionsMenu" parent="CenterContainer" unique_id=930145588 node_paths=PackedStringArray("previous_menu") instance=ExtResource("4_iyy2y")]
+[node name="NewGameWarning" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=368928247 node_paths=PackedStringArray("previous_menu")]
+visible = false
 layout_mode = 2
+script = ExtResource("4_iau2q")
 previous_menu = NodePath("../MainMenu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/NewGameWarning" unique_id=239211136]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer/MarginContainer/NewGameWarning/HBoxContainer" unique_id=1706300295]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+texture = ExtResource("4_bddxb")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="options" type="Label" parent="CenterContainer/MarginContainer/NewGameWarning/HBoxContainer" unique_id=108352524]
+layout_mode = 2
+text = "warning_tittle"
+label_settings = SubResource("LabelSettings_pbebc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/MarginContainer/NewGameWarning/HBoxContainer" unique_id=92198835]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+texture = ExtResource("4_bddxb")
+expand_mode = 5
+stretch_mode = 5
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/NewGameWarning" unique_id=1016533429]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_iau2q")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/NewGameWarning" unique_id=657563412]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/NewGameWarning/VBoxContainer" unique_id=1640556805]
+layout_mode = 2
+text = "warning_msg"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/NewGameWarning/VBoxContainer" unique_id=1737334640]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="CenterContainer/MarginContainer/NewGameWarning/VBoxContainer/HBoxContainer" unique_id=1049934195]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../AcceptButton")
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.349096, 0.05009543, 0.088584654, 1)
+theme_override_colors/font_focus_color = Color(0.89037293, 0.24331611, 0.3081833, 1)
+text = "cancel_bton"
+flat = true
+
+[node name="AcceptButton" type="Button" parent="CenterContainer/MarginContainer/NewGameWarning/VBoxContainer/HBoxContainer" unique_id=145998443]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../ReturnButton")
+mouse_filter = 2
+text = "accept_bton"
+flat = true
+
+[node name="OptionsMenu" parent="CenterContainer" unique_id=930145588 node_paths=PackedStringArray("previous_menu") instance=ExtResource("4_iyy2y")]
+visible = false
+layout_mode = 2
+previous_menu = NodePath("../MarginContainer/MainMenu")
 
 [node name="FadeManager" type="ColorRect" parent="." unique_id=748250182]
 visible = false

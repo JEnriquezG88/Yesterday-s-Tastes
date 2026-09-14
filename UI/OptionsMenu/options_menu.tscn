@@ -88,6 +88,7 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=1370588048 node_paths=PackedStringArray("current_first_element")]
+visible = false
 layout_mode = 2
 script = ExtResource("2_w5ifl")
 current_first_element = NodePath("GraphicsButton")
@@ -187,6 +188,62 @@ popup/item_2/id = 2
 popup/item_3/text = "Sin Límite"
 popup/item_3/id = 3
 
+[node name="ShadowsOption" type="HBoxContainer" parent="GraphicsSettings" unique_id=831070562]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/ShadowsOption" unique_id=778573110]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "shadow_optins_bton"
+
+[node name="ShadowsCheckbox" type="CheckBox" parent="GraphicsSettings/ShadowsOption" unique_id=948205508]
+custom_maximum_size = Vector2(67, 67)
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+
+[node name="ShadowsQuality" type="HBoxContainer" parent="GraphicsSettings" unique_id=1860636460]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/ShadowsQuality" unique_id=46952532]
+layout_mode = 2
+text = "shadow_quality_options"
+
+[node name="ShadowQualities" type="OptionButton" parent="GraphicsSettings/ShadowsQuality" unique_id=1230091240]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_top = NodePath("../../ReturnButton")
+selected = 3
+item_count = 4
+popup/item_0/text = "low_option"
+popup/item_0/id = 0
+popup/item_1/text = "medium_option"
+popup/item_1/id = 1
+popup/item_2/text = "high_option"
+popup/item_2/id = 2
+popup/item_3/text = "ultra_option"
+popup/item_3/id = 3
+
+[node name="AOOption" type="HBoxContainer" parent="GraphicsSettings" unique_id=1303508848]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="GraphicsSettings/AOOption" unique_id=416236505]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ao_option_bton"
+
+[node name="AOCheckbox" type="CheckBox" parent="GraphicsSettings/AOOption" unique_id=630496111]
+custom_maximum_size = Vector2(67, 67)
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+
 [node name="ReturnButton" type="Button" parent="GraphicsSettings" unique_id=569592658]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResolutionContainer/Resolutions")
@@ -197,6 +254,7 @@ text = "return_bton"
 flat = true
 
 [node name="AudioSettings" type="VBoxContainer" parent="." unique_id=1707053028 node_paths=PackedStringArray("previous_menu")]
+visible = false
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 script = ExtResource("6_ahwyd")
@@ -286,6 +344,7 @@ text = "return_bton"
 flat = true
 
 [node name="LenguageSettings" type="VBoxContainer" parent="." unique_id=1026702002 node_paths=PackedStringArray("previous_menu")]
+visible = false
 layout_mode = 2
 script = ExtResource("7_w2bn0")
 previous_menu = NodePath("..")

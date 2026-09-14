@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dc2vcqsjcm6r"]
+
+[ext_resource type="Script" uid="uid://cab3hwiqsamod" path="res://Global/VFX/MagicParticles/Hit/hit_particles.gd" id="1_mvj6f"]
+[ext_resource type="Texture2D" uid="uid://btk0dvrpv3i66" path="res://Global/VFX/MagicParticles/Hit/hit_01.png" id="2_xf18k"]
+[ext_resource type="Texture2D" uid="uid://dmg1abbvai2gk" path="res://Global/VFX/MagicParticles/Hit/hit_02.png" id="3_jk222"]
+[ext_resource type="Texture2D" uid="uid://b855w7fwhceg" path="res://Global/VFX/MagicParticles/Hit/hit_03.png" id="4_71thx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ccxt"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("2_xf18k")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_cvsi4"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bhdnh"]
+curve = SubResource("Curve_cvsi4")
+
+[sub_resource type="Gradient" id="Gradient_ttipu"]
+colors = PackedColorArray(0.18087143, 0.28066486, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ttipu"]
+gradient = SubResource("Gradient_ttipu")
+
+[sub_resource type="Curve" id="Curve_3wn0o"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.5, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_muvw5"]
+curve = SubResource("Curve_3wn0o")
+
+[sub_resource type="Curve" id="Curve_bhdnh"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cvsi4"]
+curve = SubResource("Curve_bhdnh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cvsi4"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_cvsi4")
+color_ramp = SubResource("GradientTexture1D_ttipu")
+alpha_curve = SubResource("CurveTexture_bhdnh")
+emission_curve = SubResource("CurveTexture_muvw5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_61a82"]
+center_offset = Vector3(0, 0.745, 0)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucfjr"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("3_jk222")
+billboard_keep_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qw6nq"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_71thx")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_muvw5"]
+center_offset = Vector3(0, 0.745, 0)
+orientation = 0
+
+[node name="HitParticles" type="Node3D" unique_id=2088381422]
+script = ExtResource("1_mvj6f")
+
+[node name="Hit1" type="GPUParticles3D" parent="." unique_id=415968486]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6ccxt")
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_cvsi4")
+draw_pass_1 = SubResource("QuadMesh_61a82")
+
+[node name="Hit2" type="GPUParticles3D" parent="." unique_id=1244280953]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ucfjr")
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+randomness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_cvsi4")
+draw_pass_1 = SubResource("QuadMesh_61a82")
+
+[node name="Hit3" type="GPUParticles3D" parent="." unique_id=534638841]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qw6nq")
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+randomness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_cvsi4")
+draw_pass_1 = SubResource("QuadMesh_muvw5")

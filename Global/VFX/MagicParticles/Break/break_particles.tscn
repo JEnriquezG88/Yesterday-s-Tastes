@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://rmq78jyl0of5"]
+
+[ext_resource type="Material" uid="uid://bivqeu3d0hugl" path="res://Levels/GeneralAssets/Trees/Materials/rocks_and_fungus_material.tres" id="1_uiydg"]
+[ext_resource type="ArrayMesh" uid="uid://bn0sxop4fgsqf" path="res://Global/VFX/MagicParticles/Break/Particles/rock_mesh.res" id="1_urlp5"]
+
+[sub_resource type="Curve" id="Curve_ongjo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uiydg"]
+curve = SubResource("Curve_ongjo")
+
+[sub_resource type="Gradient" id="Gradient_uiydg"]
+colors = PackedColorArray(1, 1, 1, 1, 0.37413925, 0.37413928, 0.37413922, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uiydg"]
+gradient = SubResource("Gradient_uiydg")
+
+[sub_resource type="Curve" id="Curve_q1a7r"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 2.1000001), 0.0, 8.398384, 0, 0, Vector2(1, 0.8387096), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c3qkr"]
+curve = SubResource("Curve_q1a7r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vppr"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_c3qkr")
+color_ramp = SubResource("GradientTexture1D_uiydg")
+alpha_curve = SubResource("CurveTexture_uiydg")
+
+[node name="BreakParticles" type="GPUParticles3D" unique_id=1084411391]
+material_override = ExtResource("1_uiydg")
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1vppr")
+draw_pass_1 = ExtResource("1_urlp5")

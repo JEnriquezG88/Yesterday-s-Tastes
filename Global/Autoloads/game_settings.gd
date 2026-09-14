@@ -13,12 +13,51 @@ func _ready() -> void:
 
 func set_resolution(new_resolution: Vector2i) -> void:
 	DisplayServer.window_set_size(new_resolution)
-	config.set_value("display", "resolution", new_resolution)
+	var viewport : = get_viewport()
+	var current_resolution := DisplayServer.window_get_size()
+	
+	var scale_x := float(new_resolution.x) / float(current_resolution.x)
+	var scale_y := float(new_resolution.x) / float(current_resolution.y)
+	
+	viewport.scaling_3d_scale = min(scale_x, scale_y)
+	config.set_value("display", "resolution", viewport.scaling_3d_scale)
 	save_settings()
 
 func set_fullscreen(fullscreen: bool) -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
 	config.set_value("display", "fullscreen", fullscreen)
+	save_settings()
+
+signal set_shadows_signal(shadows: bool)
+signal set_shadows_quality_signal(shadows_quality: int)
+signal set_ao_signal(shadows: bool)
+
+func set_shadows(shadows: bool) -> void:
+	config.set_value("display", "shadows", shadows)
+	set_shadows_signal.emit(shadows)
+	save_settings()
+
+func set_shadow_quality(shadow_size: int) -> void:
+	RenderingServer.directional_shadow_atlas_set_size(shadow_size, true)
+	_set_shadow_filter(shadow_size)
+	config.set_value("display", "shadows_size", shadow_size)
+	save_settings()
+
+func _set_shadow_filter(shadow_size: int) -> void:
+	match shadow_size:
+		1024:
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_HARD)
+		2048:
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
+		4096:
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
+		8192:
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_ULTRA)
+	set_shadows_quality_signal.emit(shadow_size)
+
+func set_ao(ao: bool) -> void: # ao = Ambient Occlusion
+	config.set_value("display", "ao", ao)
+	set_ao_signal.emit(ao)
 	save_settings()
 
 func set_max_fps(fps: int) -> void:
@@ -55,7 +94,13 @@ func load_settings() -> void:
 		save_settings()
 	
 	#region Graphics
-	DisplayServer.window_set_size(config.get_value("display", "resolution", Vector2i(1920, 1080)))
+	var viewport : = get_viewport()
+	viewport.scaling_3d_scale = config.get_value("display", "resolution", 1.0)
+	var current_resolution := DisplayServer.window_get_size()
+	DisplayServer.window_set_size(current_resolution * viewport.scaling_3d_scale)
+	var shadow_size : int = config.get_value("display", "shadows_size", 8192)
+	RenderingServer.directional_shadow_atlas_set_size(shadow_size, true)
+	_set_shadow_filter(shadow_size)
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN if config.get_value("display", "fullscreen", false) else DisplayServer.WINDOW_MODE_WINDOWED)
 	Engine.max_fps = config.get_value("display", "max_fps", 60)
 	#endregion

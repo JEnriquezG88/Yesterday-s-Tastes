@@ -1,14 +1,82 @@
 [gd_scene format=3 uid="uid://cjo05qhqnpf2"]
 
 [ext_resource type="Script" uid="uid://bim7okrg4oe8n" path="res://Global/Systems/CameraController/Code/camera_controller.gd" id="1_vepqa"]
-[ext_resource type="Shader" uid="uid://e4aihjq20vfq" path="res://Global/VFX/TiltShift/tilt_shift_shader.gdshader" id="2_erv6c"]
+[ext_resource type="PackedScene" uid="uid://bhd0ram6yrshy" path="res://Global/VFX/CameraFX/camera_fx.tscn" id="2_erv6c"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_61a82"]
-shader = ExtResource("2_erv6c")
-shader_parameter/limit = 0.2
-shader_parameter/blur = 1.5000000712500001
-shader_parameter/intensity = 0.19
-shader_parameter/debug = false
+[sub_resource type="Animation" id="Animation_erv6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlboa"]
+resource_name = "idle"
+length = 4.000003541949764
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.0000002, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0017453292, -0.0017453292, 0.0034906585), Vector3(0, 0, 0), Vector3(-0.0017453292, 0.0017453292, -0.0034906585), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dxpfs"]
+resource_name = "shake"
+length = 0.13333667362071572
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666666, 0.099999994, 0.13333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.17453292, 0.17453292, -0.08726646), Vector3(0, 0, 0), Vector3(-0.17453292, -0.17453292, 0.08726646), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxpfs"]
+_data = {
+&"RESET": SubResource("Animation_erv6c"),
+&"idle": SubResource("Animation_nlboa"),
+&"shake": SubResource("Animation_dxpfs")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nlboa"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dxpfs"]
+animation = &"shake"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_erv6c"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_erv6c"]
+nodes/Idle/node = SubResource("AnimationNodeAnimation_nlboa")
+nodes/Idle/position = Vector2(-140, 120)
+nodes/Shake/node = SubResource("AnimationNodeAnimation_dxpfs")
+nodes/Shake/position = Vector2(-140, 320)
+nodes/ShakeBlend/node = SubResource("AnimationNodeBlend2_erv6c")
+nodes/ShakeBlend/position = Vector2(100, 180)
+node_connections = [&"output", 0, &"ShakeBlend", &"ShakeBlend", 0, &"Idle", &"ShakeBlend", 1, &"Shake"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_61a82"]
 
 [node name="CameraController" type="Node3D" unique_id=660868539]
 script = ExtResource("1_vepqa")
@@ -23,14 +91,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
 current = true
 far = 128.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Horizontal/Vertical/Camera3D" unique_id=290180451]
+libraries/ = SubResource("AnimationLibrary_dxpfs")
+
+[node name="AnimationTree" type="AnimationTree" parent="Horizontal/Vertical/Camera3D" unique_id=2078273740]
+tree_root = SubResource("AnimationNodeBlendTree_erv6c")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ShakeBlend/blend_amount = 0.0
+
 [node name="Follow" type="Node3D" parent="." unique_id=671158540]
 
-[node name="FX" type="CanvasLayer" parent="." unique_id=654061217]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Follow" unique_id=1513069443]
+visible = false
+mesh = SubResource("BoxMesh_61a82")
 
-[node name="ColorRect" type="ColorRect" parent="FX" unique_id=1883138690]
-material = SubResource("ShaderMaterial_61a82")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CameraFX" parent="." unique_id=544083402 instance=ExtResource("2_erv6c")]

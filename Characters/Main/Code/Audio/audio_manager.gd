@@ -9,7 +9,7 @@ func _ready() -> void:
 	create_voice_stream()
 
 func create_vfx_streamss() -> void:
-	for i in range(10):
+	for i in range(20):
 		var new_vfx_streams = AudioStreamPlayer3DExtended.new()
 		new_vfx_streams.bus = "VFX"
 		new_vfx_streams.name = "VFX_Stream" + str(i)
@@ -34,6 +34,9 @@ const WOSH = preload("uid://brrkf652nyyd2")
 const BELLS_C = preload("uid://5y2jbwyvhym7")
 const BELLS_E = preload("uid://dbtd33l26jg23")
 const BELLS_G = preload("uid://dqf626eepcxya")
+
+const CHARGE_MAGIC = preload("uid://c5l7tyvpds6c1")
+const SHOT_MAGIC = preload("uid://c5llbi6s3o8mw")
 
 
 
@@ -72,6 +75,20 @@ func shot_bells_effect() -> void:
 	current_bell_effect_chord = current_bell_effect_chord + 1 
 	if current_bell_effect_chord > 3:
 		current_bell_effect_chord = 1
+
+func shot_charge_magic_fx() -> void:
+	var current_vfx_stream : AudioStreamPlayer3DExtended = _get_avaialble_vfx_stream()
+	if not current_vfx_stream: return
+	current_vfx_stream.volume_db = 0.0
+	current_vfx_stream.pitch_scale = 1.0
+	current_vfx_stream.shot_sound(CHARGE_MAGIC)
+
+func shot_shot_magic_fx() -> void:
+	var current_vfx_stream : AudioStreamPlayer3DExtended = _get_avaialble_vfx_stream()
+	if not current_vfx_stream: return
+	current_vfx_stream.volume_db = 0.0
+	current_vfx_stream.pitch_scale = 1.0
+	current_vfx_stream.shot_sound(SHOT_MAGIC)
 
 func rand_stream(current_vfx_stream: AudioStreamPlayer3DExtended) -> void:
 	current_vfx_stream.pitch_scale = randf_range(0.8, 1.2)

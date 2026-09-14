@@ -8,6 +8,11 @@ class_name GraphicsMenu
 @onready var fps_options: OptionButton = $FpsContainer/FpsOptions
 @onready var return_button: Button = $ReturnButton
 
+@onready var shadows_checkbox: CheckBox = $ShadowsOption/ShadowsCheckbox
+@onready var ao_checkbox: CheckBox = $AOOption/AOCheckbox
+
+@onready var shadows_quality: HBoxContainer = $ShadowsQuality
+@onready var shadow_qualities: OptionButton = $ShadowsQuality/ShadowQualities
 
 func _ready() -> void:
 	visible = false
@@ -22,12 +27,17 @@ func start_menu() -> void:
 func _init_button_signals() -> void:
 	resolutions.item_selected.connect(_on_resolution_selected)
 	fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
+	shadows_checkbox.toggled.connect(_on_shadows_toggled)
+	shadow_qualities.item_selected.connect(_on_shadows_quality_selected)
+	ao_checkbox.toggled.connect(_on_ao_toggled)
 	fps_options.item_selected.connect(_on_fps_selected)
 	return_button.button_up.connect(_on_exit_button_up)
 
 func _finish_button_signals() -> void:
 	resolutions.item_selected.disconnect(_on_resolution_selected)
 	fullscreen_checkbox.toggled.disconnect(_on_fullscreen_toggled)
+	shadows_checkbox.toggled.disconnect(_on_shadows_toggled)
+	ao_checkbox.toggled.disconnect(_on_ao_toggled)
 	fps_options.item_selected.disconnect(_on_fps_selected)
 	return_button.button_up.disconnect(_on_exit_button_up)
 
@@ -44,6 +54,27 @@ func _on_resolution_selected(index: int) -> void:
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	GameSettings.set_fullscreen(toggled_on)
+
+func _on_shadows_toggled(toggled_on: bool) -> void:
+	GameSettings.set_shadows(toggled_on)
+	if toggled_on:
+		shadows_quality.visible = true
+	else:
+		shadows_quality.visible = false
+
+func _on_shadows_quality_selected(index: int) -> void:
+	match index:
+		0:
+			GameSettings.set_shadow_quality(1024)
+		1:
+			GameSettings.set_shadow_quality(2048)
+		2:
+			GameSettings.set_shadow_quality(4096)
+		3:
+			GameSettings.set_shadow_quality(8192)
+
+func _on_ao_toggled(toggled_on: bool) -> void:
+	GameSettings.set_ao(toggled_on)
 
 func _on_fps_selected(index: int) -> void:
 	match index:
@@ -88,4 +119,21 @@ func _load_values() -> void:
 		0:
 			fps_options.selected = 3
 	
-	fullscreen_checkbox.button_pressed = GameSettings.config.get_value("display", "fullscreen")
+	fullscreen_checkbox.button_pressed = GameSettings.config.get_value("display", "fullscreen", false)
+	shadows_checkbox.button_pressed = GameSettings.config.get_value("display", "shadows", false)
+	if shadows_checkbox.button_pressed:
+		shadows_quality.visible = true
+		
+		match GameSettings.config.get_value("display", "shadows_size", 8192):
+			1024:
+				shadow_qualities.selected = 0
+			2048:
+				shadow_qualities.selected = 1
+			4096:
+				shadow_qualities.selected = 2
+			8192:
+				shadow_qualities.selected = 3
+		
+	else:
+		shadows_quality.visible = false
+	ao_checkbox.button_pressed = GameSettings.config.get_value("display", "ao", false)

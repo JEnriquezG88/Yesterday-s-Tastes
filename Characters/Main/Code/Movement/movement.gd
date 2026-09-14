@@ -6,14 +6,16 @@ class_name Movement
 @onready var input_and_buffer: InputAndBuffer = $"../InputAndBuffer"
 
 var coyote_time_timer : Timer = Timer.new()
+var dash_cooldown : Timer = Timer.new()
 
 @onready var audio_manager: AudioManager = $"../../Systems/AudioManager"
 
 func _process(delta: float) -> void:
-	process_root_motion(delta)
 	movement(delta)
 	if character_controller.current_state == CharacterController.STATES.JUMP:
 		_process_jump_logic(delta)
+	process_root_motion(delta)
+	character_controller.move_and_slide()
 
 func _ready() -> void:
 	coyote_time_timer.one_shot = true
@@ -21,13 +23,20 @@ func _ready() -> void:
 	coyote_time_timer.name = "CoyoteTimeTimer"
 	coyote_time_timer.timeout.connect(_on_coyote_time_timer)
 	add_child(coyote_time_timer)
+	
+	dash_cooldown.one_shot = true
+	dash_cooldown.wait_time = 0.02
+	dash_cooldown.name = "DashCooldownTimer"
+	dash_cooldown.timeout.connect(_on_dash_cooldown_timeout)
+	add_child(dash_cooldown)
 
 var can_process_root_motion : bool = true
 
 func process_root_motion(delta: float) -> void:
 	if character_controller.current_state != CharacterController.STATES.MOVEMENT:
-		if character_controller.current_state != CharacterController.STATES.DASH: 
-			return
+		if character_controller.current_state != CharacterController.STATES.MAGIC: 
+			if character_controller.current_state != CharacterController.STATES.DASH: 
+				return
 	if not can_process_root_motion: return
 	
 	var root_motion : Vector3 = character_controller.animation_tree.get_root_motion_position()
@@ -37,7 +46,7 @@ func process_root_motion(delta: float) -> void:
 	character_controller.velocity.z = velocity.z
 
 func _physics_process(delta: float) -> void:
-	character_controller.move_and_slide()
+	pass
 
 var direction : Vector2
 var target_angle : float
@@ -118,11 +127,19 @@ func _process_jump_logic(delta) -> void:
 	if character_controller.is_on_floor():
 		_finish_jump()
 	else:
-		var velocity : Vector3 = character_controller.global_basis * (Vector3(0.0, 0.0, 0.077634) / delta) * direction.length()
+		#var velocity : Vector3 = character_controller.global_basis * (Vector3(0.0, 0.0, 0.077634) / delta) * direction.length()
+		var velocity : Vector3 = character_controller.global_basis * (Vector3(0.0, 0.0, 4.6)) * direction.length()
+		if character_controller.velocity.y <= -23:
+			strong_fall = true
 		character_controller.velocity.z = velocity.z
 		character_controller.velocity.x = velocity.x
 
+var strong_fall : bool = false
+
 func _finish_jump() -> void:
+	if strong_fall:
+		strong_fall = false
+		GlobalSignals.camera_shake.emit(0.1, 0.1)
 	audio_manager.shot_floor_impact(0.0)
 	GlobalSignals.shot_ground_impact_particles.emit(character_controller.global_position)
 	if not can_air_dash: can_air_dash = true
@@ -138,11 +155,13 @@ func _on_coyote_time_timer() -> void:
 	if not character_controller.is_on_floor():
 		can_floor_jump = false
 
+
 #endregion
 
 #region Dash
 
 func _can_dash() -> bool:
+	if is_dash_cooldown: return false
 	if character_controller.current_state == CharacterController.STATES.JUMP: return true
 	if character_controller.current_state != CharacterController.STATES.MOVEMENT: return false
 	return true
@@ -156,6 +175,7 @@ func try_dash() -> bool:
 		if not can_air_dash: return false
 	else:
 		GlobalSignals.shot_dash_particles.emit(character_controller, Vector3.ZERO, character_controller.global_rotation)
+	is_dash_cooldown = true
 	can_air_dash = false
 	if direction.length_squared() > 0:
 		character_controller.rotation.y = target_angle
@@ -170,11 +190,17 @@ func try_dash() -> bool:
 	return true
 
 func _finish_dash() -> void:
+	dash_cooldown.start()
 	if character_controller.is_on_floor():
 		can_air_dash = true
 	character_controller.current_state = CharacterController.STATES.MOVEMENT
 	character_controller.animation_tree.set("parameters/Movement/MovementTypes/transition_request", "floor_movement")
 	if input_and_buffer.current_pending_action != InputAndBuffer.ACTIONS.NONE:
 		input_and_buffer.process_pending_actions(input_and_buffer.current_pending_action)
+
+var is_dash_cooldown : bool = false
+
+func _on_dash_cooldown_timeout() -> void:
+	is_dash_cooldown = false
 
 #endregion

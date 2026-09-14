@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://jm4o5ljyci1d"
-path="res://.godot/imported/GeneralWord.glb-6e9d55c9db486c7c22270e01e9d8ff92.scn"
+uid="uid://bsijqo3rg7m4a"
+path="res://.godot/imported/section_02.glb-600a8836897d89ae9df97ae7dfbbbf23.scn"
 
 [deps]
 
-source_file="res://Levels/Lobby/Imported/GeneralWord.glb"
-dest_files=["res://.godot/imported/GeneralWord.glb-6e9d55c9db486c7c22270e01e9d8ff92.scn"]
+source_file="res://Levels/Level 1/ImportedAssets/section_02.glb"
+dest_files=["res://.godot/imported/section_02.glb-600a8836897d89ae9df97ae7dfbbbf23.scn"]
 
 [params]
 
@@ -40,21 +40,11 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
-"meshes": {
-"GeneralWord_LobbyFloor": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-}
-},
-"nodes": {
-"PATH:Floor": {
-"generate/physics": true,
-"physics/mask": 7
+"materials": {
+"ScenarioMaterial": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Levels/GeneralAssets/Materials/scneario_material.tres",
+"use_external/path": "uid://b51uindiyl14f"
 }
 }
 }

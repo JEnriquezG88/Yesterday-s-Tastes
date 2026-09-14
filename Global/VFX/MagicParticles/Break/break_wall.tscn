@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://4nkyhbinvdcn"]
+
+[ext_resource type="Script" uid="uid://dw8nxdrj4q1af" path="res://Global/VFX/MagicParticles/Break/Code/break_wall_interactuable_object.gd" id="1_ngwof"]
+[ext_resource type="PackedScene" uid="uid://6d6a21cl4e0n" path="res://Global/VFX/MagicParticles/Break/Imported/break_wall.glb" id="2_khkc5"]
+[ext_resource type="PackedScene" uid="uid://rmq78jyl0of5" path="res://Global/VFX/MagicParticles/Break/break_particles.tscn" id="3_vxfb5"]
+
+[node name="break_wall" type="Node3D" unique_id=394055457]
+script = ExtResource("1_ngwof")
+metadata/_custom_type_script = "uid://dw8nxdrj4q1af"
+
+[node name="break_wall" parent="." unique_id=971824357 instance=ExtResource("2_khkc5")]
+
+[node name="BreakParticles" parent="." unique_id=1084411391 instance=ExtResource("3_vxfb5")]

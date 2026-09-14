@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cca05niu3b3qc" path="res://Levels/GeneralAssets/Trees/Imported/rock_01_rocks_and_fungus.png" id="1_vslrp"]
 
 [resource]
+transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_vslrp")

@@ -10,6 +10,7 @@ class_name PauseMenuManager
 @onready var pause_menu_container: VBoxContainer = $PauseMenuContainer
 @onready var options_menu: OptionsMenuManager = $OptionsMenu
 
+@export var fade_manager : FadeManager 
 
 func _ready() -> void:
 	visible = false
@@ -43,7 +44,9 @@ func _finish_button_signals() -> void:
 func _on_exit_button_up() -> void:
 	_finish_button_signals()
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Global/Scenes/first_game_menu.tscn")
+	if fade_manager:
+		await fade_manager._fade_out()
+	get_tree().change_scene_to_file("uid://dr3x2e25y5jxk")
 
 func _on_continue_button_up() -> void:
 	visible = false

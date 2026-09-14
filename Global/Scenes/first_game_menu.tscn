@@ -1,11 +1,30 @@
 [gd_scene format=3 uid="uid://dr3x2e25y5jxk"]
 
+[ext_resource type="PackedScene" uid="uid://bhd0ram6yrshy" path="res://Global/VFX/CameraFX/camera_fx.tscn" id="1_3ix6r"]
 [ext_resource type="PackedScene" uid="uid://bvqb766wmw2f2" path="res://UI/MainMenu/main_menu.tscn" id="1_117gq"]
+[ext_resource type="PackedScene" uid="uid://c55jeqmc1lpm8" path="res://Levels/Lobby/lobby.tscn" id="2_s1vto"]
+[ext_resource type="Script" uid="uid://dg5apismftjca" path="res://Test/Code/fps_counter.gd" id="3_plufq"]
+[ext_resource type="Script" uid="uid://ckjcaicwv1ofu" path="res://Global/Code/Config/lights_and_enviroment_manager.gd" id="4_3fmts"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vto"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4qrw4"]
+sky_material = SubResource("ProceduralSkyMaterial_s1vto")
+
+[sub_resource type="Environment" id="Environment_3ix6r"]
+background_mode = 2
+sky = SubResource("Sky_4qrw4")
+ssao_enabled = true
+glow_enabled = true
 
 [node name="FirstGameMenu" type="Node3D" unique_id=1843136564]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=208158803]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, -0.7071067, 0, 0.7071067, 0.7071068, 0, 2, 3)
+transform = Transform3D(0.78260815, 0.19649614, -0.59068924, 0, 0.94887596, 0.31564903, 0.62251467, -0.2470295, 0.7425981, -6.371975, 2.201294, 9.434608)
+
+[node name="CameraFX" parent="Camera3D" unique_id=544083402 instance=ExtResource("1_3ix6r")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=848419385]
 
@@ -15,6 +34,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.3137255)
+color = Color(0, 0, 0, 0.7058824)
 
 [node name="MainMenu" parent="CanvasLayer" unique_id=832887947 instance=ExtResource("1_117gq")]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=2066808624]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer" unique_id=722094246]
+layout_mode = 2
+text = "FPS: 30"
+script = ExtResource("3_plufq")
+
+[node name="lobby" parent="." unique_id=1188552327 instance=ExtResource("2_s1vto")]
+
+[node name="LightsAndEnviromentManager" type="Node3D" parent="." unique_id=1253076036]
+script = ExtResource("4_3fmts")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LightsAndEnviromentManager" unique_id=300552248]
+environment = SubResource("Environment_3ix6r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightsAndEnviromentManager" unique_id=1442228323]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true

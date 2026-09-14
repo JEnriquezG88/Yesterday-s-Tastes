@@ -46,6 +46,17 @@ _subresources={
 "use_external/fallback_path": "res://Levels/GeneralAssets/Trees/Materials/rocks_and_fungus_material.tres",
 "use_external/path": "uid://bivqeu3d0hugl"
 }
+},
+"meshes": {
+"rock_01_Rock": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Global/VFX/MagicParticles/Break/Particles/rock_mesh.res",
+"save_to_file/path": "uid://dw2nxsfcdfekw"
+}
 }
 }
 gltf/naming_version=2

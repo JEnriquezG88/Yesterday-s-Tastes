@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://oaa1tdu80fn6"]
+
+[ext_resource type="Texture2D" uid="uid://b4gugequsm7d4" path="res://Levels/GeneralAssets/Trees/Imported/tree_trunk_01_tree_trunks.png" id="1_ukmp4"]
+
+[resource]
+resource_name = "TreeTrunks"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_ukmp4")

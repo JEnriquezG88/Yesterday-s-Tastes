@@ -22,3 +22,19 @@ lenguage_settings_title;"Idioma";"Lenguage"
 pause_tittle;"Pausa";"Pause"
 continue_button;"Continuar Partida";"Resume";
 exit_to_main_menu_button;"Menú Principal";"Main Menu"
+
+
+warning_tittle;"Advertencia";"Warning";
+warning_msg;"Existe una partida en curso.\n¿Deseas sobrescribirla?";"A game is already in progress.\nDo you want to overwrite it?"
+
+accept_bton;"Aceptar";"Accept"
+cancel_bton;"Cancelar";"Cancel";
+
+shadow_optins_bton;"Sombras";"Enable Shadows"
+shadow_quality_options;"Calidad De Sombras";"Shadow Quality"
+low_option;"Bajo";"Low"
+medium_option;"Medio";"Medium"
+high_option;"Alto";"High"
+ultra_option;"Ultra";"Ultra"
+
+ao_option_bton;"Oclusión De Ambiente";"Ambient Occlusion"
