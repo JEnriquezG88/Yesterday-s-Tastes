@@ -15,6 +15,7 @@ func unload_lobby() -> void:
 
 func _ready() -> void:
 	super._ready()
+	GlobalSignals.load_lobby.connect(load_lobby)
 	load_lobby()
 	connect_lobbie_signals()
 

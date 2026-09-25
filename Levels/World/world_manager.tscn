@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cjo05qhqnpf2" path="res://Global/Systems/CameraController/camera_controller.tscn" id="4_onvn5"]
 [ext_resource type="Script" uid="uid://5nhb676ogx0u" path="res://Levels/Code/first_level_sections_manager.gd" id="5_4qrw4"]
 [ext_resource type="Script" uid="uid://bog5ub2y3olpt" path="res://Levels/Code/general_level_charge_manager.gd" id="5_tv0hc"]
+[ext_resource type="Script" uid="uid://b16jwwld6ugeh" path="res://Music/Code/game_music_manager.gd" id="8_i2ab1"]
+[ext_resource type="Script" uid="uid://bbdylv44htxyf" path="res://Levels/Code/second_level_sections_manager.gd" id="8_lbc0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h85mm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,8 +23,7 @@ sky = SubResource("Sky_4qrw4")
 ssao_enabled = true
 glow_enabled = true
 fog_mode = 1
-fog_light_energy = 2.6
-fog_density = 4.43
+fog_density = 0.415
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1g7ov"]
 size = Vector3(2, 1, 2)
@@ -40,7 +41,25 @@ size = Vector3(23.983, 100, 9.52)
 size = Vector3(42.039154, 100, 30.125448)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6gdm"]
-size = Vector3(74.59847, 100, 29.42044)
+size = Vector3(76.139854, 100, 53.590397)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1lopl"]
+size = Vector3(26.222, 100, 9.646)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(28.648254, 100, 93.703735)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g81iv"]
+size = Vector3(47.746605, 100, 59.249603)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_flnjb"]
+size = Vector3(40.63983, 100, 9.719421)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rro6u"]
+size = Vector3(50.05536, 100, 22.322021)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyeme"]
+size = Vector3(19.445488, 100, 27.13379)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo7k1"]
 size = Vector3(88.832, 100, 41.396)
@@ -73,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1g7ov")
 
 [node name="water2" parent="Scenario" unique_id=814209026 instance=ExtResource("1_onvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.939, 0)
 
 [node name="Characters" type="Node3D" parent="." unique_id=521545670]
 
@@ -118,10 +138,48 @@ transform = Transform3D(0.9873531, 0, 0.15853703, 0, 1, 0, -0.15853703, 0, 0.987
 shape = SubResource("BoxShape3D_xed8g")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section2" unique_id=93078797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.653606, 2.7434082, 14.633911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.424297, 2.7434082, 2.548935)
 shape = SubResource("BoxShape3D_p6gdm")
 
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section2" unique_id=1881806308]
+transform = Transform3D(0.75375444, 0, 0.6571562, 0, 1, 0, -0.6571562, 0, 0.75375444, -83.149506, 0, -25.167423)
+shape = SubResource("BoxShape3D_1lopl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section2" unique_id=304681353]
+transform = Transform3D(0.029731678, 0, 0.999558, 0, 1, 0, -0.999558, 0, 0.029731678, -72.73393, 0, -31.091278)
+shape = SubResource("BoxShape3D_1lopl")
+
+[node name="ChargeLevel1Section3" type="Area3D" parent="LevelChargeManager/FirstLevel" unique_id=1667743936]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.03281, 0, -36.807194)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section3" unique_id=2137281461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.4135, 0, -1.2019577)
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/FirstLevel/ChargeLevel1Section3" unique_id=2045473028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.25069, 0, -48.29606)
+shape = SubResource("BoxShape3D_g81iv")
+
 [node name="SecondLevel" type="Node3D" parent="LevelChargeManager" unique_id=371486595]
+script = ExtResource("8_lbc0n")
+
+[node name="ChargeLevel2Section1" type="Area3D" parent="LevelChargeManager/SecondLevel" unique_id=836343545]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section1" unique_id=445263854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.283741, 0, 3.123383)
+shape = SubResource("BoxShape3D_flnjb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section1" unique_id=851923287]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 46.626114, 0, -23.04527)
+shape = SubResource("BoxShape3D_rro6u")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section1" unique_id=1411957805]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 68.47775, 0, -32.775883)
+shape = SubResource("BoxShape3D_iyeme")
 
 [node name="ThirdLevel" type="Node3D" parent="LevelChargeManager" unique_id=721003436]
 
@@ -141,9 +199,13 @@ shape = SubResource("BoxShape3D_6ccxt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1055679, 999.71497, 38.58015)
 shape = SubResource("BoxShape3D_i2ab1")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1693055395]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 65.27289, -9.549989)
-
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=957990340]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 96, 43)
-visible = false
+current = true
+
+[node name="GameMusicManager" type="AudioStreamPlayer" parent="." unique_id=708056320]
+process_mode = 3
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("8_i2ab1")

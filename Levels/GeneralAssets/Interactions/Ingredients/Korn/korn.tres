@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkalwwe0621s"]
+
+[ext_resource type="Texture2D" uid="uid://br384hx8bb78a" path="res://Levels/GeneralAssets/Interactions/Ingredients/Korn/korn_Ucupaint Maiz Color.png" id="1_42dhq"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_42dhq")

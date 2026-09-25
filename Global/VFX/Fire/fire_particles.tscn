@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b76iu45yqjwlj"]
+
+[ext_resource type="Material" uid="uid://d0klgmqo7lqu2" path="res://Global/VFX/Smoke/Shader/smoke_shader_material.tres" id="1_q0lmr"]
+[ext_resource type="ArrayMesh" uid="uid://b1v4u1wlxeel" path="res://Global/VFX/Smoke/Mesh/static_mesh_cloud.glb" id="2_fod58"]
+
+[sub_resource type="Curve" id="Curve_b6tay"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_awpkv"]
+texture_mode = 1
+curve = SubResource("Curve_b6tay")
+
+[sub_resource type="Gradient" id="Gradient_icg07"]
+offsets = PackedFloat32Array(0, 0.4084507, 0.7370892, 0.86384976, 0.9624413, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.8509804, 0.2901961, 0.19607843, 1, 1, 0.5411765, 0.23921569, 1, 1, 0.5882353, 0.24705882, 1, 1, 0.7882353, 0.36078432, 1, 1, 0.95686275, 0.7607843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ccxt"]
+gradient = SubResource("Gradient_icg07")
+
+[sub_resource type="Curve" id="Curve_1g7ov"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 1.7415733), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_dpkh5"]
+curve = SubResource("Curve_1g7ov")
+
+[sub_resource type="Curve" id="Curve_03fhx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lf3n7"]
+curve = SubResource("Curve_03fhx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_004ji"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_lf3n7")
+color_ramp = SubResource("GradientTexture1D_6ccxt")
+alpha_curve = SubResource("CurveTexture_awpkv")
+emission_curve = SubResource("CurveTexture_dpkh5")
+
+[node name="FireParticles" type="GPUParticles3D" unique_id=521521082]
+material_override = ExtResource("1_q0lmr")
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_004ji")
+draw_pass_1 = ExtResource("2_fod58")

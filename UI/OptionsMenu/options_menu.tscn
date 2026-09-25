@@ -122,6 +122,7 @@ text = "return_bton"
 flat = true
 
 [node name="GraphicsSettings" type="VBoxContainer" parent="." unique_id=2006779906 node_paths=PackedStringArray("previous_menu")]
+visible = false
 layout_mode = 2
 script = ExtResource("4_hv12t")
 previous_menu = NodePath("..")
@@ -254,7 +255,6 @@ text = "return_bton"
 flat = true
 
 [node name="AudioSettings" type="VBoxContainer" parent="." unique_id=1707053028 node_paths=PackedStringArray("previous_menu")]
-visible = false
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 script = ExtResource("6_ahwyd")

@@ -21,6 +21,12 @@ func start_menu() -> void:
 	_load_values()
 
 func _init_button_signals() -> void:
+	master_volume_slider.value_changed.connect(_on_master_value_changed)
+	vfx_volume_slider.value_changed.connect(_on_vfx_value_changed)
+	voices_volume_slider.value_changed.connect(_on_voices_value_changed)
+	music_volume_slider.value_changed.connect(_on_music_value_changed)
+	
+	
 	master_volume_slider.focus_exited.connect(_on_master_volume_focus_exited)
 	vfx_volume_slider.focus_exited.connect(_on_vfx_volume_focus_exited)
 	voices_volume_slider.focus_exited.connect(_on_voices_volume_focus_exited)
@@ -28,6 +34,12 @@ func _init_button_signals() -> void:
 	return_button.button_up.connect(_on_exit_button_up)
 
 func _finish_button_signals() -> void:
+	master_volume_slider.value_changed.disconnect(_on_master_value_changed)
+	vfx_volume_slider.value_changed.disconnect(_on_vfx_value_changed)
+	voices_volume_slider.value_changed.disconnect(_on_voices_value_changed)
+	music_volume_slider.value_changed.disconnect(_on_music_value_changed)
+	
+	
 	master_volume_slider.focus_exited.disconnect(_on_master_volume_focus_exited)
 	vfx_volume_slider.focus_exited.disconnect(_on_vfx_volume_focus_exited)
 	voices_volume_slider.focus_exited.disconnect(_on_voices_volume_focus_exited)
@@ -45,6 +57,19 @@ func _load_values() -> void:
 	vfx_volume_slider.value = db_to_linear(GameSettings.config.get_value("audio", "VFX")) * 100
 	voices_volume_slider.value = db_to_linear(GameSettings.config.get_value("audio", "Voices")) * 100
 	music_volume_slider.value = db_to_linear(GameSettings.config.get_value("audio", "Music")) * 100
+
+
+func _on_master_value_changed(value: float) -> void:
+	GameSettings.set_bus_volume("Master", master_volume_slider.value, false)
+
+func _on_vfx_value_changed(value: float) -> void:
+	GameSettings.set_bus_volume("VFX", vfx_volume_slider.value, false)
+
+func _on_voices_value_changed(value: float) -> void:
+	GameSettings.set_bus_volume("Voices", voices_volume_slider.value, false)
+
+func _on_music_value_changed(value: float) -> void:
+	GameSettings.set_bus_volume("Music", music_volume_slider.value, false)
 
 
 func _on_master_volume_focus_exited() -> void:

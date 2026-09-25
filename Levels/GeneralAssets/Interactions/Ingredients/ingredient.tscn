@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://drpbenq4xbqnk"]
+
+[ext_resource type="Script" uid="uid://cjuq4gq1drxji" path="res://Levels/GeneralAssets/Interactions/Ingredients/Code/ingredient.gd" id="1_hw5ql"]
+[ext_resource type="Texture2D" uid="uid://drgg60dim7vv6" path="res://Levels/GeneralAssets/Interactions/Ingredients/Imgs/lights.png" id="2_eod16"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_61a82"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_eod16"]
+size = Vector2(0.5, 2.715)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hw5ql"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.39215687)
+albedo_texture = ExtResource("2_eod16")
+emission_enabled = true
+emission = Color(1, 0.96862745, 0.89411765, 1)
+emission_energy_multiplier = 3.0
+stencil_flags = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_61a82"]
+size = Vector2(0.5, 4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_61a82"]
+radius = 2.0
+
+[node name="Ingredient" type="Node3D" unique_id=3729767]
+script = ExtResource("1_hw5ql")
+
+[node name="RotationItem" type="Node3D" parent="." unique_id=1899646445]
+
+[node name="PlaceHolder" type="MeshInstance3D" parent="RotationItem" unique_id=1965080304]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_61a82")
+
+[node name="GodRays" type="Node3D" parent="." unique_id=775456062]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Light01" type="MeshInstance3D" parent="GodRays" unique_id=1331177836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_eod16")
+surface_material_override/0 = SubResource("StandardMaterial3D_hw5ql")
+
+[node name="Light02" type="MeshInstance3D" parent="GodRays" unique_id=988057245]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, -0.9664874)
+mesh = SubResource("QuadMesh_61a82")
+surface_material_override/0 = SubResource("StandardMaterial3D_hw5ql")
+
+[node name="Light03" type="MeshInstance3D" parent="GodRays" unique_id=693025146]
+transform = Transform3D(-0.13057241, 0.99143875, 0, -0.99143875, -0.13057241, 0, 0, 0, 1, 0, 0, -0.93967724)
+mesh = SubResource("QuadMesh_61a82")
+surface_material_override/0 = SubResource("StandardMaterial3D_hw5ql")
+
+[node name="Light04" type="MeshInstance3D" parent="GodRays" unique_id=1686208944]
+transform = Transform3D(-0.74037373, 0.67219555, 0, -0.67219555, -0.74037373, 0, 0, 0, 1, 0, 0, -0.91286707)
+mesh = SubResource("QuadMesh_eod16")
+surface_material_override/0 = SubResource("StandardMaterial3D_hw5ql")
+
+[node name="CharacterDetector" type="Area3D" parent="." unique_id=2054043290]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterDetector" unique_id=363263508]
+shape = SubResource("SphereShape3D_61a82")
+
+[connection signal="body_entered" from="CharacterDetector" to="." method="_on_character_detector_body_entered"]

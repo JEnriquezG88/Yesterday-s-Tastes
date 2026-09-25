@@ -34,9 +34,10 @@ var can_process_root_motion : bool = true
 
 func process_root_motion(delta: float) -> void:
 	if character_controller.current_state != CharacterController.STATES.MOVEMENT:
-		if character_controller.current_state != CharacterController.STATES.MAGIC: 
-			if character_controller.current_state != CharacterController.STATES.DASH: 
-				return
+		if character_controller.current_state != CharacterController.STATES.DAMAGE:
+			if character_controller.current_state != CharacterController.STATES.MAGIC: 
+				if character_controller.current_state != CharacterController.STATES.DASH: 
+					return
 	if not can_process_root_motion: return
 	
 	var root_motion : Vector3 = character_controller.animation_tree.get_root_motion_position()
@@ -51,8 +52,12 @@ func _physics_process(delta: float) -> void:
 var direction : Vector2
 var target_angle : float
 func movement(delta) -> void:
+	if character_controller.current_state == CharacterController.STATES.WAITING: return
+	if character_controller.current_state == CharacterController.STATES.CINEMATIC: return
 	direction = Input.get_vector("left", "right", "backward", "forward")
+	if character_controller.current_state == CharacterController.STATES.MAGIC: return
 	if character_controller.current_state == CharacterController.STATES.DASH: return
+	if character_controller.current_state == CharacterController.STATES.DAMAGE: return
 	
 	if  character_controller.current_state != CharacterController.STATES.JUMP and not character_controller.is_on_floor():
 		if can_floor_jump:
@@ -91,8 +96,10 @@ var can_air_jump : bool = true
 var can_floor_jump : bool = true
 
 func _can_jump() -> bool:
-	if character_controller.current_state == CharacterController.STATES.JUMP: return true
-	if character_controller.current_state != CharacterController.STATES.MOVEMENT: return false
+	if character_controller.current_state == CharacterController.STATES.JUMP: 
+		return true
+	if character_controller.current_state != CharacterController.STATES.MOVEMENT: 
+		return false
 	return true
 
 func try_jump() -> bool:
@@ -146,7 +153,8 @@ func _finish_jump() -> void:
 	can_air_jump = true
 	can_floor_jump = true
 	if not coyote_time_timer.is_stopped(): coyote_time_timer.stop()
-	character_controller.current_state = CharacterController.STATES.MOVEMENT
+	if character_controller.current_state != CharacterController.STATES.WAITING:
+		character_controller.current_state = CharacterController.STATES.MOVEMENT
 	character_controller.animation_tree.set("parameters/Movement/MovementTypes/transition_request", "floor_movement")
 	if input_and_buffer.current_pending_action != InputAndBuffer.ACTIONS.NONE:
 		input_and_buffer.process_pending_actions(input_and_buffer.current_pending_action)
@@ -161,9 +169,12 @@ func _on_coyote_time_timer() -> void:
 #region Dash
 
 func _can_dash() -> bool:
-	if is_dash_cooldown: return false
-	if character_controller.current_state == CharacterController.STATES.JUMP: return true
-	if character_controller.current_state != CharacterController.STATES.MOVEMENT: return false
+	if is_dash_cooldown: 
+		return false
+	if character_controller.current_state == CharacterController.STATES.JUMP: 
+		return true
+	if character_controller.current_state != CharacterController.STATES.MOVEMENT: 
+		return false
 	return true
 
 var can_air_dash : bool = true
@@ -193,7 +204,8 @@ func _finish_dash() -> void:
 	dash_cooldown.start()
 	if character_controller.is_on_floor():
 		can_air_dash = true
-	character_controller.current_state = CharacterController.STATES.MOVEMENT
+	if character_controller.current_state != CharacterController.STATES.WAITING:
+		character_controller.current_state = CharacterController.STATES.MOVEMENT
 	character_controller.animation_tree.set("parameters/Movement/MovementTypes/transition_request", "floor_movement")
 	if input_and_buffer.current_pending_action != InputAndBuffer.ACTIONS.NONE:
 		input_and_buffer.process_pending_actions(input_and_buffer.current_pending_action)

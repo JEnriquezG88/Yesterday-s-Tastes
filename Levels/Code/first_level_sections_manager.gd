@@ -1,10 +1,9 @@
 extends LevelSections
 class_name FirstLevelSectionManager
 
-@onready var delet_level: Area3D = $DeletLevel
-
 @onready var charge_level_1_section_1: Area3D = $ChargeLevel1Section1
 @onready var charge_level_1_section_2: Area3D = $ChargeLevel1Section2
+@onready var charge_level_1_section_3: Area3D = $ChargeLevel1Section3
 
 var current_section : int = 0
 
@@ -18,6 +17,9 @@ func _connect_signals() -> void:
 	
 	charge_level_1_section_2.body_entered.connect(_on_charge_level_1_section_2_body_entered)
 	charge_level_1_section_2.body_exited.connect(_on_delete_level_1_section_2_body_entered)
+	
+	charge_level_1_section_3.body_entered.connect(_on_charge_level_1_section_3_body_entered)
+	charge_level_1_section_3.body_exited.connect(_on_delete_level_1_section_3_body_entered)
 
 #region Section 01
 
@@ -39,5 +41,12 @@ func _on_charge_level_1_section_2_body_entered(_body: Node3D) -> void:
 func _on_delete_level_1_section_2_body_entered(_body: Node3D) -> void:
 	unload_section(2)
 
+const SECTION_03_PATH : String = "uid://cxc5bl0qga2qp"
+
+func _on_charge_level_1_section_3_body_entered(_body: Node3D) -> void:
+	load_section(SECTION_03_PATH, 3)
+
+func _on_delete_level_1_section_3_body_entered(_body: Node3D) -> void:
+	unload_section(3)
 
 #region Load Logic

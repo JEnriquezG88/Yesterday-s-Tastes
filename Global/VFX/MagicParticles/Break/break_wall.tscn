@@ -3,11 +3,30 @@
 [ext_resource type="Script" uid="uid://dw8nxdrj4q1af" path="res://Global/VFX/MagicParticles/Break/Code/break_wall_interactuable_object.gd" id="1_ngwof"]
 [ext_resource type="PackedScene" uid="uid://6d6a21cl4e0n" path="res://Global/VFX/MagicParticles/Break/Imported/break_wall.glb" id="2_khkc5"]
 [ext_resource type="PackedScene" uid="uid://rmq78jyl0of5" path="res://Global/VFX/MagicParticles/Break/break_particles.tscn" id="3_vxfb5"]
+[ext_resource type="PackedScene" uid="uid://bfqipaqo73lut" path="res://Levels/GeneralAssets/Trees/Imported/rock_01.glb" id="4_khkc5"]
 
 [node name="break_wall" type="Node3D" unique_id=394055457]
 script = ExtResource("1_ngwof")
 metadata/_custom_type_script = "uid://dw8nxdrj4q1af"
 
-[node name="break_wall" parent="." unique_id=971824357 instance=ExtResource("2_khkc5")]
+[node name="break_wall_bk" parent="." unique_id=971824357 instance=ExtResource("2_khkc5")]
+visible = false
 
 [node name="BreakParticles" parent="." unique_id=1084411391 instance=ExtResource("3_vxfb5")]
+
+[node name="break_wall" type="Node3D" parent="." unique_id=1630017874]
+
+[node name="rock_01" parent="break_wall" unique_id=1038853944 instance=ExtResource("4_khkc5")]
+transform = Transform3D(2.221325, 0.60208464, -2.570159, -0.39370114, 3.3970573, 0.45552748, 2.610215, 0, 2.2559443, 0.8615246, 0, 0.13826936)
+
+[node name="rock_02" parent="break_wall" unique_id=2103798869 instance=ExtResource("4_khkc5")]
+transform = Transform3D(2.4819493, -0.7550498, -2.8717113, 0.49372455, 3.7956285, -0.5712584, 2.927979, 5.7667492e-08, 2.5305803, -0.9040699, 0.5956224, 0.13826936)
+
+[node name="rock_03" parent="break_wall" unique_id=1865929937 instance=ExtResource("4_khkc5")]
+transform = Transform3D(2.0300257, 0.75503254, -2.348818, -0.49371332, 3.1045048, 0.57124543, 2.4172852, 0, 2.0892, 0.73389244, 1.6273257, 0.13826936)
+
+[node name="rock_04" parent="break_wall" unique_id=2084248805 instance=ExtResource("4_khkc5")]
+transform = Transform3D(0.8346002, 0.935789, 2.9386673, 1.0177499, 2.7902553, -1.1775758, -2.9112973, 1.243704, 0.43078196, -0.967886, 2.222948, 0.021272361)
+
+[node name="rock_05" parent="break_wall" unique_id=970173747 instance=ExtResource("4_khkc5")]
+transform = Transform3D(0.2926921, -0.12311108, 2.3334951, -0.5795479, 2.2744272, 0.19268788, -2.2637315, -0.59820384, 0.25238132, 0.34597585, 2.9889235, -0.077975154)

@@ -8,6 +8,7 @@ class_name MainMenu
 @onready var fade_manager: FadeManager = $"../../../FadeManager"
 
 func _ready() -> void:
+	audio_stream_player.play()
 	if DirAccess.dir_exists_absolute("user://save"):
 		if buttons_container.current_first_element == start_button:
 			buttons_container.change_first_element(continue_button)
@@ -27,6 +28,7 @@ func _ready() -> void:
 
 @onready var options_menu: OptionsMenuManager = $"../../OptionsMenu"
 
+@onready var audio_stream_player: AudioStreamPlayer = $"../../../AudioStreamPlayer"
 
 
 func start_menu() -> void:
@@ -48,6 +50,10 @@ func _finish_button_signals() -> void:
 	credits_button.button_up.disconnect(_on_credits_button_up)
 	exit_button.button_up.disconnect(_on_exit_button_up)
 
+func _stop_audio() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property(audio_stream_player, "volume_db", -80, 0.5)
+
 func _on_start_button_up() -> void:
 	buttons_container.change_first_element(start_button)
 	_finish_button_signals()
@@ -57,6 +63,7 @@ func _on_start_button_up() -> void:
 		visible = false
 		new_game_warning.start_menu()
 	else:
+		_stop_audio()
 		await fade_manager._fade_out()
 		visible = false
 		get_tree().change_scene_to_file("uid://ghhahuqhg7k4")
@@ -64,6 +71,7 @@ func _on_start_button_up() -> void:
 func _on_continue_button_up() -> void:
 	buttons_container.change_first_element(continue_button)
 	_finish_button_signals()
+	_stop_audio()
 	await fade_manager._fade_out()
 	visible = false
 	get_tree().change_scene_to_file("uid://ghhahuqhg7k4")
@@ -81,5 +89,6 @@ func _on_credits_button_up() -> void:
 
 func _on_exit_button_up() -> void:
 	_finish_button_signals()
+	_stop_audio()
 	await fade_manager._fade_out()
 	get_tree().quit()

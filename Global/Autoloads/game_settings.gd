@@ -65,7 +65,7 @@ func set_max_fps(fps: int) -> void:
 	config.set_value("display", "max_fps", fps)
 	save_settings()
 
-func set_bus_volume(bus_name: StringName, volume: float) -> void:
+func set_bus_volume(bus_name: StringName, volume: float, save_data : bool = true) -> void:
 	volume = clampf(volume, 0.0, 100.0)
 	
 	var bus_index : int = AudioServer.get_bus_index(bus_name)
@@ -77,7 +77,8 @@ func set_bus_volume(bus_name: StringName, volume: float) -> void:
 	AudioServer.set_bus_volume_db(bus_index, db)
 	
 	config.set_value("audio", bus_name, db)
-	save_settings()
+	if save_data:
+		save_settings()
 
 func set_lenguage(lenguage: String) -> void:
 	TranslationServer.set_locale(lenguage)

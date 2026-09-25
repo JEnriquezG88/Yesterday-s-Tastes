@@ -34,7 +34,6 @@ mesh = SubResource("QuadMesh_2c0t2")
 surface_material_override/0 = SubResource("StandardMaterial3D_2c0t2")
 
 [node name="BlockPath" type="StaticBody3D" parent="." unique_id=886869682]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlockPath" unique_id=780815723]
 shape = SubResource("BoxShape3D_61a82")

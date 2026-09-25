@@ -44,6 +44,17 @@ func _ready() -> void:
 	GlobalSignals.camera_shake.connect(shake)
 	GlobalSignals.camera_zoom.connect(zoom)
 	GlobalSignals.force_camera_position.connect(_force_camera_position)
+	GlobalSignals.change_camera_target.connect(_change_to_new_target)
+	GlobalSignals.return_to_camera_original_target.connect(_change_to_original_target)
+
+var original_target : Node3D 
+
+func _change_to_new_target(new_target: Node3D) -> void:
+	original_target = target
+	target = new_target
+
+func _change_to_original_target() -> void:
+	target = original_target
 
 func _force_camera_position() -> void:
 	follow_node.global_position = target.global_position

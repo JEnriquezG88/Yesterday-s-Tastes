@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ctl0k67y50n2"]
+
+[ext_resource type="PackedScene" uid="uid://csw4lbko32hdx" path="res://Levels/GeneralAssets/Interactions/MagicBridge/ImportAssets/magic_bridge.glb" id="1_mky0b"]
+[ext_resource type="Script" uid="uid://b6mdsm21vsge1" path="res://Levels/GeneralAssets/Interactions/MagicBridge/Code/magic_bridge.gd" id="2_sd38d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(1, 5, 7)
+
+[node name="magic_bridge" unique_id=1813042410 instance=ExtResource("1_mky0b")]
+script = ExtResource("2_sd38d")
+
+[node name="BridgeArmature" parent="." index="0" unique_id=1678183850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="BridgeLights" parent="." index="1" unique_id=579564609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Systems" type="Node3D" parent="." index="2" unique_id=1254609593]
+
+[node name="Colliders" type="Node3D" parent="Systems" index="0" unique_id=91882518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Obstacle01" type="StaticBody3D" parent="Systems/Colliders" index="0" unique_id=1229979428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.372178, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Systems/Colliders/Obstacle01" index="0" unique_id=1039555343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="Obstacle02" type="StaticBody3D" parent="Systems/Colliders" index="1" unique_id=1823078394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.372, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Systems/Colliders/Obstacle02" index="0" unique_id=923094422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_61a82")

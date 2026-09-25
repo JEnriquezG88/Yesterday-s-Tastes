@@ -10,6 +10,11 @@ enum STATES {
 	DASH,
 	MAGIC,
 	CINEMATIC,
+	DAMAGE,
+	WAITING,
 }
 
 var current_state : STATES = STATES.MOVEMENT
+
+
+@onready var cinematics_manager: CinematicsManager = $Code/CinematicsManager

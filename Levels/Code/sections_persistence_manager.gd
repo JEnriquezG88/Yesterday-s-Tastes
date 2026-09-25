@@ -15,6 +15,7 @@ var interactions_data : Dictionary = { }
 @export var interactions : Array[InteractionSystem]
 
 func _ready() -> void:
+	#if interactions_data.size() == 0: return
 	DirAccess.make_dir_recursive_absolute(get_save_folder())
 	
 	var interaction_index : int = 0

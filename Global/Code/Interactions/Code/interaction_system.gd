@@ -15,9 +15,15 @@ const O = preload("uid://rln4fng51e11")
 @export var interactuable_object : InteractuableObject
 @onready var block_path: StaticBody3D = $BlockPath
 
+@export var obstacle : bool = true
 signal finish_signal
 
 func _ready() -> void:
+	if not obstacle:
+		block_path.queue_free()
+	icon.visible = false
+
+func _on_detection_area_body_entered(_body: Node3D) -> void:
 	match _interaction_button:
 		MagicSystem.MAGIC_TYPES.ICE:
 			icon.get_surface_override_material(0).albedo_texture = X
@@ -25,9 +31,6 @@ func _ready() -> void:
 			icon.get_surface_override_material(0).albedo_texture = Y
 		MagicSystem.MAGIC_TYPES.BROKE:
 			icon.get_surface_override_material(0).albedo_texture = O
-	icon.visible = false
-
-func _on_detection_area_body_entered(_body: Node3D) -> void:
 	icon.visible = true
 	GlobalSignals.shot_magic.connect(_on_magic_shot)
 
@@ -53,7 +56,7 @@ func charge_completed() -> void:
 	_disable_system()
 
 func _disable_system() -> void:
-	block_path.queue_free()
+	if block_path: block_path.queue_free()
 	GlobalSignals.shot_magic.disconnect(_on_magic_shot)
 	detection_area.body_entered.disconnect(_on_detection_area_body_entered)
 	detection_area.body_exited.disconnect(_on_detection_area_body_exited)

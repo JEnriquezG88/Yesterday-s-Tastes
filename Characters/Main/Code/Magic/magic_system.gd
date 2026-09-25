@@ -20,10 +20,29 @@ var current_magic_type : MAGIC_TYPES = MAGIC_TYPES.NONE
 @onready var audio_manager: AudioManager = $"../../Systems/AudioManager"
 
 
+var _magic_culldown_timer : Timer = Timer.new()
+var _can_shot_magic_bool : bool = true
+
+
+func _ready() -> void:
+	_magic_culldown_timer.name = "MagicCulldownTimer"
+	_magic_culldown_timer.one_shot = true
+	_magic_culldown_timer.wait_time = 0.2
+	_magic_culldown_timer.timeout.connect(_on_magic_culldown_timer_timeout)
+	add_child(_magic_culldown_timer)
+
 func _can_shot_magic() -> bool:
-	if character_controller.current_state == CharacterController.STATES.JUMP: return false
-	if character_controller.current_state == CharacterController.STATES.DASH: return false
-	if character_controller.current_state == CharacterController.STATES.MAGIC: return false
+	if not _can_shot_magic_bool: return false
+	if character_controller.current_state == CharacterController.STATES.WAITING: 
+		return false
+	if character_controller.current_state == CharacterController.STATES.CINEMATIC: 
+		return false
+	if character_controller.current_state == CharacterController.STATES.JUMP: 
+		return false
+	if character_controller.current_state == CharacterController.STATES.DASH: 
+		return false
+	if character_controller.current_state == CharacterController.STATES.MAGIC: 
+		return false
 	return true
 
 func shot_magic_fx() -> void:
@@ -43,6 +62,7 @@ func shot_magic_fx() -> void:
 func try_shot_magic(magic_type: MAGIC_TYPES) -> bool:
 	if not _can_shot_magic(): return false
 	
+	_can_shot_magic_bool = false
 	character_controller.current_state = CharacterController.STATES.MAGIC
 	character_controller.velocity = Vector3.ZERO
 	match magic_type:
@@ -59,9 +79,15 @@ func try_shot_magic(magic_type: MAGIC_TYPES) -> bool:
 	return true
 
 func finish_magic_animation() -> void:
+	_magic_culldown_timer.start()
 	current_magic_type = MAGIC_TYPES.NONE
-	character_controller.current_state = CharacterController.STATES.MOVEMENT
+	if character_controller.current_state != CharacterController.STATES.WAITING:
+		character_controller.current_state = CharacterController.STATES.MOVEMENT
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request", "Movement")
 	GlobalSignals.camera_zoom.emit(0.0)
 	if input_and_buffer.current_pending_action != InputAndBuffer.ACTIONS.NONE:
 		input_and_buffer.process_pending_actions(input_and_buffer.current_pending_action)
+
+
+func _on_magic_culldown_timer_timeout() -> void:
+	_can_shot_magic_bool = true

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dgt6pwnfkauk4"]
+
+[ext_resource type="Texture2D" uid="uid://dh6tfxiu60ta6" path="res://Characters/Obstacles/BurstMushroom/ImportedAssets/BurstMushroom_eyes_and_mouth.png" id="1_7811s"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_7811s")

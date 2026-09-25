@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djbodsclotuxu"
+path="res://.godot/imported/Close Letter.wav-8faf025f3c0587ec58f73c7a5fb0f9ab.sample"
+
+[deps]
+
+source_file="res://Global/Sounds/Ingredients/Close Letter.wav"
+dest_files=["res://.godot/imported/Close Letter.wav-8faf025f3c0587ec58f73c7a5fb0f9ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

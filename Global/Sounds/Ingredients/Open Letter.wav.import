@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4xohg3rxkmqy"
+path="res://.godot/imported/Open Letter.wav-87896e7888b4d727fdcdbe1c85cff81f.sample"
+
+[deps]
+
+source_file="res://Global/Sounds/Ingredients/Open Letter.wav"
+dest_files=["res://.godot/imported/Open Letter.wav-87896e7888b4d727fdcdbe1c85cff81f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

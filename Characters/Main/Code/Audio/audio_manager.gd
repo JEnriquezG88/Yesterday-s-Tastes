@@ -38,6 +38,7 @@ const BELLS_G = preload("uid://dqf626eepcxya")
 const CHARGE_MAGIC = preload("uid://c5l7tyvpds6c1")
 const SHOT_MAGIC = preload("uid://c5llbi6s3o8mw")
 
+const GET_INGREDIENTS = preload("uid://bwu3tvd74rjtg")
 
 
 func shot_step_sounds() -> void:
@@ -89,6 +90,13 @@ func shot_shot_magic_fx() -> void:
 	current_vfx_stream.volume_db = 0.0
 	current_vfx_stream.pitch_scale = 1.0
 	current_vfx_stream.shot_sound(SHOT_MAGIC)
+
+func shot_get_ingredients_fx() -> void:
+	var current_vfx_stream : AudioStreamPlayer3DExtended = _get_avaialble_vfx_stream()
+	if not current_vfx_stream: return
+	current_vfx_stream.volume_db = 0.0
+	current_vfx_stream.pitch_scale = 1.0
+	current_vfx_stream.shot_sound(GET_INGREDIENTS)
 
 func rand_stream(current_vfx_stream: AudioStreamPlayer3DExtended) -> void:
 	current_vfx_stream.pitch_scale = randf_range(0.8, 1.2)

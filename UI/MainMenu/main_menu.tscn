@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b876q38ykue1f" path="res://UI/MainMenu/Code/new_game_warning.gd" id="4_iau2q"]
 [ext_resource type="PackedScene" uid="uid://c5egtgx5m65pv" path="res://UI/OptionsMenu/options_menu.tscn" id="4_iyy2y"]
 [ext_resource type="Texture2D" uid="uid://dj8lbfbkuk0ti" path="res://UI/MainMenu/Imgs/separator.png" id="5_iau2q"]
+[ext_resource type="AudioStream" uid="uid://dy0ys0iu376s8" path="res://Music/000 - Rocky Peaks Acustic.wav" id="9_pbebc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pbebc"]
 font_size = 100
@@ -131,6 +132,7 @@ stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/NewGameWarning" unique_id=657563412]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/MarginContainer/NewGameWarning/VBoxContainer" unique_id=1640556805]
 layout_mode = 2
@@ -175,3 +177,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("4_h8rmy")
 metadata/_custom_type_script = "uid://by6284nhq0d8h"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1889951455]
+stream = ExtResource("9_pbebc")
+bus = &"Music"

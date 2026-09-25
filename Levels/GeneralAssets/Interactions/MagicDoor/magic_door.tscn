@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bjc0kcch28bkc"]
+
+[ext_resource type="Script" uid="uid://ckg5rsdpja1ci" path="res://Levels/GeneralAssets/Interactions/MagicDoor/Code/magic_door.gd" id="1_lo6y7"]
+[ext_resource type="PackedScene" uid="uid://dic513i3imghd" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_base.glb" id="2_6giia"]
+[ext_resource type="PackedScene" uid="uid://cdos2xfh7y8ka" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door.glb" id="3_bwvod"]
+[ext_resource type="PackedScene" uid="uid://bb40dr2exc4k" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_light_01.glb" id="4_7q27x"]
+[ext_resource type="PackedScene" uid="uid://cxrergnr3fby2" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_light_02.glb" id="5_b7vej"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(7.3146973, 4, 1)
+
+[sub_resource type="Animation" id="Animation_6giia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("magic_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("magic_door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bwvod"]
+resource_name = "close_door"
+length = 0.8333367101285607
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("magic_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.837, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("magic_door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7q27x"]
+_data = {
+&"RESET": SubResource("Animation_6giia"),
+&"close_door": SubResource("Animation_bwvod")
+}
+
+[node name="MagicDoor" type="Node3D" unique_id=1568250318]
+script = ExtResource("1_lo6y7")
+
+[node name="magic_door_base" parent="." unique_id=449774219 instance=ExtResource("2_6giia")]
+
+[node name="magic_door" parent="." unique_id=1119765805 instance=ExtResource("3_bwvod")]
+
+[node name="magic_door_light_01" parent="magic_door" unique_id=188699301 instance=ExtResource("4_7q27x")]
+
+[node name="magic_door_light_02" parent="magic_door" unique_id=1400399854 instance=ExtResource("5_b7vej")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="magic_door" unique_id=1531498036]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="magic_door/StaticBody3D" unique_id=1151958794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9462891, 0)
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=473477262]
+libraries/ = SubResource("AnimationLibrary_7q27x")
+
+[node name="Timer" type="Timer" parent="." unique_id=1266837459]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

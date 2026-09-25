@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dbnnrpmeth7t"]
+
+[ext_resource type="PackedScene" uid="uid://cenod3eao3nw8" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_fire_totem.glb" id="1_pvbvg"]
+[ext_resource type="PackedScene" uid="uid://b76iu45yqjwlj" path="res://Global/VFX/Fire/fire_particles.tscn" id="2_vamlk"]
+[ext_resource type="AudioStream" uid="uid://b6a4s08tms2cs" path="res://Global/VFX/Fire/fire_loop.wav" id="3_os06j"]
+
+[node name="magic_door_fire_totem" unique_id=171872141 instance=ExtResource("1_pvbvg")]
+
+[node name="FireParticles" parent="." index="1" unique_id=521521082 instance=ExtResource("2_vamlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3576355, 0)
+emitting = false
+amount = 16
+
+[node name="FireSFX" type="AudioStreamPlayer3D" parent="." index="2" unique_id=859125704]
+stream = ExtResource("3_os06j")
+volume_db = -10.0
+bus = &"VFX"

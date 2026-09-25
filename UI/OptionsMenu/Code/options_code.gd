@@ -19,7 +19,6 @@ class_name OptionsMenuManager
 @onready var audio: Label = $HBoxContainer/audio
 @onready var lenguage: Label = $HBoxContainer/lenguage
 
-
 func _ready() -> void:
 	visible = false
 

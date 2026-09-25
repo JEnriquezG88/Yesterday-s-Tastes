@@ -9,5 +9,14 @@ signal shot_dash_particles(follow_character: Node3D, follow_character_offset: Ve
 signal camera_shake(intensity: float, duration: float)
 signal camera_zoom(amount: float)
 signal force_camera_position()
+signal change_camera_target(new_target: Node3D)
+signal return_to_camera_original_target()
 
 signal shot_magic(magic_type: MagicSystem.MAGIC_TYPES)
+signal main_character_wait
+signal main_character_resume
+signal load_lobby
+
+
+signal stop_current_song
+signal play_next_song

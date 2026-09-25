@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dpqcbgylnuxic"]
+
+[ext_resource type="Texture2D" uid="uid://co4v4oyfe5r66" path="res://UI/List/Imgs/list.png" id="1_3jfu7"]
+[ext_resource type="Script" uid="uid://py0p4yfx7ocj" path="res://UI/List/Code/list.gd" id="1_wfs0p"]
+[ext_resource type="Texture2D" uid="uid://drq2g1sc5k7xs" path="res://UI/List/Imgs/check_01.png" id="3_nxsdu"]
+[ext_resource type="Texture2D" uid="uid://ck4a52cf4e7wt" path="res://UI/List/Imgs/check_02.png" id="4_tsvee"]
+[ext_resource type="Texture2D" uid="uid://pu38tu3oy0gr" path="res://UI/List/Imgs/check_03.png" id="5_eheaj"]
+
+[node name="List" type="Control" unique_id=1239805489]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfs0p")
+
+[node name="Background" type="ColorRect" parent="." unique_id=402311147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1056713826]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1507059717]
+layout_mode = 2
+texture = ExtResource("1_3jfu7")
+
+[node name="Check01" type="TextureRect" parent="CenterContainer" unique_id=220331481]
+layout_mode = 2
+texture = ExtResource("3_nxsdu")
+
+[node name="Check02" type="TextureRect" parent="CenterContainer" unique_id=1050579537]
+layout_mode = 2
+texture = ExtResource("4_tsvee")
+
+[node name="Check03" type="TextureRect" parent="CenterContainer" unique_id=510813564]
+layout_mode = 2
+texture = ExtResource("5_eheaj")
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=715143481]
+volume_db = 2.0
+bus = &"VFX"

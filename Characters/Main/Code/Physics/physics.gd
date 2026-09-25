@@ -7,6 +7,7 @@ var process_gravity : bool = true
 func _physics_process(delta: float) -> void:
 	if not process_gravity: return
 	if character_controller.current_state == CharacterController.STATES.DASH: return
+	if character_controller.current_state == CharacterController.STATES.DAMAGE: return
 	
 	if not character_controller.is_on_floor():
 		character_controller.velocity.y = character_controller.velocity.y - ProjectSettings.get_setting("physics/3d/default_gravity") * 7 * delta

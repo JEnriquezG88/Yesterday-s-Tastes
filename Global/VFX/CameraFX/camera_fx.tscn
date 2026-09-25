@@ -13,6 +13,7 @@ shader_parameter/debug = false
 [node name="CameraFX" type="CanvasLayer" unique_id=544083402]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1016162529]
+visible = false
 material = SubResource("ShaderMaterial_ryh17")
 anchors_preset = 15
 anchor_right = 1.0
