@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ciork2tert38c"]
+
+[ext_resource type="Texture2D" uid="uid://cr5q1baukvk7t" path="res://Levels/GeneralAssets/Interactions/MagicBridge/ImportAssets/magic_bridge_Ucupaint Bridge Color.png" id="1_22urw"]
+
+[resource]
+resource_name = "Bridge"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_22urw")

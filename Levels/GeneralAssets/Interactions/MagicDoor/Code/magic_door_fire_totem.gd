@@ -8,7 +8,14 @@ signal fire_door_finished
 
 
 func interact() -> void:
+	super.interact()
 	GlobalSignals.main_character_wait.emit()
 	fire_door_finished.emit()
+	fire_particles.emitting = true
+	fire_sfx.play()
+
+func charge_completed() -> void:
+	super.charge_completed()
+	#fire_door_finished.emit()
 	fire_particles.emitting = true
 	fire_sfx.play()

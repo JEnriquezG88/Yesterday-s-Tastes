@@ -11,9 +11,11 @@ func _ready() -> void:
 	super._ready()
 	
 func charge_completed() -> void:
+	super.charge_completed()
 	queue_free()
 
 func interact() -> void:
+	super.interact()
 	break_wall.visible = false
 	break_particles.emitting = true
 	shot_sound(BIG_BURST)

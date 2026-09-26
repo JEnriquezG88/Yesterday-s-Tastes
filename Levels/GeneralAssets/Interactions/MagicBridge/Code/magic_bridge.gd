@@ -14,9 +14,14 @@ var _magic_door_light_intensity : float = 5.0
 var _cinematic_timer_time : float = 0.8
 
 func _ready() -> void:
-	animation_player.play("up_idle")
-	interaction_totem.fire_door_finished.connect(_interact)
-	_start_lights()
+	await get_tree().create_timer(0.5).timeout
+	if not interaction_totem.completed:
+		animation_player.play("up_idle")
+		interaction_totem.fire_door_finished.connect(_interact)
+		_start_lights()
+	else:
+		animation_player.play("down_idle")
+		colliders.queue_free()
 
 func _start_lights() -> void:
 	

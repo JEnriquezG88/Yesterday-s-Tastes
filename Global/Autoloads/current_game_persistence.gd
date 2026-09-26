@@ -15,9 +15,14 @@ func get_save_data_path() -> String:
 
 
 func _ready() -> void:
-
+	_clean_data()
 	_load_data()
 	_apply_load_data()
+
+func _clean_data() -> void:
+	current_game_data["KornObtained"] = false
+	current_game_data["CheeseObtained"] = false
+	current_game_data["CoffeObtained"] = false
 
 func _apply_load_data() -> void:
 	pass

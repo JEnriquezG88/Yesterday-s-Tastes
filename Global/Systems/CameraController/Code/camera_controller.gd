@@ -50,7 +50,8 @@ func _ready() -> void:
 var original_target : Node3D 
 
 func _change_to_new_target(new_target: Node3D) -> void:
-	original_target = target
+	if not original_target:
+		original_target = target
 	target = new_target
 
 func _change_to_original_target() -> void:

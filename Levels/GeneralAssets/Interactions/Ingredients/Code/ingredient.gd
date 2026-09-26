@@ -20,14 +20,28 @@ var ingredient_mesh : MeshInstance3D
 
 
 func _ready() -> void:
-	place_holder.queue_free()
-	var load_mesh : ArrayMesh
+	var is_item_obtained : bool = false
 	match ingredient:
 		INGREDIENTS.KORN:
-			load_mesh = load(KORN_PATH)
-			ingredient_mesh = MeshInstance3D.new()
-			ingredient_mesh.mesh = load_mesh
-	rotation_item.add_child(ingredient_mesh)
+			if CurrentGamePersistence.current_game_data["KornObtained"]:
+				is_item_obtained = true
+		INGREDIENTS.CHEESE:
+			if CurrentGamePersistence.current_game_data["CheeseObtained"]:
+				is_item_obtained = true
+		INGREDIENTS.COFFE:
+			if CurrentGamePersistence.current_game_data["CoffeObtained"]:
+				is_item_obtained = true
+	if is_item_obtained:
+		queue_free()
+	else:
+		place_holder.queue_free()
+		var load_mesh : ArrayMesh
+		match ingredient:
+			INGREDIENTS.KORN:
+				load_mesh = load(KORN_PATH)
+				ingredient_mesh = MeshInstance3D.new()
+				ingredient_mesh.mesh = load_mesh
+		rotation_item.add_child(ingredient_mesh)
 
 func _process(delta: float) -> void:
 	_round_item(delta)
@@ -64,6 +78,10 @@ func _save_data() -> void:
 	match ingredient:
 		INGREDIENTS.KORN:
 			CurrentGamePersistence.current_game_data["KornObtained"] = true
+		INGREDIENTS.CHEESE:
+			CurrentGamePersistence.current_game_data["CheeseObtained"] = true
+		INGREDIENTS.COFFE:
+			CurrentGamePersistence.current_game_data["CoffeObtained"] = true
 	CurrentGamePersistence._save_data()
 
 func _on_character_detector_body_entered(body: Node3D) -> void:

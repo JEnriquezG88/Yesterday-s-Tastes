@@ -5,6 +5,8 @@ class_name  SecondLevelSectionManager
 #@onready var charge_level_2_section_2: Area3D = 
 #@onready var charge_level_2_section_3: Area3D = 
 @onready var charge_level_2_section_1: Area3D = $ChargeLevel2Section1
+@onready var charge_level_2_section_2: Area3D = $ChargeLevel2Section2
+@onready var charge_level_2_section_3: Area3D = $ChargeLevel2Section3
 
 var current_section : int = 0
 
@@ -16,11 +18,11 @@ func _connect_signals() -> void:
 	charge_level_2_section_1.body_entered.connect(_on_charge_level_2_section_1_body_entered)
 	charge_level_2_section_1.body_exited.connect(_on_delete_level_2_section_1_body_entered)
 	
-	#charge_level_2_section_2.body_entered.connect(_on_charge_level_2_section_2_body_entered)
-	#charge_level_2_section_2.body_exited.connect(_on_delete_level_2_section_2_body_entered)
-	#
-	#charge_level_2_section_3.body_entered.connect(_on_charge_level_2_section_3_body_entered)
-	#charge_level_2_section_3.body_exited.connect(_on_delete_level_2_section_3_body_entered)
+	charge_level_2_section_2.body_entered.connect(_on_charge_level_2_section_2_body_entered)
+	charge_level_2_section_2.body_exited.connect(_on_delete_level_2_section_2_body_entered)
+	
+	charge_level_2_section_3.body_entered.connect(_on_charge_level_2_section_3_body_entered)
+	charge_level_2_section_3.body_exited.connect(_on_delete_level_2_section_3_body_entered)
 
 #region Section 01
 
@@ -36,7 +38,7 @@ func _on_charge_level_2_section_1_body_entered(_body: Node3D) -> void:
 
 #endregion
 
-const SECTION_02_PATH : String = ""
+const SECTION_02_PATH : String = "uid://cj20tdrlnjipp"
 
 func _on_charge_level_2_section_2_body_entered(_body: Node3D) -> void:
 	load_section(SECTION_02_PATH, 2)
@@ -44,7 +46,7 @@ func _on_charge_level_2_section_2_body_entered(_body: Node3D) -> void:
 func _on_delete_level_2_section_2_body_entered(_body: Node3D) -> void:
 	unload_section(2)
 
-const SECTION_03_PATH : String = ""
+const SECTION_03_PATH : String = "uid://da56m8pb5xe6"
 
 func _on_charge_level_2_section_3_body_entered(_body: Node3D) -> void:
 	load_section(SECTION_03_PATH, 3)

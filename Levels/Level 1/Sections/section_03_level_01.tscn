@@ -29,7 +29,7 @@ size = Vector3(12.509766, 1.6533203, 13.230469)
 
 [node name="section_03" unique_id=261124273 node_paths=PackedStringArray("interactions") instance=ExtResource("1_tn4dd")]
 script = ExtResource("2_ndhre")
-interactions = [NodePath("Interactions/InteractionSystem"), NodePath("Interactions/InteractionSystem2")]
+interactions = [NodePath("Interactions/InteractionSystem"), NodePath("Interactions/InteractionSystem2"), NodePath("Interactions/InteractionSystem3"), NodePath("Interactions/InteractionSystem4")]
 
 [node name="SectionData" type="Node" parent="." index="11" unique_id=1486354628]
 script = ExtResource("3_fly2c")

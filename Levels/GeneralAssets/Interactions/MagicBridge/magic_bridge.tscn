@@ -9,10 +9,10 @@ size = Vector3(1, 5, 7)
 [node name="magic_bridge" unique_id=1813042410 instance=ExtResource("1_mky0b")]
 script = ExtResource("2_sd38d")
 
-[node name="BridgeArmature" parent="." index="0" unique_id=1678183850]
+[node name="BridgeArmature" parent="." index="0" unique_id=1721561686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="BridgeLights" parent="." index="1" unique_id=579564609]
+[node name="BridgeLights" parent="." index="1" unique_id=383547091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Systems" type="Node3D" parent="." index="2" unique_id=1254609593]

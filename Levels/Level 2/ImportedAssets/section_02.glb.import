@@ -3,19 +3,19 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cumk5uh03ddhe"
-path="res://.godot/imported/section_01.glb-bf5690761dd26b3276bb4c0b920aef44.scn"
+uid="uid://ctivyq6s0wymn"
+path="res://.godot/imported/section_02.glb-a8100718e2899da275f3bd75ac9e2843.scn"
 
 [deps]
 
-source_file="res://Levels/Level 1/ImportedAssets/section_01.glb"
-dest_files=["res://.godot/imported/section_01.glb-bf5690761dd26b3276bb4c0b920aef44.scn"]
+source_file="res://Levels/Level 2/ImportedAssets/section_02.glb"
+dest_files=["res://.godot/imported/section_02.glb-a8100718e2899da275f3bd75ac9e2843.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="res://Levels/Code/sections_persistence_manager.gd"
 nodes/root_name=""
-nodes/root_script=null
+nodes/root_script=Resource("uid://io1j4l15wqnf", "res://Levels/Code/sections_persistence_manager.gd")
 mesh_library/use_node_names_as_mesh_names=false
 array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true

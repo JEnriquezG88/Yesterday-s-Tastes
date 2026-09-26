@@ -59,10 +59,25 @@ size = Vector3(40.63983, 100, 9.719421)
 size = Vector3(50.05536, 100, 22.322021)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyeme"]
-size = Vector3(19.445488, 100, 27.13379)
+size = Vector3(13.532415, 100, 22.48584)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwtoh"]
+size = Vector3(25.59329, 100, 18.974976)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e0cg"]
+size = Vector3(71.503456, 100, 91.38896)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axcth"]
+size = Vector3(10.28172, 100, 21.488087)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hvhk"]
+size = Vector3(16.687824, 100, 20.101398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ed65"]
+size = Vector3(77.07767, 100, 59.252426)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo7k1"]
-size = Vector3(88.832, 100, 41.396)
+size = Vector3(81.21222, 100, 41.396)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ccxt"]
 size = Vector3(8.703, 100, 18)
@@ -178,8 +193,36 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 46.6
 shape = SubResource("BoxShape3D_rro6u")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section1" unique_id=1411957805]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 68.47775, 0, -32.775883)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 66.15378, 0, -30.60566)
 shape = SubResource("BoxShape3D_iyeme")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section1" unique_id=2123201128]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 67.90921, 0, -41.88083)
+shape = SubResource("BoxShape3D_xwtoh")
+
+[node name="ChargeLevel2Section2" type="Area3D" parent="LevelChargeManager/SecondLevel" unique_id=541993085]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section2" unique_id=90363691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.980545, 0, -67.464905)
+shape = SubResource("BoxShape3D_6e0cg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section2" unique_id=69650089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.93942, 0, -15.74341)
+shape = SubResource("BoxShape3D_axcth")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section2" unique_id=798369381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.008194, 0, -90.32942)
+shape = SubResource("BoxShape3D_6hvhk")
+
+[node name="ChargeLevel2Section3" type="Area3D" parent="LevelChargeManager/SecondLevel" unique_id=1953168538]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/SecondLevel/ChargeLevel2Section3" unique_id=1797791110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.131, 0, -86.66117)
+shape = SubResource("BoxShape3D_4ed65")
 
 [node name="ThirdLevel" type="Node3D" parent="LevelChargeManager" unique_id=721003436]
 
@@ -188,7 +231,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelChargeManager/ChargeLobby" unique_id=1032061336]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.014, 0, -0.619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7958908, 0, -0.619)
 shape = SubResource("BoxShape3D_lo7k1")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelChargeManager/ChargeLobby" unique_id=1687181639]
@@ -200,8 +243,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1055679, 999.71497, 38.580
 shape = SubResource("BoxShape3D_i2ab1")
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=957990340]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 96, 43)
-current = true
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 22.87053, 96, 10)
+visible = false
 
 [node name="GameMusicManager" type="AudioStreamPlayer" parent="." unique_id=708056320]
 process_mode = 3

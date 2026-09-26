@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhpcgikefqg0y"]
+
+[ext_resource type="Script" uid="uid://c7rrnggf0vci4" path="res://Levels/GeneralAssets/Interactions/MobileRocks/Code/mobile_rock.gd" id="1_pdp5o"]
+[ext_resource type="PackedScene" uid="uid://3bpiaho6ng10" path="res://Levels/GeneralAssets/Interactions/MobileRocks/ImportedAssets/mobile_rock.glb" id="2_txmlj"]
+
+[node name="MobileRock" type="Node3D" unique_id=980032347]
+script = ExtResource("1_pdp5o")
+
+[node name="mobile_rock" parent="." unique_id=60005422 instance=ExtResource("2_txmlj")]

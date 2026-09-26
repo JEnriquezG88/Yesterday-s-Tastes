@@ -21,6 +21,9 @@ func _ready() -> void:
 	fire_totem_01.fire_door_finished.connect(_on_fire_totem_01_finish)
 	fire_totem_02.fire_door_finished.connect(_on_fire_totem_02_finish)
 	_start_lights()
+	await get_tree().create_timer(0.5).timeout 
+	if fire_totem_01.completed and fire_totem_02.completed:
+		_charge_completed()
 
 func _start_lights() -> void:
 	var magic_door_light_01_child = magic_door_light_01_parent.get_child(0)
@@ -54,7 +57,7 @@ func _on_fire_totem_01_finish() -> void:
 	timer.start()
 	await timer.timeout
 	_can_open_door()
-	
+
 
 func _on_fire_totem_02_finish() -> void:
 	totems_active = totems_active + 1
@@ -77,3 +80,6 @@ func _can_open_door() -> void:
 	else:
 		GlobalSignals.return_to_camera_original_target.emit()
 		GlobalSignals.main_character_resume.emit()
+
+func _charge_completed() -> void:
+	animation_player.play("close_door")
