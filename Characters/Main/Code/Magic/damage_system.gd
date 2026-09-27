@@ -3,6 +3,7 @@ class_name DamageSystem
 
 @onready var character_controller: CharacterController = $"../.."
 @onready var movement: Movement = $"../Movement"
+@onready var magic_system: MagicSystem = $"../MagicSystem"
 
 
 func _on_attacks_detector_area_entered(area: Area3D) -> void:
@@ -20,12 +21,14 @@ func _on_damage_finish() -> void:
 			character_controller.current_state = CharacterController.STATES.MOVEMENT
 	else:
 		character_controller.current_state = CharacterController.STATES.JUMP
+	magic_system._can_shot_magic_bool = true
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request","Movement")
 
 
 func _on_attacks_detector_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if character_controller.current_state == CharacterController.STATES.MAGIC:
 		GlobalSignals.camera_zoom.emit(0.0)
+		
 	if character_controller.current_state == CharacterController.STATES.DASH:
 		var to_area := (area.global_position - character_controller.global_position).normalized()
 		
@@ -43,3 +46,4 @@ func _on_attacks_detector_area_shape_entered(area_rid: RID, area: Area3D, area_s
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request","Damage")
 	#character_controller.look_at(area.global_position, Vector3.UP)
 	character_controller.rotation.y = area.global_rotation.y + PI
+	

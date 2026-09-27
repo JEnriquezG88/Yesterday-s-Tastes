@@ -1647,7 +1647,7 @@ shape = SubResource("BoxShape3D_l3xpj")
 transform = Transform3D(0.9261478, 0, -0.3771608, 0, 1, 0, 0.3771608, 0, 0.9261478, 73.76945, 9.368757, -76.19706)
 
 [node name="InteractionSystem" parent="Interactions" index="1" unique_id=1678312802 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("3_l3xpj")]
-transform = Transform3D(0.9459744, 0, -0.3242417, 0, 1, 0, 0.3242417, 0, 0.9459744, 71.95964, 8, -70.23162)
+transform = Transform3D(0.9459744, 0, -0.3242417, 0, 1, 0, 0.3242417, 0, 0.9459744, 71.25296, 8.148071, -70.46603)
 _interaction_button = 2
 interactuable_object = NodePath("../MobileRock")
 

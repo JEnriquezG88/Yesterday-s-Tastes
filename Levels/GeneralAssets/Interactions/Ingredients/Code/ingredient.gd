@@ -16,6 +16,7 @@ var main_character : CharacterController
 @onready var place_holder: MeshInstance3D = $RotationItem/PlaceHolder
 
 const KORN_PATH : String = "uid://demjy0gsdlhof"
+const CHEESE_PATH : String = "uid://jqof7yeudcnp"
 var ingredient_mesh : MeshInstance3D
 
 
@@ -39,8 +40,10 @@ func _ready() -> void:
 		match ingredient:
 			INGREDIENTS.KORN:
 				load_mesh = load(KORN_PATH)
-				ingredient_mesh = MeshInstance3D.new()
-				ingredient_mesh.mesh = load_mesh
+			INGREDIENTS.CHEESE:
+				load_mesh = load(CHEESE_PATH)
+		ingredient_mesh = MeshInstance3D.new()
+		ingredient_mesh.mesh = load_mesh
 		rotation_item.add_child(ingredient_mesh)
 
 func _process(delta: float) -> void:

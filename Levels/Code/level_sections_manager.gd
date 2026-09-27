@@ -2,6 +2,7 @@ extends Node3D
 class_name LevelSections
 
 var sections: Array[Node3D] = []
+signal section_loaded
 
 func _ready() -> void:
 	sections.resize(10)
@@ -16,6 +17,7 @@ func load_section(path: String, index: int) -> void:
 	sections[array_index] = section
 	
 	add_child(section)
+	section_loaded.emit()
 
 func unload_section(index: int) -> void:
 	var array_index = index - 1

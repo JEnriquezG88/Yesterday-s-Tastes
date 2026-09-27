@@ -6,6 +6,7 @@ var process_gravity : bool = true
 
 func _physics_process(delta: float) -> void:
 	if not process_gravity: return
+	if character_controller.current_state == CharacterController.STATES.NONE: return
 	if character_controller.current_state == CharacterController.STATES.DASH: return
 	if character_controller.current_state == CharacterController.STATES.DAMAGE: return
 	

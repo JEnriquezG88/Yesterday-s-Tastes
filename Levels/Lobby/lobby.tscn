@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hee0evicfcjk" path="res://Levels/Lobby/Imported/lobby.glb" id="1_cwgtc"]
 [ext_resource type="PackedScene" uid="uid://ssnoicukwth3" path="res://Levels/GeneralAssets/Trees/Imported/tree_01.glb" id="2_ayaaw"]
+[ext_resource type="Script" uid="uid://8mcynglycjmu" path="res://Levels/Lobby/Code/lobby_manager.gd" id="2_jy7ok"]
 [ext_resource type="PackedScene" uid="uid://cv8smdsso0ar5" path="res://Levels/GeneralAssets/Trees/Imported/grass_01.glb" id="3_w31ji"]
 [ext_resource type="PackedScene" uid="uid://deox006o4dm0w" path="res://Levels/GeneralAssets/Trees/Imported/bush_01.glb" id="4_mxmn1"]
 [ext_resource type="PackedScene" uid="uid://bfqipaqo73lut" path="res://Levels/GeneralAssets/Trees/Imported/rock_01.glb" id="5_eqsuk"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1kbthwgf84px" path="res://Levels/GeneralAssets/Trees/Imported/tree_trunk_01.glb" id="11_a2sle"]
 
 [node name="lobby" unique_id=1188552327 instance=ExtResource("1_cwgtc")]
+script = ExtResource("2_jy7ok")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="8" unique_id=1411106143]
 occluder = ExtResource("10_qsjkw")
@@ -1467,5 +1469,5 @@ transform = Transform3D(-0.7913143, 0, -0.6114096, 0, 1, 0, 0.6114096, 0, -0.791
 [node name="tree_trunk_05" parent="Nature/TreeTrunks" index="5" unique_id=1836734168 instance=ExtResource("11_a2sle")]
 transform = Transform3D(0.006182164, 0, -0.99998087, 0, 1, 0, 0.99998087, 0, 0.006182164, -35.691387, 0, -8.571045)
 
-[node name="CollisionShape3D" parent="lobby_wall_limits" parent_id_path=PackedInt32Array(169546234) index="0" unique_id=610893821]
+[node name="CollisionShape3D" parent="lobby_wall_limits" parent_id_path=PackedInt32Array(1439927542) index="0" unique_id=783822498]
 transform = Transform3D(0.99999976, 0.00056696095, -0.00036150927, -0.0005669273, 0.9999998, 8.990269e-05, 0.000361562, -8.969031e-05, 0.99999994, 0, 0, 0)

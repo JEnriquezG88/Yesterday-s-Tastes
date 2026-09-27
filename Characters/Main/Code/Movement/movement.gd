@@ -52,6 +52,7 @@ func _physics_process(delta: float) -> void:
 var direction : Vector2
 var target_angle : float
 func movement(delta) -> void:
+	if character_controller.current_state == CharacterController.STATES.NONE: return
 	if character_controller.current_state == CharacterController.STATES.WAITING: return
 	if character_controller.current_state == CharacterController.STATES.CINEMATIC: return
 	direction = Input.get_vector("left", "right", "backward", "forward")
@@ -96,6 +97,7 @@ var can_air_jump : bool = true
 var can_floor_jump : bool = true
 
 func _can_jump() -> bool:
+	if character_controller.current_state == CharacterController.STATES.NONE: return false
 	if character_controller.current_state == CharacterController.STATES.JUMP: 
 		return true
 	if character_controller.current_state != CharacterController.STATES.MOVEMENT: 
@@ -169,6 +171,7 @@ func _on_coyote_time_timer() -> void:
 #region Dash
 
 func _can_dash() -> bool:
+	if character_controller.current_state == CharacterController.STATES.NONE: return false
 	if is_dash_cooldown: 
 		return false
 	if character_controller.current_state == CharacterController.STATES.JUMP: 

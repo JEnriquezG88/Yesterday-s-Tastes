@@ -15,6 +15,7 @@ signal return_to_camera_original_target()
 signal shot_magic(magic_type: MagicSystem.MAGIC_TYPES)
 signal main_character_wait
 signal main_character_resume
+signal first_scenario_loaded
 signal load_lobby
 
 

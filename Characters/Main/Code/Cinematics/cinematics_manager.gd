@@ -30,7 +30,7 @@ func _on_get_ingredient() -> void:
 
 func return_to_lobby_position() -> void:
 	GlobalSignals.play_next_song.emit()
-	character_controller.global_position = Vector3.ZERO
+	character_controller.global_position = Vector3(0.0, 0.0, 6.0)
 	GlobalSignals.force_camera_position.emit()
 	GlobalSignals.camera_zoom.emit(0.0)
 

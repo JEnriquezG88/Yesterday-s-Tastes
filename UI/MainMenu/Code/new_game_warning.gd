@@ -41,6 +41,7 @@ func _on_accept_bton_up() -> void:
 		for file in folder_dir.get_files():
 			folder_dir.remove(file)
 		dir.remove_absolute(folder_path)
+		CurrentGamePersistence._clean_data()
 	DirAccess.remove_absolute(save_directory_path)
 	
 	previous_menu._on_start_button_up()

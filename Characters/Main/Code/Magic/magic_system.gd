@@ -32,6 +32,7 @@ func _ready() -> void:
 	add_child(_magic_culldown_timer)
 
 func _can_shot_magic() -> bool:
+	if character_controller.current_state == CharacterController.STATES.NONE: return false
 	if not _can_shot_magic_bool: return false
 	if character_controller.current_state == CharacterController.STATES.WAITING: 
 		return false

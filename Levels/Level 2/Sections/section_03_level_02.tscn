@@ -65,7 +65,7 @@ ingredient = 2
 transform = Transform3D(-0.9995733, 0, 0.029210998, 0, 1, 0, -0.029210998, 0, -0.9995733, 122.46331, 13.168826, -82.95422)
 
 [node name="InteractionSystem" parent="Interactions" index="5" unique_id=322282661 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("4_sirq2")]
-transform = Transform3D(-0.99962735, 0, -0.027300209, 0, 1, 0, 0.027300209, 0, -0.99962735, 122.70593, 11.842574, -89.24526)
+transform = Transform3D(-0.99962735, 0, -0.027300209, 0, 1, 0, 0.027300209, 0, -0.99962735, 122.58376, 11.842574, -89.24526)
 _interaction_button = 2
 interactuable_object = NodePath("../MobileRock")
 
@@ -201,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.714424, 11.953806, -109.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.468605, 11.953806, -105.12833)
 
 [node name="tree_16" parent="Nature/Trees" index="20" unique_id=2058165190 instance=ExtResource("11_nadnc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.09954, 11.953806, -93.27835)
+transform = Transform3D(0.5134936, -0.29315475, -0.80646425, 0.49579442, 0.8684399, 0, 0.7003657, -0.39984047, 0.59128284, 118.09954, 11.875864, -93.27835)
 
 [node name="tree_17" parent="Nature/Trees" index="21" unique_id=118747261 instance=ExtResource("11_nadnc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.957275, 11.868479, -90.00814)

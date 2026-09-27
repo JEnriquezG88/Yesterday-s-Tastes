@@ -28,6 +28,7 @@ func _apply_load_data() -> void:
 	pass
 
 func _save_data() -> void:
+	print("_save_data")
 	if not DirAccess.dir_exists_absolute(get_save_folder()):
 		_load_data()
 	var save_file = FileAccess.open(get_save_data_path(), FileAccess.WRITE)
