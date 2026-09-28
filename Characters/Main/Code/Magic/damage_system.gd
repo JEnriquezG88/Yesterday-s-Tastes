@@ -7,14 +7,13 @@ class_name DamageSystem
 
 
 func _on_attacks_detector_area_entered(area: Area3D) -> void:
-	character_controller.current_state == CharacterController.STATES.DAMAGE
+	character_controller.current_state = CharacterController.STATES.DAMAGE
 	character_controller.animation_tree.set("parameters/Damages/DamageTypes/transition_request","back_push")
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request","Damage")
 	character_controller.rotation.y = area.get_parent_node_3d().get_parent_node_3d().global_rotation.y + PI
 
 func _on_damage_finish() -> void:
 	if character_controller.is_on_floor():
-		movement.is_dash_cooldown = false
 		movement.can_floor_jump = true
 		character_controller.animation_tree.set("parameters/Movement/MovementTypes/transition_request","floor_movement")
 		if character_controller.current_state != CharacterController.STATES.WAITING:
@@ -22,6 +21,7 @@ func _on_damage_finish() -> void:
 	else:
 		character_controller.current_state = CharacterController.STATES.JUMP
 	magic_system._can_shot_magic_bool = true
+	movement.is_dash_cooldown = false
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request","Movement")
 
 

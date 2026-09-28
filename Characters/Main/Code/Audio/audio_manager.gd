@@ -2,7 +2,7 @@ extends Node3D
 class_name AudioManager
 
 var vfx_streams : Array[AudioStreamPlayer3DExtended]
-var voice_stream : AudioStreamPlayer3DExtended
+var voice_streams : Array[AudioStreamPlayer3DExtended]
 
 func _ready() -> void:
 	create_vfx_streamss()
@@ -17,10 +17,14 @@ func create_vfx_streamss() -> void:
 		add_child(new_vfx_streams)
 
 func create_voice_stream() -> void:
-	voice_stream = AudioStreamPlayer3DExtended.new()
-	voice_stream.bus = "VFX"
-	voice_stream.name = "VoiceStream"
-	add_child(voice_stream)
+	for i in range(5):
+		var new_voice_streams = AudioStreamPlayer3DExtended.new()
+		new_voice_streams.bus = "Voices"
+		new_voice_streams.name = "VoiceStream" + str(i)
+		new_voice_streams.volume_db = -10.0
+		new_voice_streams.pitch_scale = 1.2
+		voice_streams.append(new_voice_streams)
+		add_child(new_voice_streams)
 
 #region Sounds
 
@@ -98,6 +102,41 @@ func shot_get_ingredients_fx() -> void:
 	current_vfx_stream.pitch_scale = 1.0
 	current_vfx_stream.shot_sound(GET_INGREDIENTS)
 
+
+const FIRE = preload("uid://by47iq57r2epi")
+const FREEZE = preload("uid://bvaq8erv8rh1b")
+const RETURN = preload("uid://dulfwp3p2ws3o")
+const STAMP = preload("uid://bin8f8kdi6d30")
+const STONE = preload("uid://313it85j3u8d")
+const UPS = preload("uid://br7iwixybbfp8")
+const YEY = preload("uid://dvexcxuvjjc3")
+
+
+func shot_magic_voice(magic: MagicSystem.MAGIC_TYPES) -> void:
+	var current_voice_stream : AudioStreamPlayer3DExtended = _get_avaialble_voice_stream()
+	if not current_voice_stream: return
+	match magic:
+		MagicSystem.MAGIC_TYPES.ICE:
+			current_voice_stream.shot_sound(FREEZE)
+		MagicSystem.MAGIC_TYPES.FIRE:
+			current_voice_stream.shot_sound(FIRE)
+		MagicSystem.MAGIC_TYPES.STAMP:
+			current_voice_stream.shot_sound(STAMP)
+		MagicSystem.MAGIC_TYPES.BROKE:
+			current_voice_stream.shot_sound(STONE)
+		MagicSystem.MAGIC_TYPES.RETURN:
+			current_voice_stream.shot_sound(RETURN)
+
+func shot_ups_sound() -> void:
+	var current_voice_stream : AudioStreamPlayer3DExtended = _get_avaialble_voice_stream()
+	if not current_voice_stream: return
+	current_voice_stream.shot_sound(UPS)
+
+func shot_yey_sound() -> void:
+	var current_voice_stream : AudioStreamPlayer3DExtended = _get_avaialble_voice_stream()
+	if not current_voice_stream: return
+	current_voice_stream.shot_sound(YEY)
+
 func rand_stream(current_vfx_stream: AudioStreamPlayer3DExtended) -> void:
 	current_vfx_stream.pitch_scale = randf_range(0.8, 1.2)
 	current_vfx_stream.volume_db = randf_range(0.8, 1.2)
@@ -108,4 +147,10 @@ func _get_avaialble_vfx_stream() -> AudioStreamPlayer3DExtended:
 	for vfx_stream in vfx_streams:
 		if vfx_stream.available:
 			return vfx_stream
+	return null
+
+func _get_avaialble_voice_stream() -> AudioStreamPlayer3DExtended:
+	for voice_stream in voice_streams:
+		if voice_stream.available:
+			return voice_stream
 	return null

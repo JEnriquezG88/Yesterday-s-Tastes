@@ -28,6 +28,7 @@ func activate_check_point() -> void:
 	var camera := get_viewport().get_camera_3d()
 	var screen_position := camera.unproject_position(character_controller.global_position)
 	check_point_transition.activate_transition(screen_position)
+	audio_manager.shot_ups_sound()
 	await check_point_transition.transition_finished
 	
 	character_controller.global_position = last_check_point_position

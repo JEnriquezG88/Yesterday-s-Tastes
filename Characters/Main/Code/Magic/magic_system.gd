@@ -5,7 +5,9 @@ enum  MAGIC_TYPES {
 	NONE,
 	ICE,
 	BROKE,
-	FIRE
+	FIRE,
+	STAMP,
+	RETURN
 }
 
 var current_magic_type : MAGIC_TYPES = MAGIC_TYPES.NONE
@@ -73,6 +75,7 @@ func try_shot_magic(magic_type: MAGIC_TYPES) -> bool:
 			current_magic_type = MAGIC_TYPES.FIRE
 		MAGIC_TYPES.BROKE:
 			current_magic_type = MAGIC_TYPES.BROKE
+	audio_manager.shot_magic_voice(current_magic_type)
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request", "Magic")
 	GlobalSignals.shot_magic.emit(current_magic_type)
 	GlobalSignals.camera_zoom.emit(-3.0)
