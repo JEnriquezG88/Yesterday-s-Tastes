@@ -7,6 +7,7 @@ var voice_streams : Array[AudioStreamPlayer3DExtended]
 func _ready() -> void:
 	create_vfx_streamss()
 	create_voice_stream()
+	GlobalSignals.is_stamp_sound.connect(_on_is_stamp_sound)
 
 func create_vfx_streamss() -> void:
 	for i in range(20):
@@ -21,8 +22,9 @@ func create_voice_stream() -> void:
 		var new_voice_streams = AudioStreamPlayer3DExtended.new()
 		new_voice_streams.bus = "Voices"
 		new_voice_streams.name = "VoiceStream" + str(i)
-		new_voice_streams.volume_db = -10.0
-		new_voice_streams.pitch_scale = 1.2
+		new_voice_streams.volume_db = -8.0
+		new_voice_streams.pitch_scale = 1.05
+		#new_voice_streams.pitch_scale = 1.2
 		voice_streams.append(new_voice_streams)
 		add_child(new_voice_streams)
 
@@ -111,6 +113,10 @@ const STONE = preload("uid://313it85j3u8d")
 const UPS = preload("uid://br7iwixybbfp8")
 const YEY = preload("uid://dvexcxuvjjc3")
 
+var is_stamp_sound : bool = false
+
+func _on_is_stamp_sound(value: bool) -> void:
+	is_stamp_sound = value
 
 func shot_magic_voice(magic: MagicSystem.MAGIC_TYPES) -> void:
 	var current_voice_stream : AudioStreamPlayer3DExtended = _get_avaialble_voice_stream()
@@ -123,7 +129,11 @@ func shot_magic_voice(magic: MagicSystem.MAGIC_TYPES) -> void:
 		MagicSystem.MAGIC_TYPES.STAMP:
 			current_voice_stream.shot_sound(STAMP)
 		MagicSystem.MAGIC_TYPES.BROKE:
-			current_voice_stream.shot_sound(STONE)
+			if is_stamp_sound:
+				is_stamp_sound = false
+				current_voice_stream.shot_sound(STAMP)
+			else:
+				current_voice_stream.shot_sound(STONE)
 		MagicSystem.MAGIC_TYPES.RETURN:
 			current_voice_stream.shot_sound(RETURN)
 

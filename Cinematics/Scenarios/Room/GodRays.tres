@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5wqvssdm3x4k"]
+
+[ext_resource type="Texture2D" uid="uid://gvyd650vv4dt" path="res://Cinematics/Scenarios/Room/GeneralWord_Ucupaint GodRays Color.png" id="1_jdnc6"]
+
+[resource]
+resource_name = "GodRays"
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_jdnc6")
+texture_filter = 0

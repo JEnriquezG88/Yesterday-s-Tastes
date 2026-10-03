@@ -17,6 +17,7 @@ var last_check_point_rotation : Vector3 = Vector3.ZERO
 func _ready() -> void:
 	check_point_detector.area_shape_entered.connect(_on_check_point_detector_area_shape_entered)
 	reset_zone_detector.area_shape_entered.connect(_on_reset_zone_detector_area_shape_entered)
+	GlobalSignals.transition_interaction.connect(_on_transition_interaction)
 
 func change_last_check_point_position(new_position: Vector3, new_rotation: Vector3) -> void:
 	if new_position != last_check_point_position:
@@ -37,6 +38,20 @@ func activate_check_point() -> void:
 	GlobalSignals.force_camera_position.emit()
 	GlobalSignals.shot_jump_magic_particles.emit(character_controller.global_position)
 
+func _on_transition_interaction(new_position: Vector3, camera_view: CameraController.CAMERA_TYPES) -> void:
+	GlobalSignals.main_character_wait.emit()
+	var camera := get_viewport().get_camera_3d()
+	var screen_position := camera.unproject_position(character_controller.global_position)
+	check_point_transition.activate_transition(screen_position)
+	await check_point_transition.transition_finished
+	
+	character_controller.global_position = new_position
+	character_controller.rotation = Vector3.ZERO + Vector3(0.0, PI/2, 0.0)
+	character_controller.velocity = Vector3.ZERO
+	GlobalSignals.force_camera_position.emit()
+	GlobalSignals.main_character_resume.emit()
+	GlobalSignals.change_camera_view.emit(camera_view)
+	GlobalSignals.shot_jump_magic_particles.emit(character_controller.global_position)
 
 func _on_check_point_detector_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	change_last_check_point_position(area.global_position, character_controller.global_rotation)

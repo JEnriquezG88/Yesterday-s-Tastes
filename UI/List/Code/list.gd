@@ -32,7 +32,7 @@ func start_list_menu() -> void:
 		audio.play()
 		GlobalSignals.main_character_resume.emit()
 	else:
-		if character_controller.is_on_floor():
+		if character_controller.current_state == CharacterController.STATES.CINEMATIC or character_controller.current_state == CharacterController.STATES.MOVEMENT or character_controller.current_state == CharacterController.STATES.WAITING and character_controller.is_on_floor():
 			check_01.visible = CurrentGamePersistence.current_game_data["KornObtained"]
 			check_02.visible = CurrentGamePersistence.current_game_data["CheeseObtained"]
 			check_03.visible = CurrentGamePersistence.current_game_data["CoffeObtained"]

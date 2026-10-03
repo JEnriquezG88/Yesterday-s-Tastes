@@ -22,6 +22,8 @@ func _ready() -> void:
 	if not obstacle:
 		block_path.queue_free()
 	icon.visible = false
+	if _interaction_button != MagicSystem.MAGIC_TYPES.UP:
+		set_process_input(false)
 
 func _on_detection_area_body_entered(_body: Node3D) -> void:
 	match _interaction_button:

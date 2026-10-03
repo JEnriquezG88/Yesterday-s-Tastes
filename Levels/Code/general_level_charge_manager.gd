@@ -14,12 +14,18 @@ func unload_lobby() -> void:
 
 @onready var charge_lobbie : Area3D = $ChargeLobby
 
+
 func _ready() -> void:
 	super._ready()
-	GlobalSignals.load_lobby.connect(load_lobby)
+	GlobalSignals.load_lobby.connect(_on_load_lobby)
 	section_loaded.connect(_on_section_loaded)
 	load_lobby()
 	connect_lobbie_signals()
+
+var _is_on_load_lobby : bool = false
+func _on_load_lobby() -> void:
+	_is_on_load_lobby = true
+	load_lobby()
 
 func _on_section_loaded() -> void:
 	section_loaded.disconnect(_on_section_loaded)
@@ -29,7 +35,11 @@ func connect_lobbie_signals() -> void:
 	charge_lobbie.body_exited.connect(_on_charge_lobbie_body_exited)
 
 func _on_charge_lobbie_body_entered(_body: Node3D) -> void:
-	load_lobby()
+	if _is_on_load_lobby: 
+		_is_on_load_lobby = false
+		return
+	else:
+		load_lobby()
 
 func _on_charge_lobbie_body_exited(_body: Node3D) -> void:
 	charge_lobbie.body_entered.connect(_on_charge_lobbie_body_entered)

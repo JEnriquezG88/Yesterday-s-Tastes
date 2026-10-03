@@ -1,0 +1,317 @@
+[gd_scene format=3 uid="uid://dtuc6cegecwg2"]
+
+[ext_resource type="PackedScene" uid="uid://od0whv0i04bp" path="res://Levels/Level 3/ImportedAssets/section_02.glb" id="1_rlrgs"]
+[ext_resource type="PackedScene" uid="uid://4nkyhbinvdcn" path="res://Global/VFX/MagicParticles/Break/break_wall.tscn" id="3_i6bcs"]
+[ext_resource type="PackedScene" uid="uid://bykmsijavvcdo" path="res://Global/Code/Interactions/interaction_system.tscn" id="3_vsfya"]
+[ext_resource type="Script" uid="uid://b5ucwyngba3tg" path="res://Levels/Level 3/Code/transition_interaction.gd" id="4_emdwa"]
+[ext_resource type="PackedScene" uid="uid://dsmmn1251cx7u" path="res://Characters/Obstacles/BurstMushroom/burst_mushroom.tscn" id="4_qr1db"]
+[ext_resource type="PackedScene" uid="uid://i5gho6uk6fv0" path="res://Levels/GeneralAssets/Interactions/TemporalPlatforms/temporal_platform.tscn" id="5_faok2"]
+[ext_resource type="PackedScene" uid="uid://cdmvvs5a5cylv" path="res://Levels/GeneralAssets/Interactions/Ice/ice_block.glb" id="5_mhhgf"]
+[ext_resource type="PackedScene" uid="uid://bjc0kcch28bkc" path="res://Levels/GeneralAssets/Interactions/MagicDoor/magic_door.tscn" id="6_5tnw7"]
+[ext_resource type="PackedScene" uid="uid://dbnnrpmeth7t" path="res://Levels/GeneralAssets/Interactions/MagicDoor/magic_door_fire_totem.tscn" id="7_01e3b"]
+[ext_resource type="Material" uid="uid://d0klgmqo7lqu2" path="res://Global/VFX/Smoke/Shader/smoke_shader_material.tres" id="8_kpuhu"]
+[ext_resource type="ArrayMesh" uid="uid://b1v4u1wlxeel" path="res://Global/VFX/Smoke/Mesh/static_mesh_cloud.glb" id="9_2277n"]
+[ext_resource type="AudioStream" uid="uid://t1vlkvje31fp" path="res://Levels/GeneralAssets/Water/Sounds/waterfall_fx.wav" id="10_5tnw7"]
+[ext_resource type="Script" uid="uid://bsi7hkkluxml4" path="res://Levels/Code/vertical_zone_reset_zone.gd" id="13_01e3b"]
+[ext_resource type="Script" uid="uid://bgmnk6kv85pg3" path="res://Levels/Code/section_data.gd" id="14_yp7s4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erv6c"]
+size = Vector3(4.0147705, 4.066284, 1)
+
+[sub_resource type="Curve" id="Curve_01e3b"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5tnw7"]
+texture_mode = 1
+curve = SubResource("Curve_01e3b")
+
+[sub_resource type="Gradient" id="Gradient_yp7s4"]
+offsets = PackedFloat32Array(0, 0.2734694, 0.44489795, 0.6204082, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.7121294, 0.7121294, 0.71212924, 1, 1, 1, 1, 1, 0.61339027, 0.61339027, 0.6133901, 1, 0.601223, 0.601223, 0.60122293, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_01e3b"]
+gradient = SubResource("Gradient_yp7s4")
+
+[sub_resource type="Curve" id="Curve_3f6i8"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yp7s4"]
+curve = SubResource("Curve_3f6i8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc4nb"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(3.185, 0.435, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_yp7s4")
+color_ramp = SubResource("GradientTexture1D_01e3b")
+alpha_curve = SubResource("CurveTexture_5tnw7")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5tnw7"]
+radius = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(167.64024, 1.7888184, 9.005493)
+
+[node name="section_02_level_03" unique_id=1258140769 node_paths=PackedStringArray("interactions") instance=ExtResource("1_rlrgs")]
+interactions = [NodePath("Interactions/Obstacles/InteractionSystem"), NodePath("Interactions/Obstacles/InteractionSystem2"), NodePath("Interactions/MagicDoor/InteractionSystem3"), NodePath("Interactions/MagicDoor/InteractionSystem4")]
+
+[node name="Interactions" type="Node3D" parent="." index="5" unique_id=1657937184]
+
+[node name="EnterSection" type="Node3D" parent="Interactions" index="0" unique_id=1518276147]
+
+[node name="EnterPosition" type="Node3D" parent="Interactions/EnterSection" index="0" unique_id=772844038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.40444, -25.847631, 55.167744)
+
+[node name="ExitPosition" type="Node3D" parent="Interactions/EnterSection" index="1" unique_id=842753012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.892994, -8.280504, 29.360266)
+
+[node name="EnterToSection" type="Node3D" parent="Interactions/EnterSection" index="2" unique_id=22278005 node_paths=PackedStringArray("new_enter_position_node", "new_exit_position_node")]
+script = ExtResource("4_emdwa")
+new_enter_position_node = NodePath("../EnterPosition")
+new_exit_position_node = NodePath("../ExitPosition")
+metadata/_custom_type_script = "uid://b6p7qcu1wi1ra"
+
+[node name="Enter" type="Area3D" parent="Interactions/EnterSection/EnterToSection" index="0" unique_id=334805469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.699608, -7.931946, 22.870716)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/EnterSection/EnterToSection/Enter" index="0" unique_id=532891958]
+transform = Transform3D(0.9499271, 0, -0.31247157, 0, 1, 0, 0.31247157, 0, 0.9499271, -0.5091629, 1.5331421, 1.4777546)
+shape = SubResource("BoxShape3D_erv6c")
+
+[node name="Exit" type="Area3D" parent="Interactions/EnterSection/EnterToSection" index="1" unique_id=2102392581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.886585, -24.931946, 51.181084)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Interactions/EnterSection/EnterToSection/Exit" index="0" unique_id=724882183]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.45225906, 0.8970337, 2.3288803)
+shape = SubResource("BoxShape3D_erv6c")
+
+[node name="Obstacles" type="Node3D" parent="Interactions" index="1" unique_id=383425533]
+
+[node name="BreakWall" parent="Interactions/Obstacles" index="0" unique_id=394055457 instance=ExtResource("3_i6bcs")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 102.51888, -28.585257, 53.88829)
+
+[node name="InteractionSystem" parent="Interactions/Obstacles" index="1" unique_id=1678312802 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("3_vsfya")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 100.6948, -28.585257, 53.88829)
+_interaction_button = 2
+interactuable_object = NodePath("../BreakWall")
+
+[node name="InteractionSystem2" parent="Interactions/Obstacles" index="2" unique_id=1729117238 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("3_vsfya")]
+transform = Transform3D(0, -3.090862e-08, -0.99999994, 1.28027695e-08, 1, -3.090862e-08, 0.99999994, -1.28027695e-08, 0, 135.9991, -24.377197, 55.026196)
+_interaction_button = 1
+interactuable_object = NodePath("../IceBlockContainer/ice_block")
+
+[node name="IceBlockContainer" type="Node3D" parent="Interactions/Obstacles" index="3" unique_id=163234466]
+transform = Transform3D(0.5867965, 0, 0, 0, 1, 0, 0, 0, 0.3350079, 140.68132, -25.198294, 54.94874)
+
+[node name="ice_block" parent="Interactions/Obstacles/IceBlockContainer" index="0" unique_id=44953505 instance=ExtResource("5_mhhgf")]
+transform = Transform3D(-4.371139e-08, -3.090862e-08, -1, 1.280277e-08, 1, -3.090862e-08, 1, -1.2802772e-08, -4.371139e-08, 0, 0, 0)
+
+[node name="MagicDoor" parent="Interactions" index="2" unique_id=1568250318 node_paths=PackedStringArray("fire_totem_01", "fire_totem_02") instance=ExtResource("6_5tnw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211.95862, -23.633835, 53.90904)
+fire_totem_01 = NodePath("magic_door_fire_totem")
+fire_totem_02 = NodePath("magic_door_fire_totem2")
+
+[node name="magic_door_fire_totem" parent="Interactions/MagicDoor" index="3" unique_id=171872141 instance=ExtResource("7_01e3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.202621, -0.32069397, 0.074272156)
+
+[node name="magic_door_fire_totem2" parent="Interactions/MagicDoor" index="4" unique_id=601015679 instance=ExtResource("7_01e3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.794876, -0.32069397, 0.46294022)
+
+[node name="InteractionSystem3" parent="Interactions/MagicDoor" index="7" unique_id=1631150108 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("3_vsfya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.193848, 0, 0.07941818)
+_interaction_button = 3
+interactuable_object = NodePath("../magic_door_fire_totem")
+obstacle = false
+
+[node name="InteractionSystem4" parent="Interactions/MagicDoor" index="8" unique_id=1951275349 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("3_vsfya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.788162, 0, 0.45362854)
+_interaction_button = 3
+interactuable_object = NodePath("../magic_door_fire_totem2")
+obstacle = false
+
+[node name="Platforms" type="Node3D" parent="." index="7" unique_id=755323429]
+
+[node name="temporal_platform" parent="Platforms" index="0" unique_id=230776283 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.0573, -25.288351, 55.04211)
+
+[node name="temporal_platform2" parent="Platforms" index="1" unique_id=1053810866 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.241196, -25.44463, 55.04211)
+
+[node name="temporal_platform3" parent="Platforms" index="2" unique_id=1398877692 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.91699, -27.55549, 55.04211)
+
+[node name="temporal_platform4" parent="Platforms" index="3" unique_id=105972696 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.938255, -26.409595, 55.04211)
+
+[node name="temporal_platform5" parent="Platforms" index="4" unique_id=1926522377 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.86906, -25.354164, 55.04211)
+
+[node name="temporal_platform6" parent="Platforms" index="5" unique_id=1008761861 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.25117, -24.105785, 55.04211)
+
+[node name="temporal_platform7" parent="Platforms" index="6" unique_id=2103186486 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.21936, -22.773928, 55.04211)
+
+[node name="temporal_platform8" parent="Platforms" index="7" unique_id=1114563889 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.16458, -21.763554, 55.04211)
+
+[node name="temporal_platform9" parent="Platforms" index="8" unique_id=83602766 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.02832, -24.794678, 55.04211)
+
+[node name="temporal_platform10" parent="Platforms" index="9" unique_id=372088917 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.22614, -23.049484, 55.04211)
+
+[node name="temporal_platform11" parent="Platforms" index="10" unique_id=370082116 groups=["level_03_section_02_platforms"] instance=ExtResource("5_faok2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.0795, -21.166513, 55.04211)
+
+[node name="Obstacles" type="Node3D" parent="." index="8" unique_id=1876571684]
+
+[node name="BurstMushroom2" parent="Obstacles" index="0" unique_id=2003229828 instance=ExtResource("4_qr1db")]
+transform = Transform3D(0.40789744, 0, -0.44002238, 0, 0.6, 0, 0.44002238, 0, 0.40789744, 83.00087, -26.896238, 54.53208)
+
+[node name="BurstMushroom3" parent="Obstacles" index="1" unique_id=931923486 instance=ExtResource("4_qr1db")]
+transform = Transform3D(0.40789744, 0, -0.44002238, 0, 0.6, 0, 0.44002238, 0, 0.40789744, 217.01434, -23.491398, 54.53208)
+
+[node name="WaterfallFx" type="Node3D" parent="." index="17" unique_id=2060108814]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="WaterfallFx" index="0" unique_id=1922346574]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 140.34642, -24.85148, 53.683006)
+material_override = ExtResource("8_kpuhu")
+amount = 64
+lifetime = 0.5
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rc4nb")
+draw_pass_1 = ExtResource("9_2277n")
+
+[node name="Waterfall" type="AudioStreamPlayer3D" parent="WaterfallFx" index="1" unique_id=2046331980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.70476, -24.581186, 53.510246)
+stream = ExtResource("10_5tnw7")
+autoplay = true
+bus = &"VFX"
+
+[node name="Checkpoints" type="Node3D" parent="." index="38" unique_id=1689908810]
+
+[node name="CheckpointArea4" type="Area3D" parent="Checkpoints" index="0" unique_id=642110934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.520683, -24.130322, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea4" index="0" unique_id=1501689169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea5" type="Area3D" parent="Checkpoints" index="1" unique_id=637742970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.88739, -26.12311, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea5" index="0" unique_id=902680862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea6" type="Area3D" parent="Checkpoints" index="2" unique_id=66770588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.43246, -26.12311, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea6" index="0" unique_id=1283007854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea7" type="Area3D" parent="Checkpoints" index="3" unique_id=912652011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.34713, -27.722183, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea7" index="0" unique_id=1155939431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea8" type="Area3D" parent="Checkpoints" index="4" unique_id=1279393147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31226, -23.721815, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea8" index="0" unique_id=680594915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea9" type="Area3D" parent="Checkpoints" index="5" unique_id=1100126176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.40125, -23.721815, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea9" index="0" unique_id=852129567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea10" type="Area3D" parent="Checkpoints" index="6" unique_id=1898603834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 201.88864, -23.559301, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea10" index="0" unique_id=877661411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea11" type="Area3D" parent="Checkpoints" index="7" unique_id=1005055598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.21773, -22.078678, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea11" index="0" unique_id=1761557684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea12" type="Area3D" parent="Checkpoints" index="8" unique_id=186694518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.69682, -22.078678, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea12" index="0" unique_id=1318909789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="CheckpointArea13" type="Area3D" parent="Checkpoints" index="9" unique_id=1527736839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.81474, -23.126152, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea13" index="0" unique_id=1694528732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_5tnw7")
+
+[node name="ResetZone3" type="Area3D" parent="Checkpoints" index="10" unique_id=1094191401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.146015, -30.359503, 55.031433)
+collision_layer = 64
+collision_mask = 132
+script = ExtResource("13_01e3b")
+group = "level_03_section_02_platforms"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/ResetZone3" index="0" unique_id=783872511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.320114, 0, 1.0799103)
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="SectionData" type="Node" parent="." index="39" unique_id=375373272]
+script = ExtResource("14_yp7s4")
+level = 3
+section = 2
+
+[connection signal="body_entered" from="Interactions/EnterSection/EnterToSection/Enter" to="Interactions/EnterSection/EnterToSection" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Interactions/EnterSection/EnterToSection/Exit" to="Interactions/EnterSection/EnterToSection" method="_on_exit_body_entered"]

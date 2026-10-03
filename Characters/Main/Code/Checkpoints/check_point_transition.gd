@@ -6,6 +6,7 @@ class_name CheckPointTransition
 signal transition_finished
 
 func activate_transition(new_position: Vector2) -> void:
+	color_rect.visible = true
 	var viewport_size : Vector2 = get_viewport_rect().size
 	var mask_position : Vector2 = new_position / viewport_size
 	
@@ -32,3 +33,5 @@ func activate_transition(new_position: Vector2) -> void:
 			3.5,
 			0.2
 	)
+	await tween.finished
+	color_rect.visible = false

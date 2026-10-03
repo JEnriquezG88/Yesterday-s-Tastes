@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://csw4lbko32hdx" path="res://Levels/GeneralAssets/Interactions/MagicBridge/ImportAssets/magic_bridge.glb" id="1_mky0b"]
 [ext_resource type="Script" uid="uid://b6mdsm21vsge1" path="res://Levels/GeneralAssets/Interactions/MagicBridge/Code/magic_bridge.gd" id="2_sd38d"]
+[ext_resource type="Script" uid="uid://dpddpqwhtpyv6" path="res://Levels/GeneralAssets/Interactions/Code/interactive_object_sound_manager.gd" id="3_30vnn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
 size = Vector3(1, 5, 7)
@@ -11,6 +12,19 @@ script = ExtResource("2_sd38d")
 
 [node name="BridgeArmature" parent="." index="0" unique_id=1721561686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Skeleton3D" parent="BridgeArmature" index="0" unique_id=1168352720]
+bones/0/position = Vector3(4.3605123, 0.48778254, 0)
+bones/0/rotation = Quaternion(0, -2.3893872e-08, -0.6980685, 0.716031)
+bones/1/position = Vector3(-4.3605123, 0.48778254, 0)
+bones/1/rotation = Quaternion(1.2404189e-15, 2.3893866e-08, 0.6980685, 0.716031)
+bones/1/scale = Vector3(0.99999994, 0.99999994, 1)
+bones/2/position = Vector3(3.6752965, 3.0461211, -1.01855235e-07)
+bones/2/rotation = Quaternion(1.7193181e-15, -2.1636087e-08, -0.6321066, 0.7748814)
+bones/3/position = Vector3(-3.6752965, 3.0461211, -1.01855235e-07)
+bones/3/rotation = Quaternion(2.2924242e-15, 2.163609e-08, 0.63210666, 0.7748814)
+bones/5/rotation = Quaternion(-3.7682217e-15, -2.4203242e-08, -0.7071068, 0.7071067)
+bones/6/rotation = Quaternion(0, 2.4203237e-08, 0.7071068, 0.7071067)
 
 [node name="BridgeLights" parent="." index="1" unique_id=383547091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -33,3 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.372, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Systems/Colliders/Obstacle02" index="0" unique_id=923094422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_61a82")
+
+[node name="InteractiveObjectSoundManager" type="Node3D" parent="." index="4" unique_id=1320196046]
+script = ExtResource("3_30vnn")

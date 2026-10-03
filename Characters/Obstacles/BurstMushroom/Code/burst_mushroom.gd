@@ -146,6 +146,7 @@ var is_character_in_area : bool = false
 
 func _on_detect_character_body_entered(_body: Node3D) -> void:
 	is_character_in_area = true
+	GlobalSignals.is_stamp_sound.emit(true)
 	GlobalSignals.shot_magic.connect(_on_magic_shot)
 	if current_state == STATES.IDLE:
 		current_state = STATES.ATTAKING
@@ -185,6 +186,7 @@ const HARD_IMPACT = preload("uid://twx041d7b7w6")
 
 func _on_detect_character_body_exited(_body: Node3D) -> void:
 	is_character_in_area = false
+	GlobalSignals.is_stamp_sound.emit(false)
 	consecutive_magic_shots = 0
 	GlobalSignals.shot_magic.disconnect(_on_magic_shot)
 

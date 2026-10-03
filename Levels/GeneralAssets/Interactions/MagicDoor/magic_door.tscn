@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdos2xfh7y8ka" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door.glb" id="3_bwvod"]
 [ext_resource type="PackedScene" uid="uid://bb40dr2exc4k" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_light_01.glb" id="4_7q27x"]
 [ext_resource type="PackedScene" uid="uid://cxrergnr3fby2" path="res://Levels/GeneralAssets/Interactions/MagicDoor/ImportAssets/magic_door_light_02.glb" id="5_b7vej"]
+[ext_resource type="Script" uid="uid://dpddpqwhtpyv6" path="res://Levels/GeneralAssets/Interactions/Code/interactive_object_sound_manager.gd" id="6_bwvod"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
 size = Vector3(7.3146973, 4, 1)
@@ -93,5 +94,8 @@ libraries/ = SubResource("AnimationLibrary_7q27x")
 [node name="Timer" type="Timer" parent="." unique_id=1266837459]
 wait_time = 0.8
 one_shot = true
+
+[node name="InteractiveObjectSoundManager" type="Node3D" parent="." unique_id=51290599]
+script = ExtResource("6_bwvod")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

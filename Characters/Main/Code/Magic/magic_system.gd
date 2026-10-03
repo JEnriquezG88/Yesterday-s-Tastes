@@ -7,7 +7,8 @@ enum  MAGIC_TYPES {
 	BROKE,
 	FIRE,
 	STAMP,
-	RETURN
+	RETURN,
+	UP
 }
 
 var current_magic_type : MAGIC_TYPES = MAGIC_TYPES.NONE
@@ -20,6 +21,7 @@ var current_magic_type : MAGIC_TYPES = MAGIC_TYPES.NONE
 @onready var fire_particles: GPUParticles3D = $"../../Systems/LocalParticles/FireParticles"
 
 @onready var audio_manager: AudioManager = $"../../Systems/AudioManager"
+@onready var movement: Movement = $"../Movement"
 
 
 var _magic_culldown_timer : Timer = Timer.new()
@@ -89,6 +91,7 @@ func finish_magic_animation() -> void:
 		character_controller.current_state = CharacterController.STATES.MOVEMENT
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request", "Movement")
 	GlobalSignals.camera_zoom.emit(0.0)
+	movement.can_floor_jump = true
 	if input_and_buffer.current_pending_action != InputAndBuffer.ACTIONS.NONE:
 		input_and_buffer.process_pending_actions(input_and_buffer.current_pending_action)
 

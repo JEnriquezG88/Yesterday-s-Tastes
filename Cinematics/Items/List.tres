@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btnqc2ak0lyow"]
+
+[ext_resource type="Texture2D" uid="uid://ceenv2cecfit7" path="res://Cinematics/Items/CinematicList_list.png" id="1_3ysf4"]
+
+[resource]
+resource_name = "List"
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_3ysf4")
+uv1_scale = Vector3(-1, -1, -1)

@@ -15,7 +15,11 @@ signal return_to_camera_original_target()
 signal shot_magic(magic_type: MagicSystem.MAGIC_TYPES)
 signal main_character_wait
 signal main_character_resume
+signal transition_interaction(new_position: Vector3, camera_type: CameraController.CAMERA_TYPES)
+signal change_camera_view(new_camera_view : CameraController.CAMERA_TYPES)
+
 signal first_scenario_loaded
+signal is_stamp_sound(value: bool)
 signal load_lobby
 
 

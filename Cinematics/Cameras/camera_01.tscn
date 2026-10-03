@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ddyq6ys5k61md"]
+
+[ext_resource type="PackedScene" uid="uid://xjeu6oijpys5" path="res://Cinematics/Cameras/camera_01.glb" id="1_4528y"]
+[ext_resource type="Script" uid="uid://cyw7se6uaieoo" path="res://Cinematics/Code/cinematic_cameras.gd" id="2_4528y"]
+
+[node name="camera_01" unique_id=295014389 instance=ExtResource("1_4528y")]
+script = ExtResource("2_4528y")
+
+[node name="Skeleton3D" parent="Camera_01" parent_id_path=PackedInt32Array(1461128273) index="0" unique_id=1515713837]
+bones/0/position = Vector3(-0.2663126, 0, 3.7455952)
+bones/1/position = Vector3(-1.1763642, 3.5218487, 0.69941604)
+bones/2/rotation = Quaternion(-0.5348225, -0.08695906, 0.13488555, 0.8295836)
+bones/3/position = Vector3(0, 0, 8.89207)
+bones/3/rotation = Quaternion(-0.5348225, -0.08695907, 0.13488558, 0.8295836)
+
+[node name="CameraOffset" type="BoneAttachment3D" parent="Camera_01/Skeleton3D" index="0" unique_id=1658506429]
+transform = Transform3D(0.948488, -0.13078238, -0.28855932, -4.4703484e-08, -0.91081905, 0.41280597, -0.31681305, -0.39154154, -0.8639009, -0.2663126, 8.89207, 3.7455952)
+bone_name = "Camera_Offset"
+bone_idx = 4
+
+[node name="Camera3D" type="Camera3D" parent="Camera_01/Skeleton3D/CameraOffset" index="0" unique_id=1063001200]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+fov = 25.0

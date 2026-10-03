@@ -66,7 +66,7 @@ func _on_start_button_up() -> void:
 		_stop_audio()
 		await fade_manager._fade_out()
 		visible = false
-		get_tree().change_scene_to_file("uid://ghhahuqhg7k4")
+		get_tree().change_scene_to_file("uid://uepnft0juc5y")
 
 func _on_continue_button_up() -> void:
 	buttons_container.change_first_element(continue_button)

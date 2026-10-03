@@ -18,6 +18,7 @@ var current_state : STATES = STATES.NONE
 
 
 @onready var cinematics_manager: CinematicsManager = $Code/CinematicsManager
+@onready var list: IngredientsList = $UI/List
 
 func return_to_normal_state() -> void:
 	pass
@@ -30,4 +31,6 @@ func _ready() -> void:
 func _on_first_scenario_loaded() -> void:
 	GlobalSignals.first_scenario_loaded.disconnect(_on_first_scenario_loaded)
 	await fade._fade_in()
-	current_state = CharacterController.STATES.MOVEMENT
+	current_state = CharacterController.STATES.WAITING
+	await get_tree().create_timer(0.5).timeout
+	list.start_list_menu()

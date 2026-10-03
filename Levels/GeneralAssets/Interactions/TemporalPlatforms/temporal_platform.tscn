@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://i5gho6uk6fv0"]
+
+[ext_resource type="PackedScene" uid="uid://b3nwbiq3dblql" path="res://Levels/GeneralAssets/Interactions/TemporalPlatforms/ImportedAssets/temporal_platform.glb" id="1_hu4j6"]
+[ext_resource type="Script" uid="uid://5g0f1kayf5pl" path="res://Levels/GeneralAssets/Interactions/TemporalPlatforms/Code/temporal_platform.gd" id="2_uhnyy"]
+[ext_resource type="PackedScene" uid="uid://crh1edm0vp5a" path="res://Levels/GeneralAssets/Interactions/TemporalPlatforms/FX/break_particles.tscn" id="3_jrn0q"]
+
+[sub_resource type="Animation" id="Animation_uhnyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jrn0q"]
+resource_name = "shake_animation"
+length = 0.4000033541951328
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.1, 0, 0), Vector3(0, 0, 0), Vector3(0.1, 0, 0), Vector3(0, 0, 0), Vector3(-0.1, 0, 0), Vector3(0, 0, 0), Vector3(0.1, 0, 0), Vector3(0, 0, 0), Vector3(-0.1, 0, 0), Vector3(0, 0, 0), Vector3(0.1, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sws2t"]
+_data = {
+&"RESET": SubResource("Animation_uhnyy"),
+&"shake_animation": SubResource("Animation_jrn0q")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(5.5270996, 0.52233887, 2.834961)
+
+[sub_resource type="Curve" id="Curve_ongjo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uiydg"]
+curve = SubResource("Curve_ongjo")
+
+[sub_resource type="Gradient" id="Gradient_uiydg"]
+colors = PackedColorArray(1, 1, 1, 1, 0.37413925, 0.37413928, 0.37413922, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uiydg"]
+gradient = SubResource("Gradient_uiydg")
+
+[sub_resource type="Curve" id="Curve_q1a7r"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 2.1000001), 0.0, 8.398384, 0, 0, Vector2(1, 0.8387096), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c3qkr"]
+curve = SubResource("Curve_q1a7r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jrn0q"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(2.765, 0.38, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1.43)
+direction = Vector3(0, 0, 0)
+spread = 48.17
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_c3qkr")
+color_ramp = SubResource("GradientTexture1D_uiydg")
+alpha_curve = SubResource("CurveTexture_uiydg")
+
+[node name="temporal_platform" unique_id=230776283 instance=ExtResource("1_hu4j6")]
+script = ExtResource("2_uhnyy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TemporalPlatform_001/TemporalPlatform" parent_id_path=PackedInt32Array(1259178480) index="0" unique_id=1505709529]
+libraries/ = SubResource("AnimationLibrary_sws2t")
+
+[node name="CharacterDetector" type="Area3D" parent="." index="1" unique_id=2133608794]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CharacterDetector" type="CollisionShape3D" parent="CharacterDetector" index="0" unique_id=684474993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23883057, 0)
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="BreakParticles" parent="." index="2" unique_id=1084411391 instance=ExtResource("3_jrn0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38319468, 0)
+process_material = SubResource("ParticleProcessMaterial_jrn0q")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3" unique_id=1060117763]
+volume_db = -5.0
+bus = &"VFX"

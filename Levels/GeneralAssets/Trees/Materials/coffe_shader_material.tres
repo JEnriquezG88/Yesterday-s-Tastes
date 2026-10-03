@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://chqd8xm7j8q5f"]
+
+[ext_resource type="Shader" uid="uid://brsyjxoofjlml" path="res://Levels/GeneralAssets/Trees/Materials/corn_shader.gdshader" id="1_a4q1u"]
+[ext_resource type="Texture2D" uid="uid://dhksr1uo6eqdg" path="res://Levels/GeneralAssets/Trees/Imported/coffe_01_Ucupaint Coffe Color.png" id="2_a4q1u"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_a4q1u")
+shader_parameter/albedo_texture = ExtResource("2_a4q1u")
+shader_parameter/wind_amplitude = 0.05
+shader_parameter/wind_speed = 1.5

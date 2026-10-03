@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bxtvap4utufos"]
+
+[ext_resource type="Texture2D" uid="uid://bt4e3g2k2t6lj" path="res://Cinematics/Scenarios/Room/GeneralWord_Ucupaint Estante Color.png" id="1_7qqkf"]
+
+[resource]
+resource_name = "Estante"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_7qqkf")
+texture_filter = 0

@@ -1469,5 +1469,5 @@ transform = Transform3D(-0.7913143, 0, -0.6114096, 0, 1, 0, 0.6114096, 0, -0.791
 [node name="tree_trunk_05" parent="Nature/TreeTrunks" index="5" unique_id=1836734168 instance=ExtResource("11_a2sle")]
 transform = Transform3D(0.006182164, 0, -0.99998087, 0, 1, 0, 0.99998087, 0, 0.006182164, -35.691387, 0, -8.571045)
 
-[node name="CollisionShape3D" parent="lobby_wall_limits" parent_id_path=PackedInt32Array(1439927542) index="0" unique_id=783822498]
+[node name="CollisionShape3D" parent="lobby_wall_limits" parent_id_path=PackedInt32Array(1150592974) index="0" unique_id=1861289602]
 transform = Transform3D(0.99999976, 0.00056696095, -0.00036150927, -0.0005669273, 0.9999998, 8.990269e-05, 0.000361562, -8.969031e-05, 0.99999994, 0, 0, 0)

@@ -12,6 +12,9 @@ class_name PauseMenuManager
 
 @export var fade_manager : FadeManager 
 
+@onready var list: IngredientsList = $"../List"
+
+
 func _ready() -> void:
 	visible = false
 	#start_menu()
@@ -25,6 +28,7 @@ func start_menu() -> void:
 	pause_menu.first_element_focus()
 
 func _input(event: InputEvent) -> void:
+	if list.active: return
 	if Input.is_action_just_released("pause"):
 		if get_tree().paused:
 			_on_continue_button_up()

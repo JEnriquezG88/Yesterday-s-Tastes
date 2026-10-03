@@ -9,6 +9,14 @@ class_name MagicBridge
 
 @onready var colliders: Node3D = $Systems/Colliders
 
+#region Sounds
+
+@onready var interactive_object_sound_manager: InteractionObjectSoundManager = $InteractiveObjectSoundManager
+
+const MAGIC_ACTIVATION = preload("uid://doaowv3jxfmly")
+const OPEN_MAGIC_DOOR = preload("uid://bxjvwxdm240it")
+
+#endregion
 
 var _magic_door_light_intensity : float = 5.0
 var _cinematic_timer_time : float = 0.8
@@ -37,6 +45,7 @@ func _interact() -> void:
 	await get_tree().create_timer(_cinematic_timer_time).timeout
 	_change_light_intensity(bridge_light, _magic_door_light_intensity)
 	await get_tree().create_timer(_cinematic_timer_time).timeout
+	interactive_object_sound_manager.shot_sound(OPEN_MAGIC_DOOR)
 	animation_player.play("DownAnimation")
 	await animation_player.animation_finished
 	colliders.queue_free()
@@ -44,6 +53,7 @@ func _interact() -> void:
 	GlobalSignals.main_character_resume.emit()
 
 func _change_light_intensity(light: StandardMaterial3D, final_value: float) -> void:
+	interactive_object_sound_manager.shot_sound(MAGIC_ACTIVATION)
 	var tween : Tween = create_tween()
 	tween.tween_property(light, "emission_energy_multiplier", final_value, 0.2)
 	await tween.finished

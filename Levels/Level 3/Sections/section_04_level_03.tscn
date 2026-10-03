@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cegu75i6jk83v"]
+
+[ext_resource type="PackedScene" uid="uid://chu15550ncwjt" path="res://Levels/Level 3/ImportedAssets/section_04.glb" id="1_gnmsm"]
+[ext_resource type="Script" uid="uid://b5ucwyngba3tg" path="res://Levels/Level 3/Code/transition_interaction.gd" id="2_xex7l"]
+[ext_resource type="PackedScene" uid="uid://4nkyhbinvdcn" path="res://Global/VFX/MagicParticles/Break/break_wall.tscn" id="3_mgkgt"]
+[ext_resource type="PackedScene" uid="uid://bykmsijavvcdo" path="res://Global/Code/Interactions/interaction_system.tscn" id="4_4s2qj"]
+[ext_resource type="PackedScene" uid="uid://i5gho6uk6fv0" path="res://Levels/GeneralAssets/Interactions/TemporalPlatforms/temporal_platform.tscn" id="5_mgkgt"]
+[ext_resource type="PackedScene" uid="uid://bjc0kcch28bkc" path="res://Levels/GeneralAssets/Interactions/MagicDoor/magic_door.tscn" id="5_nttsj"]
+[ext_resource type="PackedScene" uid="uid://dbnnrpmeth7t" path="res://Levels/GeneralAssets/Interactions/MagicDoor/magic_door_fire_totem.tscn" id="6_ffjm4"]
+[ext_resource type="Script" uid="uid://bsi7hkkluxml4" path="res://Levels/Code/vertical_zone_reset_zone.gd" id="8_ffjm4"]
+[ext_resource type="Script" uid="uid://bgmnk6kv85pg3" path="res://Levels/Code/section_data.gd" id="9_j2qoa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7w5u"]
+size = Vector3(4.0147705, 4.066284, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nttsj"]
+radius = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffjm4"]
+size = Vector3(101.708305, 1.7888184, 7.2039795)
+
+[node name="section_03_level_03" unique_id=728723184 node_paths=PackedStringArray("interactions") instance=ExtResource("1_gnmsm")]
+interactions = [NodePath("Interactions/EnterSection/Obstacles/InteractionSystem"), NodePath("Interactions/MagicDoor/InteractionSystem3"), NodePath("Interactions/MagicDoor/InteractionSystem4")]
+
+[node name="Interactions" type="Node3D" parent="." index="19" unique_id=44817006]
+
+[node name="EnterSection" type="Node3D" parent="Interactions" index="0" unique_id=1144525212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 242.31386, 0, 0)
+
+[node name="EnterPosition" type="Node3D" parent="Interactions/EnterSection" index="0" unique_id=817770819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.404434, -25.850494, 55.167744)
+
+[node name="ExitPosition" type="Node3D" parent="Interactions/EnterSection" index="1" unique_id=447239533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.616837, -14.431523, 26.733816)
+
+[node name="EnterToSection" type="Node3D" parent="Interactions/EnterSection" index="2" unique_id=457272940 node_paths=PackedStringArray("new_enter_position_node", "new_exit_position_node")]
+script = ExtResource("2_xex7l")
+new_enter_position_node = NodePath("../EnterPosition")
+new_exit_position_node = NodePath("../ExitPosition")
+metadata/_custom_type_script = "uid://b6p7qcu1wi1ra"
+
+[node name="Enter" type="Area3D" parent="Interactions/EnterSection/EnterToSection" index="0" unique_id=936177808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.72734, -14.237671, 19.543657)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/EnterSection/EnterToSection/Enter" index="0" unique_id=2015918393]
+transform = Transform3D(0.9499271, 0, -0.31247157, 0, 1, 0, 0.31247157, 0, 0.9499271, -0.5091629, 1.5331421, 1.4777546)
+shape = SubResource("BoxShape3D_w7w5u")
+
+[node name="Exit" type="Area3D" parent="Interactions/EnterSection/EnterToSection" index="1" unique_id=525188032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.886585, -24.931946, 51.181084)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Interactions/EnterSection/EnterToSection/Exit" index="0" unique_id=42437871]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.45225906, 0.8970337, 2.3288803)
+shape = SubResource("BoxShape3D_w7w5u")
+
+[node name="Obstacles" type="Node3D" parent="Interactions/EnterSection" index="3" unique_id=1729624463]
+
+[node name="BreakWall" parent="Interactions/EnterSection/Obstacles" index="0" unique_id=394055457 instance=ExtResource("3_mgkgt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 61.808273, -25.874388, 53.4442)
+
+[node name="InteractionSystem" parent="Interactions/EnterSection/Obstacles" index="1" unique_id=1678312802 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("4_4s2qj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 59.984207, -25.874388, 53.88829)
+_interaction_button = 2
+interactuable_object = NodePath("../BreakWall")
+
+[node name="MagicDoor" parent="Interactions" index="1" unique_id=1568250318 node_paths=PackedStringArray("fire_totem_01", "fire_totem_02") instance=ExtResource("5_nttsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.40118, -23.628603, 53.90904)
+fire_totem_01 = NodePath("magic_door_fire_totem")
+fire_totem_02 = NodePath("magic_door_fire_totem2")
+
+[node name="magic_door_fire_totem" parent="Interactions/MagicDoor" index="3" unique_id=171872141 instance=ExtResource("6_ffjm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.896698, -0.32069397, 0.074272156)
+
+[node name="magic_door_fire_totem2" parent="Interactions/MagicDoor" index="4" unique_id=564941172 instance=ExtResource("6_ffjm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1008, -0.32069397, 0.46294022)
+
+[node name="InteractionSystem3" parent="Interactions/MagicDoor" index="7" unique_id=1326250282 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("4_4s2qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.887909, 0, 0.07941818)
+_interaction_button = 3
+interactuable_object = NodePath("../magic_door_fire_totem")
+obstacle = false
+
+[node name="InteractionSystem4" parent="Interactions/MagicDoor" index="8" unique_id=217585234 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("4_4s2qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.094086, 0, 0.45362854)
+_interaction_button = 3
+interactuable_object = NodePath("../magic_door_fire_totem2")
+obstacle = false
+
+[node name="Platforms" type="Node3D" parent="." index="20" unique_id=605200660]
+
+[node name="temporal_platform" parent="Platforms" index="0" unique_id=230776283 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.23737, -25.288351, 55.04211)
+
+[node name="temporal_platform2" parent="Platforms" index="1" unique_id=1366366363 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318.30206, -24.123753, 55.04211)
+
+[node name="temporal_platform3" parent="Platforms" index="2" unique_id=1401293485 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 326.63748, -25.465418, 55.04211)
+
+[node name="temporal_platform4" parent="Platforms" index="3" unique_id=468925182 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 334.23813, -27.095127, 55.04211)
+
+[node name="temporal_platform5" parent="Platforms" index="4" unique_id=1496460205 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 349.33267, -27.159546, 55.04211)
+
+[node name="temporal_platform6" parent="Platforms" index="5" unique_id=144085289 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 356.46402, -25.942354, 55.04211)
+
+[node name="temporal_platform7" parent="Platforms" index="6" unique_id=554199306 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363.4019, -24.382822, 55.04211)
+
+[node name="temporal_platform8" parent="Platforms" index="7" unique_id=1678065300 groups=["level_03_section_04_platforms"] instance=ExtResource("5_mgkgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.28992, -22.562809, 55.04211)
+
+[node name="Checkpoints" type="Node3D" parent="." index="21" unique_id=900687017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.93715, 0, 0)
+
+[node name="CheckpointArea4" type="Area3D" parent="Checkpoints" index="0" unique_id=1636418369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.520683, -24.130322, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea4" index="0" unique_id=1651664971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="CheckpointArea5" type="Area3D" parent="Checkpoints" index="1" unique_id=2059881253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.768295, -27.45398, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea5" index="0" unique_id=1179129973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="CheckpointArea6" type="Area3D" parent="Checkpoints" index="2" unique_id=1651208734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.30373, -23.541044, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea6" index="0" unique_id=866007806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="CheckpointArea7" type="Area3D" parent="Checkpoints" index="3" unique_id=1691823972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.7726, -22.570087, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea7" index="0" unique_id=1589727493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="CheckpointArea8" type="Area3D" parent="Checkpoints" index="4" unique_id=1443233981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.85146, -22.570087, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea8" index="0" unique_id=123128260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="CheckpointArea9" type="Area3D" parent="Checkpoints" index="5" unique_id=262971750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.89919, -23.242289, 55.031433)
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/CheckpointArea9" index="0" unique_id=1217894165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18370056, -0.20258331)
+shape = SubResource("SphereShape3D_nttsj")
+
+[node name="ResetZone3" type="Area3D" parent="Checkpoints" index="6" unique_id=253806266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.146015, -30.359503, 55.031433)
+collision_layer = 64
+collision_mask = 132
+script = ExtResource("8_ffjm4")
+group = "level_03_section_04_platforms"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/ResetZone3" index="0" unique_id=469600537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.354126, 0, 0.31196594)
+shape = SubResource("BoxShape3D_ffjm4")
+
+[node name="SectionData" type="Node" parent="." index="22" unique_id=1422725913]
+script = ExtResource("9_j2qoa")
+level = 3
+section = 4
+
+[connection signal="body_entered" from="Interactions/EnterSection/EnterToSection/Enter" to="Interactions/EnterSection/EnterToSection" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Interactions/EnterSection/EnterToSection/Exit" to="Interactions/EnterSection/EnterToSection" method="_on_exit_body_entered"]

@@ -317,13 +317,14 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1396592549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5961914, 0)
 shape = SubResource("CapsuleShape3D_61a82")
+disabled = true
 
 [node name="Skeleton3D" parent="BurstMushroomArmature" parent_id_path=PackedInt32Array(1661840247) index="0" unique_id=464842197]
-bones/2/position = Vector3(0.2109063, 1.567549, -0.19080077)
-bones/2/rotation = Quaternion(-0.26622492, 0.0015537636, -0.0846656, 0.9601842)
+bones/2/position = Vector3(-0.17903574, 1.5675688, -0.084935084)
+bones/2/rotation = Quaternion(-0.224879, -0.001323456, 0.0721159, 0.9717135)
 bones/2/scale = Vector3(0.99999994, 1, 1)
-bones/4/rotation = Quaternion(-0.03873414, -0.001847204, -0.042307895, 0.9983518)
-bones/5/rotation = Quaternion(-0.03840251, -0.0055275564, -0.04230793, 0.998351)
+bones/4/rotation = Quaternion(-0.017231023, 0.001569402, 0.035945192, 0.99920404)
+bones/5/rotation = Quaternion(-0.016899457, 0.0046962807, 0.035945356, 0.99919987)
 
 [node name="EyesController" type="BoneAttachment3D" parent="BurstMushroomArmature/Skeleton3D" index="3" unique_id=260499578]
 bone_name = "EyesController"

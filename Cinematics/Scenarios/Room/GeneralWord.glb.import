@@ -1,0 +1,103 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b5oexee6ct8w2"
+path="res://.godot/imported/GeneralWord.glb-76e03836e201107de3702b9d106ded8d.scn"
+
+[deps]
+
+source_file="res://Cinematics/Scenarios/Room/GeneralWord.glb"
+dest_files=["res://.godot/imported/GeneralWord.glb-76e03836e201107de3702b9d106ded8d.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Alfombra": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Alfombra.tres",
+"use_external/path": "uid://dd1ly877sj6h5"
+},
+"Armario": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Armario.tres",
+"use_external/path": "uid://dr7f72fwt117b"
+},
+"BedMaterial": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/BedMaterial.tres",
+"use_external/path": "uid://bj6l6j3g75jjx"
+},
+"Cuadros": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Cuadros.tres",
+"use_external/path": "uid://birbmdjoxxvr1"
+},
+"Estante": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Estante.tres",
+"use_external/path": "uid://bxtvap4utufos"
+},
+"GodRays": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/GodRays.tres",
+"use_external/path": "uid://5wqvssdm3x4k"
+},
+"Marco": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Marco.tres",
+"use_external/path": "uid://dgk6fj7qla6r0"
+},
+"Mesa": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Mesa.tres",
+"use_external/path": "uid://wb060o4rwrn1"
+},
+"MesaDeNoche": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/MesaDeNoche.tres",
+"use_external/path": "uid://dw7gj7sll0slo"
+},
+"RoomMaterial": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/RoomMaterial.tres",
+"use_external/path": "uid://cp1rv57v8urcd"
+},
+"Silla": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Silla.tres",
+"use_external/path": "uid://bvnyswtxjcyh7"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
+gltf/texture_map_mode=1

@@ -17,6 +17,7 @@ var main_character : CharacterController
 
 const KORN_PATH : String = "uid://demjy0gsdlhof"
 const CHEESE_PATH : String = "uid://jqof7yeudcnp"
+const COFFE_PATH : String = "uid://cada3fevy2ao7"
 var ingredient_mesh : MeshInstance3D
 
 
@@ -42,6 +43,8 @@ func _ready() -> void:
 				load_mesh = load(KORN_PATH)
 			INGREDIENTS.CHEESE:
 				load_mesh = load(CHEESE_PATH)
+			INGREDIENTS.COFFE:
+				load_mesh = load(COFFE_PATH)
 		ingredient_mesh = MeshInstance3D.new()
 		ingredient_mesh.mesh = load_mesh
 		rotation_item.add_child(ingredient_mesh)

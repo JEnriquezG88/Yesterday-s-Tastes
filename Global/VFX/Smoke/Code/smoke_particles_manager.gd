@@ -12,6 +12,7 @@ func _ready() -> void:
 	print("ready")
 	for i in 5:
 		var smoke_particle : ParticlesBase = SMOKE_PARTICLES_BASE.instantiate()
+		smoke_particle.position.y = -10
 		add_child(smoke_particle)
 		smoke_particles.append(smoke_particle)
 	GlobalSignals.shot_ground_impact_particles.connect(shot_ground_impact_particles)

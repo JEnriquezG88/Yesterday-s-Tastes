@@ -17,6 +17,16 @@ var _magic_door_light_intensity : float = 5.0
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+#region Sounds
+@onready var interactive_object_sound_manager: InteractionObjectSoundManager = $InteractiveObjectSoundManager
+
+const MAGIC_ACTIVATION = preload("uid://doaowv3jxfmly")
+const HARD_IMPACT = preload("uid://twx041d7b7w6")
+const OPEN_MAGIC_BRIDGE = preload("uid://bxjvwxdm240it")
+
+
+#endregion
+
 func _ready() -> void:
 	fire_totem_01.fire_door_finished.connect(_on_fire_totem_01_finish)
 	fire_totem_02.fire_door_finished.connect(_on_fire_totem_02_finish)
@@ -40,6 +50,7 @@ func _start_lights() -> void:
 	
 
 func _change_light_intensity(light: StandardMaterial3D, final_value: float) -> void:
+	interactive_object_sound_manager.shot_sound(MAGIC_ACTIVATION)
 	var tween : Tween = create_tween()
 	tween.tween_property(light, "emission_energy_multiplier", final_value, 0.2)
 	await tween.finished
@@ -74,6 +85,7 @@ func _on_fire_totem_02_finish() -> void:
 func _can_open_door() -> void:
 	if totems_active == 2:
 		animation_player.play("close_door")
+		interactive_object_sound_manager.shot_sound(OPEN_MAGIC_BRIDGE)
 		await animation_player.animation_finished
 		GlobalSignals.return_to_camera_original_target.emit()
 		GlobalSignals.main_character_resume.emit()
