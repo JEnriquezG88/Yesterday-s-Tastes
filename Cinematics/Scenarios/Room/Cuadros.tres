@@ -1,8 +1,11 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://birbmdjoxxvr1"]
 
+[ext_resource type="Texture2D" uid="uid://yy454i51rd5k" path="res://Cinematics/Scenarios/Room/GeneralWord_cuadros.png" id="1_tk46p"]
+
 [resource]
 resource_name = "Cuadros"
 cull_mode = 2
+shading_mode = 0
 albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-roughness = 0.5
+albedo_texture = ExtResource("1_tk46p")
 texture_filter = 0

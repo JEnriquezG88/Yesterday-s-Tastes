@@ -14,6 +14,7 @@ class_name PauseMenuManager
 
 @onready var list: IngredientsList = $"../List"
 
+@onready var tutoriales: Tutorials = $"../Tutoriales"
 
 func _ready() -> void:
 	visible = false
@@ -29,6 +30,7 @@ func start_menu() -> void:
 
 func _input(event: InputEvent) -> void:
 	if list.active: return
+	if tutoriales.is_in_tutorial: return
 	if Input.is_action_just_released("pause"):
 		if get_tree().paused:
 			_on_continue_button_up()

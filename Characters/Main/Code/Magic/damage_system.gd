@@ -26,10 +26,12 @@ func _on_damage_finish() -> void:
 
 
 func _on_attacks_detector_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	print("attack - shape entered")
 	if character_controller.current_state == CharacterController.STATES.MAGIC:
 		GlobalSignals.camera_zoom.emit(0.0)
 		
 	if character_controller.current_state == CharacterController.STATES.DASH:
+		print("attack - is in dash_state")
 		var to_area := (area.global_position - character_controller.global_position).normalized()
 		
 		var character_forward := character_controller.global_transform.basis.z.normalized()
@@ -39,8 +41,9 @@ func _on_attacks_detector_area_shape_entered(area_rid: RID, area: Area3D, area_s
 		if facing < -0.5:
 			return
 	if character_controller.is_on_floor():
+		character_controller.velocity.y = 0.0
 		GlobalSignals.shot_dash_particles.emit(character_controller, Vector3.ZERO, character_controller.global_rotation)
-	
+	print("attack - shot damage")
 	character_controller.current_state = CharacterController.STATES.DAMAGE
 	character_controller.animation_tree.set("parameters/Damages/DamageTypes/transition_request","back_push")
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request","Damage")

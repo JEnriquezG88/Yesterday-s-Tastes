@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bxrxnhug6tmq4"]
+
+[ext_resource type="Texture2D" uid="uid://fbgybiulvvpa" path="res://Cinematics/Scenarios/Room/GeneralWord_Ucupaint Inciensera Color.png" id="1_um2av"]
+
+[resource]
+resource_name = "Inciensera"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_um2av")
+texture_filter = 0

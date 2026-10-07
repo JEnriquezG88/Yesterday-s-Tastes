@@ -38,3 +38,17 @@ high_option;"Alto";"High"
 ultra_option;"Ultra";"Ultra"
 
 ao_option_bton;"Oclusión De Ambiente";"Ambient Occlusion"
+
+created_by_tittle;"Creado Por:";"Created By:"
+
+jump_tutorial_tittle;"Salto";"Jump"
+jump_tutorial;"Preciona el botón {0} para saltar.\nPuedes realizar un salto en el aire";"Press the button {0} to jump.\nYou can jump a second time while in the air."
+
+movement_tutorial_tittle;"Movimiento";"Movement"
+movement_tutorial;"Usa {0} para moverte.\nExplora el mundo y descubre el camino.";"Use {0} to move.\nExplore the world and find the way."
+
+dash_tutorial_tittle;"Dash";"Dash"
+dash_tutorial;"Preciona el botón {0} para hacer un Dash.\nPuedes hacer Dash en el aire para llegar más lejos";"Press the button {0} to Dash.\nYou can also Dash in the air to reach farther."
+
+combat_tutorial_tittle;"Combate";"Combat"
+combat_tutorial;"¡Cuidado con el Honguito Juguetón!\nIntentará impedirte el paso, puedes usar tu magia para inhabilitarlo temporalmente.\nHielo: {0}.\nFuego: {1}.\nAplastar: {2}.";"Wath out fot the Playful Mushrooms¡\nThe will try to block yout path, use yout magic to temporarily disable them.\nIce: {0}.\nFire: {1}.\nSmash: {2}."

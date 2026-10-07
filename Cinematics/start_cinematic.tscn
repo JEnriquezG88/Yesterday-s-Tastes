@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b84ym5t44jbji" path="res://Cinematics/Scenarios/kitchen.tscn" id="1_k3xqb"]
 [ext_resource type="Script" uid="uid://cdhgr7tboq35u" path="res://Cinematics/Code/start_cinematic.gd" id="1_w512l"]
-[ext_resource type="PackedScene" uid="uid://vr6brhdpu84r" path="res://Cinematics/Scenarios/room.tscn" id="2_w512l"]
-[ext_resource type="Animation" uid="uid://ccf66pbsbrvtq" path="res://Cinematics/Character/imported_assets/animations/Start/camera_wake_up_animation.anim" id="4_625jx"]
+[ext_resource type="PackedScene" uid="uid://b5t6gbnckncfh" path="res://Cinematics/Scenarios/room_01.tscn" id="2_20o8f"]
+[ext_resource type="Animation" uid="uid://b0xa2fd8pbvul" path="res://Cinematics/Character/imported_assets/animations/Start/camera_wake_up_animation.anim" id="4_625jx"]
 [ext_resource type="Script" uid="uid://c2avu033wk1l8" path="res://Cinematics/Code/cinematic_camera.gd" id="4_ku66g"]
 [ext_resource type="Script" uid="uid://by6284nhq0d8h" path="res://UI/code/fade_manager.gd" id="5_6uux0"]
 [ext_resource type="PackedScene" uid="uid://bhd0ram6yrshy" path="res://Global/VFX/CameraFX/camera_fx.tscn" id="6_bvvrs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dww7vkovp2i4v" path="res://Characters/Main/Code/FX/eyes_and_mouth_texture_offset.gd" id="9_625jx"]
 [ext_resource type="Animation" uid="uid://dj0sokccfudfe" path="res://Cinematics/Character/imported_assets/animations/Start/wake_up.anim" id="9_nih4j"]
 [ext_resource type="PackedScene" uid="uid://dc2vcqsjcm6r" path="res://Global/VFX/MagicParticles/Hit/hit_particles.tscn" id="9_swb7s"]
+[ext_resource type="PackedScene" uid="uid://blvr4oigc0f3t" path="res://Global/VFX/Magic/Jump/jump_magic_fx.tscn" id="11_20o8f"]
 [ext_resource type="Script" uid="uid://cdgyl3573x52m" path="res://Cinematics/Code/audio.gd" id="12_iwdgd"]
 [ext_resource type="AudioStream" uid="uid://ntiag8eunubo" path="res://Music/000 - Forest Adventure Acustic.wav" id="13_d7mwc"]
 [ext_resource type="AudioStream" uid="uid://b6a4s08tms2cs" path="res://Global/VFX/Fire/fire_loop.wav" id="14_ap5va"]
@@ -1778,7 +1779,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Room:visible")
+tracks/1/path = NodePath("../../Kitchen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1790,7 +1791,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Kitchen:visible")
+tracks/2/path = NodePath("../../FireSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1802,14 +1803,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../FireSound:playing")
+tracks/3/path = NodePath("../../room:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bvvrs"]
@@ -1868,13 +1869,26 @@ _data = {
 &"cinematic_list": ExtResource("18_u4lwv")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_20o8f"]
+sky_top_color = Color(0.41953897, 0.49244612, 0.58968395, 1)
+sky_horizon_color = Color(0.87875, 0.8821625, 0.8889813, 1)
+ground_bottom_color = Color(0.8784314, 0.88235295, 0.8901961, 1)
+ground_horizon_color = Color(0.8784314, 0.88235295, 0.8901961, 1)
+
+[sub_resource type="Sky" id="Sky_vk2iq"]
+sky_material = SubResource("ProceduralSkyMaterial_20o8f")
+
+[sub_resource type="Environment" id="Environment_1rg5r"]
+background_mode = 2
+sky = SubResource("Sky_vk2iq")
+glow_enabled = true
+
 [node name="StartCinematic" type="Node3D" unique_id=109238585]
 script = ExtResource("1_w512l")
 
-[node name="Kitchen" parent="." unique_id=949146844 instance=ExtResource("1_k3xqb")]
-visible = false
+[node name="room" parent="." unique_id=26241785 instance=ExtResource("2_20o8f")]
 
-[node name="Room" parent="." unique_id=316250454 instance=ExtResource("2_w512l")]
+[node name="Kitchen" parent="." unique_id=949146844 instance=ExtResource("1_k3xqb")]
 visible = false
 
 [node name="Camera" type="Node3D" parent="." unique_id=909370259]
@@ -2283,7 +2297,7 @@ bones/43/rotation = Quaternion(0.8134269, -5.166242e-16, 7.1091385e-16, 0.581667
 bones/43/scale = Vector3(1, 1, 1)
 bones/44/name = "MCH-WGT-hips"
 bones/44/parent = 43
-bones/44/rest = Transform3D(1, -1.2279496e-21, -1.5840509e-22, 1.2279496e-21, 1, -9.7e-44, 1.5840509e-22, -9.7e-44, 1, 2.7969044e-23, -0.14354925, 1.1175871e-08)
+bones/44/rest = Transform3D(1, -1.2279496e-21, -1.5840509e-22, 1.2279496e-21, 1, 0, 1.5840509e-22, 0, 1, 2.7969044e-23, -0.14354925, 1.1175871e-08)
 bones/44/enabled = true
 bones/44/position = Vector3(2.7969044e-23, -0.14354925, 1.1175871e-08)
 bones/44/rotation = Quaternion(0, -7.9202544e-23, 6.139748e-22, 1)
@@ -2297,7 +2311,7 @@ bones/45/rotation = Quaternion(-1.4901161e-08, -7.5687026e-23, 6.150088e-22, 1)
 bones/45/scale = Vector3(1, 1, 1)
 bones/46/name = "ORG-spine"
 bones/46/parent = 45
-bones/46/rest = Transform3D(1, -1.1731489e-21, -1.6295458e-22, 1.1731489e-21, 1, -9.5e-44, 1.6295458e-22, -9.5e-44, 1, -4.652891e-25, 2.3283064e-08, 1.8626451e-08)
+bones/46/rest = Transform3D(1, -1.1731489e-21, -1.6295458e-22, 1.1731489e-21, 1, 0, 1.6295458e-22, 0, 1, -4.652891e-25, 2.3283064e-08, 1.8626451e-08)
 bones/46/enabled = true
 bones/46/position = Vector3(-4.652891e-25, 2.3283064e-08, 1.8626451e-08)
 bones/46/rotation = Quaternion(0, -8.147729e-23, 5.8657445e-22, 1)
@@ -5367,6 +5381,8 @@ mesh = SubResource("ArrayMesh_d7mwc")
 [node name="HitParticles" parent="Character/cinematic_character/CharacterRig/Skeleton3D/wandController/wand" unique_id=2088381422 instance=ExtResource("9_swb7s")]
 transform = Transform3D(1, -8.940697e-08, -1.4901161e-08, -1.4901161e-08, 0.9999998, -4.656613e-10, 3.7252903e-09, -2.0489097e-08, 0.9999999, -0.007703781, 0.48885357, -0.08381373)
 
+[node name="JumpMagicFX" parent="Character/cinematic_character/CharacterRig/Skeleton3D/wandController/wand/HitParticles" unique_id=222638895 instance=ExtResource("11_20o8f")]
+
 [node name="Body" type="MeshInstance3D" parent="Character/cinematic_character/CharacterRig/Skeleton3D" unique_id=706171884]
 mesh = SubResource("ArrayMesh_ap5va")
 skin = SubResource("Skin_30dr1")
@@ -5491,3 +5507,6 @@ skeleton = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactions" unique_id=1792338455]
 libraries/ = SubResource("AnimationLibrary_idy5t")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1037943450]
+environment = SubResource("Environment_1rg5r")

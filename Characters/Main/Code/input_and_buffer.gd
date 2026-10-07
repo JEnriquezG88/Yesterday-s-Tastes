@@ -29,6 +29,11 @@ func _initialize() -> void:
 	add_child(buffer_timer)
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_released("test_y"):
+		get_tree().change_scene_to_file("uid://uepnft0juc5y")
+	
+	if Input.is_action_just_released("test"):
+		get_tree().change_scene_to_file("uid://s50lccn3qeld")
 	var current_input_action : ACTIONS = ACTIONS.NONE
 	
 	if Input.is_action_just_pressed("jump"):

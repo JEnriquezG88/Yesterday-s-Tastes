@@ -5,22 +5,87 @@
 [ext_resource type="PackedScene" uid="uid://c8fwkocn82gm2" path="res://Levels/GeneralAssets/Trees/Imported/flower_01.glb" id="3_b1vs3"]
 [ext_resource type="PackedScene" uid="uid://d01m8r04msxhd" path="res://Levels/GeneralAssets/Trees/Imported/flower_02.glb" id="4_yuccj"]
 
+[sub_resource type="Curve" id="Curve_b6tay"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_awpkv"]
+texture_mode = 1
+curve = SubResource("Curve_b6tay")
+
+[sub_resource type="Gradient" id="Gradient_icg07"]
+offsets = PackedFloat32Array(0, 0.4084507, 0.7370892, 0.86384976, 0.9624413, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.8509804, 0.2901961, 0.19607843, 1, 1, 0.5411765, 0.23921569, 1, 1, 0.5882353, 0.24705882, 1, 1, 0.7882353, 0.36078432, 1, 1, 0.95686275, 0.7607843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ccxt"]
+gradient = SubResource("Gradient_icg07")
+
+[sub_resource type="Curve" id="Curve_1g7ov"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 1.7415733), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_dpkh5"]
+curve = SubResource("Curve_1g7ov")
+
+[sub_resource type="Curve" id="Curve_krhib"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lf3n7"]
+curve = SubResource("Curve_krhib")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqjoa"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_lf3n7")
+color_ramp = SubResource("GradientTexture1D_6ccxt")
+alpha_curve = SubResource("CurveTexture_awpkv")
+emission_curve = SubResource("CurveTexture_dpkh5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rb5d8"]
+emission_enabled = true
+emission = Color(0.6804763, 1, 0.65291387, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dufa"]
+emission_enabled = true
+emission = Color(0.5638253, 0.79226935, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqjoa"]
+emission_enabled = true
+emission = Color(1, 0.44368404, 0.37509546, 1)
+
 [node name="kitchen" unique_id=949146844 instance=ExtResource("1_wqjoa")]
 
 [node name="FireParticles" parent="." index="19" unique_id=521521082 instance=ExtResource("2_vbbdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012099564, 0.13296884, -2.6193779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012099564, 0.49272472, -2.6239033)
 preprocess = 5.0
+process_material = SubResource("ParticleProcessMaterial_wqjoa")
 
-[node name="Flowers" type="Node3D" parent="." index="20" unique_id=2015433469]
+[node name="Maceta_002" parent="." index="23" unique_id=1433203785]
+transform = Transform3D(0.1873449, 0, -0.15501304, 0, 0.24316075, 0, 0.15501304, 0, 0.1873449, -3.131504, -0.10673877, -1.2494739)
+
+[node name="Sphere_004" parent="Pocima" parent_id_path=PackedInt32Array(269603470) index="0" unique_id=1605209175]
+surface_material_override/0 = SubResource("StandardMaterial3D_rb5d8")
+
+[node name="Sphere_002" parent="Pocima_001" parent_id_path=PackedInt32Array(601739805) index="0" unique_id=1097611968]
+surface_material_override/0 = SubResource("StandardMaterial3D_4dufa")
+
+[node name="Sphere_005" parent="Pocima_002" parent_id_path=PackedInt32Array(802446744) index="0" unique_id=427104768]
+surface_material_override/0 = SubResource("StandardMaterial3D_wqjoa")
+
+[node name="Flowers" type="Node3D" parent="." index="32" unique_id=1079771125]
+visible = false
 
 [node name="flower_01" parent="Flowers" index="0" unique_id=1441717081 instance=ExtResource("3_b1vs3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7042093, 0.46628553, -2.2224174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.697321, 0.40140975, -2.7481298)
 
-[node name="flower_02" parent="Flowers/flower_01" index="1" unique_id=1156748899 instance=ExtResource("4_yuccj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20931768, 0, 0.21411419)
-
-[node name="flower_02" parent="Flowers" index="1" unique_id=1651697759 instance=ExtResource("3_b1vs3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7667305, 0.46628553, -1.8803319)
-
-[node name="flower_02" parent="Flowers/flower_02" index="1" unique_id=1503118000 instance=ExtResource("4_yuccj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12541127, 0, -0.12946093)
+[node name="flower_02" parent="Flowers" index="1" unique_id=1156748899 instance=ExtResource("4_yuccj")]
+transform = Transform3D(0.9696239, 0, 0.24460068, 0, 1, 0, -0.24460068, 0, 0.9696239, 2.7966962, 0.4399197, -2.0658696)

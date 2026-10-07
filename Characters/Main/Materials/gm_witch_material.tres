@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dveqmw2eexgc8"]
+
+[ext_resource type="Texture2D" uid="uid://dsps1cagnyil5" path="res://Characters/Main/Imported/gm_main_character_Ucupaint WitchMaterial Color.png" id="1_np1do"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_np1do")
+texture_filter = 0

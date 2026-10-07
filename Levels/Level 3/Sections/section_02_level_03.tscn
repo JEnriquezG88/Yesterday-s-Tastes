@@ -183,9 +183,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.0795, -21.166513, 55.0421
 
 [node name="BurstMushroom2" parent="Obstacles" index="0" unique_id=2003229828 instance=ExtResource("4_qr1db")]
 transform = Transform3D(0.40789744, 0, -0.44002238, 0, 0.6, 0, 0.44002238, 0, 0.40789744, 83.00087, -26.896238, 54.53208)
+enable_collisions = false
 
 [node name="BurstMushroom3" parent="Obstacles" index="1" unique_id=931923486 instance=ExtResource("4_qr1db")]
 transform = Transform3D(0.40789744, 0, -0.44002238, 0, 0.6, 0, 0.44002238, 0, 0.40789744, 217.01434, -23.491398, 54.53208)
+enable_collisions = false
 
 [node name="WaterfallFx" type="Node3D" parent="." index="17" unique_id=2060108814]
 

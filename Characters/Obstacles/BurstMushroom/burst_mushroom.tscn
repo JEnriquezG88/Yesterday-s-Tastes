@@ -96,7 +96,6 @@ nodes/Culldown/position = Vector2(-200, 320)
 node_connections = [&"output", 0, &"BurstOneShot", &"Idles", 0, &"Idle", &"Idles", 1, &"Culldown", &"BurstOneShot", 0, &"Idles", &"BurstOneShot", 1, &"Burst "]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_61a82"]
-graph_offset = Vector2(-515, 37)
 nodes/output/position = Vector2(400, 160)
 nodes/GeneralStates/node = SubResource("AnimationNodeTransition_kbo8a")
 nodes/GeneralStates/position = Vector2(200, 140)
@@ -317,20 +316,33 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1396592549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5961914, 0)
 shape = SubResource("CapsuleShape3D_61a82")
-disabled = true
 
 [node name="Skeleton3D" parent="BurstMushroomArmature" parent_id_path=PackedInt32Array(1661840247) index="0" unique_id=464842197]
-bones/2/position = Vector3(-0.17903574, 1.5675688, -0.084935084)
-bones/2/rotation = Quaternion(-0.224879, -0.001323456, 0.0721159, 0.9717135)
-bones/2/scale = Vector3(0.99999994, 1, 1)
-bones/4/rotation = Quaternion(-0.017231023, 0.001569402, 0.035945192, 0.99920404)
-bones/5/rotation = Quaternion(-0.016899457, 0.0046962807, 0.035945356, 0.99919987)
+bones/0/position = Vector3(0, 0.9999999, 0)
+bones/1/position = Vector3(0, -0.25000006, 0)
+bones/2/position = Vector3(-0.19653787, 2.2464385, -0.51827073)
+bones/2/rotation = Quaternion(-0.2762358, -0.01206071, 0.04191885, 0.9600996)
+bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
+bones/3/position = Vector3(0, -0.25000003, 0)
+bones/4/rotation = Quaternion(-0.043577857, -0.0019026493, 0.04357787, 0.9980974)
+bones/5/rotation = Quaternion(0.043619443, 2.9787332e-11, 2.4602778e-10, 0.99904823)
+
+[node name="BurstMushroom" parent="BurstMushroomArmature/Skeleton3D" index="0" unique_id=289910796]
+blend_shapes/Burst = 0.9999999
+
+[node name="Eyes" parent="BurstMushroomArmature/Skeleton3D" index="1" unique_id=553759613]
+blend_shapes/Burst = 0.9999999
+
+[node name="Mouth" parent="BurstMushroomArmature/Skeleton3D" index="2" unique_id=1025050117]
+blend_shapes/Burst = 0.9999999
 
 [node name="EyesController" type="BoneAttachment3D" parent="BurstMushroomArmature/Skeleton3D" index="3" unique_id=260499578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25000006, 0)
 bone_name = "EyesController"
 bone_idx = 1
 
 [node name="MouthController" type="BoneAttachment3D" parent="BurstMushroomArmature/Skeleton3D" index="4" unique_id=314205037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25000003, 0)
 bone_name = "MouthController"
 bone_idx = 3
 

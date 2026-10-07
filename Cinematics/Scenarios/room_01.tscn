@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5t6gbnckncfh"]
+
+[ext_resource type="PackedScene" uid="uid://b5oexee6ct8w2" path="res://Cinematics/Scenarios/Room/GeneralWord.glb" id="1_uw7fb"]
+
+[node name="GeneralWord" unique_id=26241785 instance=ExtResource("1_uw7fb")]

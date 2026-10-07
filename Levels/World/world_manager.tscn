@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://b16jwwld6ugeh" path="res://Music/Code/game_music_manager.gd" id="8_i2ab1"]
 [ext_resource type="Script" uid="uid://bbdylv44htxyf" path="res://Levels/Code/second_level_sections_manager.gd" id="8_lbc0n"]
 [ext_resource type="Script" uid="uid://bjpfxj481rdwo" path="res://Levels/World/third_level.gd" id="9_i3xco"]
-[ext_resource type="PackedScene" uid="uid://b1448oo6ghh5v" path="res://Levels/Level 3/ImportedAssets/section_05.glb" id="11_lbc0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vto"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -339,15 +338,9 @@ shape = SubResource("BoxShape3D_6ccxt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.057431, 0, 25.48523)
 shape = SubResource("BoxShape3D_i2ab1")
 
-[node name="DebugCamera" type="Camera3D" parent="." unique_id=957990340]
-transform = Transform3D(1, 0, 0, 0, 0.44406238, 0.895996, 0, -0.895996, 0.44406238, 0, 153.97122, 65.25733)
-visible = false
-
 [node name="GameMusicManager" type="AudioStreamPlayer" parent="." unique_id=708056320]
 process_mode = 3
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("8_i2ab1")
-
-[node name="section_05_level_03" parent="." unique_id=118277978 instance=ExtResource("11_lbc0n")]

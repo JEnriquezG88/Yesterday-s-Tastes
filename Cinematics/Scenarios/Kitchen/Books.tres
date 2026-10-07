@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://sv8fv0vipb6n"]
+
+[ext_resource type="Texture2D" uid="uid://blbh4i1np7ic7" path="res://Cinematics/Scenarios/Kitchen/kitchen_Ucupaint Books Color.png" id="1_an8f6"]
+
+[resource]
+resource_name = "Books"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_an8f6")

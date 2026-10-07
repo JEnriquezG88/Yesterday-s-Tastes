@@ -4,7 +4,11 @@ class_name CurrentGamePersistenceCode
 var current_game_data : Dictionary[String, bool] = {
 	"KornObtained": false,
 	"CheeseObtained": false,
-	"CoffeObtained": false
+	"CoffeObtained": false,
+	"movement_tutorial": false,
+	"jump_tutorial": false,
+	"dash_tutorial": false,
+	"combat_tutorial": false,
 }
 
 func get_save_folder() -> String:
@@ -23,6 +27,10 @@ func _clean_data() -> void:
 	current_game_data["KornObtained"] = false
 	current_game_data["CheeseObtained"] = false
 	current_game_data["CoffeObtained"] = false
+	current_game_data["movement_tutorial"] = false
+	current_game_data["jump_tutorial"] = false
+	current_game_data["dash_tutorial"] = false
+	current_game_data["combat_tutorial"] = false
 
 func _apply_load_data() -> void:
 	pass

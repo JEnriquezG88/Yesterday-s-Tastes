@@ -35,8 +35,10 @@ func create_voice_stream() -> void:
 		new_voice_streams.bus = "Voices"
 		new_voice_streams.name = "VoiceStream" + str(i)
 		new_voice_streams.volume_db = -8.0
-		new_voice_streams.pitch_scale = 1.05
+		#new_voice_streams.pitch_scale = 1.05
+		#new_voice_streams.pitch_scale = 1.1
 		#new_voice_streams.pitch_scale = 1.2
+		new_voice_streams.pitch_scale = 1.2
 		voice_streams.append(new_voice_streams)
 		add_child(new_voice_streams)
 
@@ -60,8 +62,46 @@ const THINKING_ABOUT = preload("uid://bguy014bm3qha")
 const WAKE = preload("uid://bfd1o5beecs1w")
 const YAWN = preload("uid://v6mxrjtk8rcx")
 
+const AREPA_APLAUSE = preload("uid://x3ly60c8ewax")
+const AREPA_APLAUSE_02 = preload("uid://cnl04v4544i1c")
+
+const HAP = preload("uid://b50eur6huc6s4")
+const HOP = preload("uid://whfxj2popdtv")
+const HUP = preload("uid://ch8nqgftgty0r")
+const SOPLE = preload("uid://2mwx0x62kic5")
+const SUSPIRO = preload("uid://17wbkjm32rle")
+const WAIT_01 = preload("uid://cbv7eaflw5wkm")
+const WAIT_02 = preload("uid://dwrjl68fugcp2")
+const ÑAM = preload("uid://ilggbmiw7mvl")
+
+
+var arepa_aplause_index : int = 0
+
 func _get_audio_stream(stream_name: String) -> AudioStream:
 	match stream_name:
+		"ñam":
+			return ÑAM
+		"sople":
+			return SOPLE
+		"wait_02":
+			return WAIT_02
+		"wait_01":
+			return WAIT_01
+		"hup":
+			return HUP
+		"hop":
+			return HOP
+		"hap":
+			return HAP
+		"arepa_aplause":
+			arepa_aplause_index = arepa_aplause_index + 1 
+			if arepa_aplause_index > 2:
+				arepa_aplause_index = 1
+			match arepa_aplause_index:
+				1:
+					return AREPA_APLAUSE
+				2:
+					return AREPA_APLAUSE_02
 		"yawn":
 			return YAWN
 		"wake":

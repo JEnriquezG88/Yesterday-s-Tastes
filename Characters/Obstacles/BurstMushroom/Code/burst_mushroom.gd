@@ -9,6 +9,9 @@ enum MUSHROOM_TYPES {
 }
 @export var mushroom_type: MUSHROOM_TYPES = MUSHROOM_TYPES.NORMAL
 
+@export var enable_collisions : bool = true
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+
 enum STATES {
 	IDLE,
 	ATTAKING,
@@ -28,6 +31,8 @@ var burst_mushroom_material : StandardMaterial3D
 
 
 func _ready() -> void:
+	if not enable_collisions:
+		collision_shape_3d.disabled = true
 	burst_mushroom_material = burst_mushroom.get_active_material(0).duplicate()
 	burst_mushroom.set_surface_override_material(0, burst_mushroom_material)
 	burst_mushroom_material.emission_enabled = false
@@ -158,19 +163,19 @@ func _on_detect_character_body_entered(_body: Node3D) -> void:
 		audio.play()
 		await animation_tree.animation_finished
 		if current_state == STATES.ATTAKING:
+			current_state = STATES.CULL_DOWN
 			GlobalSignals.camera_shake.emit(0.2, 0.1)
 			gpu_particles_3d.emitting = true
 			hit_1.emitting = true
 			hit_2.emitting = true
 			hit_3.emitting = true
-			current_state = STATES.CULL_DOWN
 			culldown_timer.start()
 			audio.pitch_scale = 1.0
 			audio.stop()
 			audio.stream = BIG_BURST
 			audio.play()
 			spores_collision.disabled = false
-			await get_tree().process_frame
+			await get_tree().create_timer(0.2).timeout
 			spores_collision.disabled = true
 
 @onready var spores_collision: CollisionShape3D = $Systems/Areas/SporesArea/CollisionShape3D

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c18kmgttmifbx"]
+
+[ext_resource type="Texture2D" uid="uid://ctekif47huaap" path="res://Cinematics/Scenarios/Room/GeneralWord_Ucupaint Pergamino Color.png" id="1_a26nr"]
+
+[resource]
+resource_name = "Pergamino"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_a26nr")

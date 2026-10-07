@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c2at7wdrjdgt5"]
+
+[ext_resource type="Texture2D" uid="uid://6jel8jgy1gaw" path="res://Cinematics/Scenarios/Kitchen/kitchen_Ucupaint MagicBall.png" id="1_qp84i"]
+
+[resource]
+resource_name = "MagicBall.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_qp84i")

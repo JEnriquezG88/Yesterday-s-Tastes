@@ -41,6 +41,11 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"House": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Levels/Lobby/Imported/lobby_house_material.tres",
+"use_external/path": "uid://b12deqe6xkhh0"
+},
 "ScenarioMaterial": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Levels/GeneralAssets/Materials/scneario_material.tres",

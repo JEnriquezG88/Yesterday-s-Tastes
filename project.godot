@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://n6f6m6bm6yju"
 GameSettings="*uid://c1yg3y6erpc44"
 GlobalSignals="*uid://bs27rj1pciq10"
 CurrentGamePersistence="*uid://dn5xbpf8hc6ye"
+ActionIcons="*uid://c0pela5j60bio"
 
 [display]
 

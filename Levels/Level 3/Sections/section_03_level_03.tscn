@@ -120,9 +120,11 @@ obstacle = false
 
 [node name="ice_block" parent="Interactions" index="2" unique_id=44953505 instance=ExtResource("6_twq4i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 247.44142, -9.535366, 35.115845)
+visible = false
 
 [node name="InteractionSystem" parent="Interactions" index="3" unique_id=1396565309 node_paths=PackedStringArray("interactuable_object") instance=ExtResource("5_abaq4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 243.30638, -9.8448105, 34.864197)
+visible = false
 _interaction_button = 1
 interactuable_object = NodePath("../ice_block")
 

@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://di6v7hmt3impx"]
+
+[ext_resource type="Script" uid="uid://dfo8j0i2rom3r" path="res://UI/code/tutoriales.gd" id="1_to1s8"]
+[ext_resource type="Script" uid="uid://4f3o3qnjdsot" path="res://UI/code/return_bton.gd" id="2_1b7j0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_61a82"]
+font_size = 32
+
+[node name="Tutoriales" type="Control" unique_id=1890239043]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_to1s8")
+tutorial = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=954081947]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5254902)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=816772613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=395057100]
+custom_minimum_size = Vector2(600, 464)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel" unique_id=2128328081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/VBoxContainer" unique_id=1395887051]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Tittle" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel" unique_id=715648325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tittle"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/VBoxContainer" unique_id=751187969]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/Panel/VBoxContainer/MarginContainer" unique_id=344746299]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "press tin pa tan, si sabe"
+
+[node name="Panel2" type="Panel" parent="MarginContainer/Panel/VBoxContainer" unique_id=1809291364]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/VBoxContainer/Panel2" unique_id=243167711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/Panel2/MarginContainer" unique_id=236882153]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Tittle" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel2/MarginContainer/HBoxContainer" unique_id=785629854]
+layout_mode = 2
+text = "return_bton"
+label_settings = SubResource("LabelSettings_61a82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/VBoxContainer/Panel2/MarginContainer/HBoxContainer" unique_id=1632410693]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_1b7j0")

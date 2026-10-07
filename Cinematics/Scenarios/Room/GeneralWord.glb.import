@@ -51,10 +51,25 @@ _subresources={
 "use_external/fallback_path": "res://Cinematics/Scenarios/Room/Armario.tres",
 "use_external/path": "uid://dr7f72fwt117b"
 },
+"Bault": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Bault.tres",
+"use_external/path": "uid://bte23kyjm6ndb"
+},
 "BedMaterial": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Cinematics/Scenarios/Room/BedMaterial.tres",
 "use_external/path": "uid://bj6l6j3g75jjx"
+},
+"Books": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Books.tres",
+"use_external/path": "uid://bihxg2ow7t5k8"
+},
+"Cat Teddy": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Cat Teddy.tres",
+"use_external/path": "uid://dqsjun2chmnae"
 },
 "Cuadros": {
 "use_external/enabled": true,
@@ -71,6 +86,21 @@ _subresources={
 "use_external/fallback_path": "res://Cinematics/Scenarios/Room/GodRays.tres",
 "use_external/path": "uid://5wqvssdm3x4k"
 },
+"Harp": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Harp.tres",
+"use_external/path": "uid://cddmxdysrg8tl"
+},
+"Inciensera": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Inciensera.tres",
+"use_external/path": "uid://bxrxnhug6tmq4"
+},
+"Inciensos": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Inciensos.tres",
+"use_external/path": "uid://dnxa3ao8wmv0b"
+},
 "Marco": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Cinematics/Scenarios/Room/Marco.tres",
@@ -85,6 +115,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Cinematics/Scenarios/Room/MesaDeNoche.tres",
 "use_external/path": "uid://dw7gj7sll0slo"
+},
+"Pergamino": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Room/Pergamino.tres",
+"use_external/path": "uid://c18kmgttmifbx"
 },
 "RoomMaterial": {
 "use_external/enabled": true,

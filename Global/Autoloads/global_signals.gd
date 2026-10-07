@@ -15,6 +15,7 @@ signal return_to_camera_original_target()
 signal shot_magic(magic_type: MagicSystem.MAGIC_TYPES)
 signal main_character_wait
 signal main_character_resume
+signal shot_end_cinematic
 signal transition_interaction(new_position: Vector3, camera_type: CameraController.CAMERA_TYPES)
 signal change_camera_view(new_camera_view : CameraController.CAMERA_TYPES)
 
@@ -25,3 +26,6 @@ signal load_lobby
 
 signal stop_current_song
 signal play_next_song
+
+signal shot_tutorial(new_tutorial: Tutorials.TUTORIALS)
+signal open_door

@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b76iu45yqjwlj" path="res://Global/VFX/Fire/fire_particles.tscn" id="2_vamlk"]
 [ext_resource type="AudioStream" uid="uid://b6a4s08tms2cs" path="res://Global/VFX/Fire/fire_loop.wav" id="3_os06j"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(1, 6.3813477, 1)
+
 [node name="magic_door_fire_totem" unique_id=171872141 instance=ExtResource("1_pvbvg")]
 
 [node name="FireParticles" parent="." index="1" unique_id=521521082 instance=ExtResource("2_vamlk")]
@@ -15,3 +18,9 @@ amount = 16
 stream = ExtResource("3_os06j")
 volume_db = -10.0
 bus = &"VFX"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1280178021]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=425660909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6906738, 0)
+shape = SubResource("BoxShape3D_61a82")

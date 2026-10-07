@@ -1,11 +1,6 @@
 extends Node3D
 class_name InteractionSystem
 
-
-const X = preload("uid://d0pdgnwbutq6p")
-const Y = preload("uid://dg7o4d5b4vyvq")
-const O = preload("uid://rln4fng51e11")
-
 @onready var icon: MeshInstance3D = $Icon
 
 @export var _interaction_button : MagicSystem.MAGIC_TYPES = MagicSystem.MAGIC_TYPES.NONE
@@ -19,6 +14,7 @@ const O = preload("uid://rln4fng51e11")
 signal finish_signal
 
 func _ready() -> void:
+	ActionIcons.change_input_type.connect(_change_icon_types)
 	if not obstacle:
 		block_path.queue_free()
 	icon.visible = false
@@ -26,15 +22,40 @@ func _ready() -> void:
 		set_process_input(false)
 
 func _on_detection_area_body_entered(_body: Node3D) -> void:
-	match _interaction_button:
-		MagicSystem.MAGIC_TYPES.ICE:
-			icon.get_surface_override_material(0).albedo_texture = X
-		MagicSystem.MAGIC_TYPES.FIRE:
-			icon.get_surface_override_material(0).albedo_texture = Y
-		MagicSystem.MAGIC_TYPES.BROKE:
-			icon.get_surface_override_material(0).albedo_texture = O
+	_change_icon_types()
 	icon.visible = true
 	GlobalSignals.shot_magic.connect(_on_magic_shot)
+
+func _change_icon_types() -> void:
+	print("change_icon_type")
+	match _interaction_button:
+		MagicSystem.MAGIC_TYPES.ICE:
+			print("ice")
+			match ActionIcons.current_input_type:
+				ActionIconsCode.INPUT_TYPE.joystick:
+					print("joystick")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.X
+				ActionIconsCode.INPUT_TYPE.keyboard:
+					print("keyboard")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.H
+		MagicSystem.MAGIC_TYPES.FIRE:
+			print("fire")
+			match ActionIcons.current_input_type:
+				ActionIconsCode.INPUT_TYPE.joystick:
+					print("joystick")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.Y
+				ActionIconsCode.INPUT_TYPE.keyboard:
+					print("keyboard")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.J
+		MagicSystem.MAGIC_TYPES.BROKE:
+			print("broke")
+			match ActionIcons.current_input_type:
+				ActionIconsCode.INPUT_TYPE.joystick:
+					print("joystick")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.O
+				ActionIconsCode.INPUT_TYPE.keyboard:
+					print("keyboard")
+					icon.get_surface_override_material(0).albedo_texture = ActionIcons.K
 
 func _on_detection_area_body_exited(_body: Node3D) -> void:
 	icon.visible = false

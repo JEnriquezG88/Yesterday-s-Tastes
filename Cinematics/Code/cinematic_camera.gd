@@ -12,12 +12,13 @@ func shake(intensity: float, duration: float) -> void:
 	shake_duration_timer.one_shot = true
 	shake_duration_timer.timeout.connect(_on_shake_duration_timer_time_out)
 	add_child(shake_duration_timer)
-	animation_tree.set("parameters/ShakeBlend/blend_amount", intensity * 0.2)
+	animation_tree.set("parameters/ShakeBlend/blend_amount", intensity * 0.1)
 	if not shake_duration_timer.is_stopped():
 		shake_duration_timer.stop()
 	shake_duration_timer.wait_time = duration
 	shake_duration_timer.start()
-	_trigger_vibration(intensity * 0.2)
+	#_trigger_vibration(intensity * 0.3)
+	_trigger_vibration(intensity)
 
 func _trigger_vibration(intensity: float) -> void:
 	var joypads := Input.get_connected_joypads()

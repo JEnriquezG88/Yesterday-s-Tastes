@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8cpmjsrg4at6"]
+
+[ext_resource type="Texture2D" uid="uid://g4238k3lnwuf" path="res://Cinematics/Scenarios/Kitchen/kitchen_Ucupaint Apple Color.png" id="1_wm7ni"]
+
+[resource]
+resource_name = "Apple"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_wm7ni")
+texture_filter = 0

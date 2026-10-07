@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjsuwo4jy083b"]
+
+[ext_resource type="Texture2D" uid="uid://dwfa0vkalv8wv" path="res://Cinematics/Scenarios/Kitchen/kitchen_Ucupaint Pocima Color.png" id="1_lk6hs"]
+
+[resource]
+resource_name = "Pocima"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_lk6hs")

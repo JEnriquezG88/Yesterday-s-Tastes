@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cnm4wegprpqdy"]
+
+[ext_resource type="Texture2D" uid="uid://c473j4x0fnd5b" path="res://Characters/Main/Imported/grandmother_glases_GM_glasses Layer.png" id="1_1o66i"]
+
+[resource]
+resource_name = "GM_glasses"
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_1o66i")

@@ -5,10 +5,12 @@ class_name CinematicsManager
 @onready var movement: Movement = $"../Movement"
 @onready var ingredient_position: Node3D = $"../../Systems/Interactions/IngredientPosition"
 @onready var ingredients_list: IngredientsList = $"../../UI/List"
+@onready var fade: FadeManager = $"../../UI/Fade"
 
 func _ready() -> void:
 	GlobalSignals.main_character_wait.connect(_on_character_wait)
 	GlobalSignals.main_character_resume.connect(_on_character_resume)
+	GlobalSignals.shot_end_cinematic.connect(_on_shot_end_cinematic)
 
 func _on_character_wait() -> void:
 	character_controller.current_state = CharacterController.STATES.WAITING
@@ -38,3 +40,9 @@ func finish_cinematic() -> void:
 	await get_tree().create_timer(0.5).timeout
 	character_controller.animation_tree.set("parameters/GeneralStates/transition_request", "Movement")
 	ingredients_list.start_list_menu()
+
+func _on_shot_end_cinematic() -> void:
+	character_controller.current_state = CharacterController.STATES.CINEMATIC
+	GlobalSignals.main_character_wait.emit()
+	await fade._fade_out()
+	get_tree().change_scene_to_file("uid://s50lccn3qeld")

@@ -85,7 +85,9 @@ func _on_options_button_up() -> void:
 func _on_credits_button_up() -> void:
 	buttons_container.change_first_element(credits_button)
 	_finish_button_signals()
-	visible = false
+	#visible = false
+	await fade_manager._fade_out()
+	get_tree().change_scene_to_file("uid://d1j82k0ad0xvu")
 
 func _on_exit_button_up() -> void:
 	_finish_button_signals()

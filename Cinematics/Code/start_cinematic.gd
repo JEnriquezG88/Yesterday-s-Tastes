@@ -2,7 +2,8 @@ extends Node3D
 class_name StartCinematic
 
 @onready var kitchen: Node3D = $Kitchen
-@onready var room: Node3D = $Room
+@onready var room: Node3D = $room
+
 
 @onready var camera_animation_player: AnimationPlayer = $Camera/AnimationPlayer
 @onready var fade_manager: FadeManager = $CanvasLayer/FadeManager

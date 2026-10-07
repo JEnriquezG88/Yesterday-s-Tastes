@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cboqe43ej3d4p"]
+
+[ext_resource type="Texture2D" uid="uid://csgqe7fy42xke" path="res://Global/LogoAndIcons/FullLogo.png" id="1_ixlbm"]
+[ext_resource type="Texture2D" uid="uid://dfdtqpaec81r7" path="res://UI/Credits/imgs/heart.png" id="2_4iuj4"]
+[ext_resource type="Texture2D" uid="uid://dj8lbfbkuk0ti" path="res://UI/MainMenu/Imgs/separator.png" id="3_vcckd"]
+[ext_resource type="Texture2D" uid="uid://dlec3hxlp7of6" path="res://Global/LogoAndIcons/jm_dev_logo.png" id="4_4i5kg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4oh0"]
+font_size = 32
+
+[node name="Credits" type="Control" unique_id=1854911160]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1616751688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1215770488]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -500.5
+offset_right = 300.0
+offset_bottom = 500.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 73
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=994377179]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1554811452]
+layout_mode = 2
+theme_override_constants/margin_top = -59
+theme_override_constants/margin_bottom = -32
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3" unique_id=121680431]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+texture = ExtResource("1_ixlbm")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1167079396]
+layout_mode = 2
+text = "created_by_tittle"
+label_settings = SubResource("LabelSettings_n4oh0")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=2075004528]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=139963863]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_4iuj4")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=329074165]
+layout_mode = 2
+text = "Juan & Mishel"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1565357875]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_vcckd")
+expand_mode = 5
+stretch_mode = 4
+flip_v = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1074921932]
+layout_mode = 2
+theme_override_constants/margin_top = -77
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=1057547938]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_4i5kg")
+expand_mode = 3
+stretch_mode = 4

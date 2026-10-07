@@ -14,8 +14,12 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://dpcc8urtb7t80" path="res://Levels/Level 1/Sections/Occluders/section_01_level_01.occ" id="10_vcidj"]
 [ext_resource type="PackedScene" uid="uid://bykmsijavvcdo" path="res://Global/Code/Interactions/interaction_system.tscn" id="12_wg7ec"]
 [ext_resource type="PackedScene" uid="uid://cdmvvs5a5cylv" path="res://Levels/GeneralAssets/Interactions/Ice/ice_block.glb" id="13_r2jee"]
+[ext_resource type="Script" uid="uid://d0t1c44tjt6ui" path="res://UI/code/shot_tutoriales_area_3d.gd" id="15_634yt"]
 [ext_resource type="Script" uid="uid://bgmnk6kv85pg3" path="res://Levels/Code/section_data.gd" id="15_u1o0b"]
 [ext_resource type="PackedScene" uid="uid://dsmmn1251cx7u" path="res://Characters/Obstacles/BurstMushroom/burst_mushroom.tscn" id="16_flgmo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61a82"]
+size = Vector3(13.176025, 18.78418, 2.506836)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_61a82"]
 radius = 3.0
@@ -961,6 +965,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.173206, -0.70825195, -24.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.33383, 0.00012207031, -20.25053)
 _interaction_button = 1
 interactuable_object = NodePath("../ice_block")
+
+[node name="Attak Tutorial" type="Area3D" parent="Interactions" index="2" unique_id=1669121609]
+transform = Transform3D(0.9394424, 0, 0.34270716, 0, 1, 0, -0.34270716, 0, 0.9394424, -33.18841, 7.257141, -7.236743)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("15_634yt")
+tutorial = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/Attak Tutorial" index="0" unique_id=580969083]
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="JumpTutorial" type="Area3D" parent="Interactions" index="3" unique_id=279651655]
+transform = Transform3D(0.9889589, 0, 0.14819005, 0, 1, 0, -0.14819005, 0, 0.9889589, -34.000732, 7.257141, -29.731836)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("15_634yt")
+tutorial = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/JumpTutorial" index="0" unique_id=1160716724]
+shape = SubResource("BoxShape3D_61a82")
+
+[node name="DashTutorial" type="Area3D" parent="Interactions" index="4" unique_id=690679119]
+transform = Transform3D(0.8880364, 0, 0.4597732, 0, 1, 0, -0.4597732, 0, 0.8880364, -45.988235, 9.652344, -55.212067)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("15_634yt")
+tutorial = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/DashTutorial" index="0" unique_id=1511284170]
+shape = SubResource("BoxShape3D_61a82")
 
 [node name="SectionData" type="Node" parent="." index="19" unique_id=1974223753]
 script = ExtResource("15_u1o0b")

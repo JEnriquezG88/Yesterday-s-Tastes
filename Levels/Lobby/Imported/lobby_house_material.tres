@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b12deqe6xkhh0"]
+
+[ext_resource type="Texture2D" uid="uid://bntvxhxk1vc84" path="res://Levels/Lobby/Imported/Ucupaint House Color.png" id="1_147q1"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_147q1")

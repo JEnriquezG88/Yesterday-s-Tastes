@@ -7,4 +7,5 @@ class_name HitParticles
 
 func shot_particles() -> void:
 	for particle in particles:
+		particle.restart()
 		particle.emitting = true

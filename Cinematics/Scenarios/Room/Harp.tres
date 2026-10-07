@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cddmxdysrg8tl"]
+
+[ext_resource type="Texture2D" uid="uid://dqenof7i0niis" path="res://Cinematics/Scenarios/Room/GeneralWord_Ucupaint Harp Color.png" id="1_peqib"]
+
+[resource]
+resource_name = "Harp"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_peqib")
+texture_filter = 0

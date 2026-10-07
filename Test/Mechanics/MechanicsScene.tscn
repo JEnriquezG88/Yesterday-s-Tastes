@@ -16,28 +16,7 @@
 [ext_resource type="Material" uid="uid://ccqcxc7yqnna6" path="res://Levels/GeneralAssets/Water/Materials/water_shader_material.tres" id="14_u1h3c"]
 [ext_resource type="Texture2D" uid="uid://cheu3sk3x8t33" path="res://Test/Textures/floor_decorators_01.png" id="15_xovu0"]
 [ext_resource type="PackedScene" uid="uid://d3w4205662xaa" path="res://Test/Mechanics/import/mechanics_scenario.glb" id="16_daw2p"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bvaxd"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-energy_multiplier = 1.5
-
-[sub_resource type="Sky" id="Sky_daw2p"]
-sky_material = SubResource("ProceduralSkyMaterial_bvaxd")
-
-[sub_resource type="Environment" id="Environment_1b8xo"]
-background_mode = 2
-sky = SubResource("Sky_daw2p")
-tonemap_exposure = 0.5
-ssao_enabled = true
-fog_mode = 1
-fog_density = 1.225
-fog_depth_begin = 663.0
-fog_depth_end = 663.0
-volumetric_fog_density = 0.02
-volumetric_fog_ambient_inject = 0.2
-adjustment_contrast = 1.1
-adjustment_saturation = 1.1
+[ext_resource type="Script" uid="uid://ckjcaicwv1ofu" path="res://Global/Code/Config/lights_and_enviroment_manager.gd" id="17_07wyd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_61a82"]
 size = Vector2(100, 100)
@@ -81,15 +60,20 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0, 0.5, 0)
 stencil_flags = 2
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cov7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4qrw4"]
+sky_material = SubResource("ProceduralSkyMaterial_4cov7")
+
+[sub_resource type="Environment" id="Environment_i8wqn"]
+background_mode = 2
+sky = SubResource("Sky_4qrw4")
+ssao_enabled = true
+glow_enabled = true
+
 [node name="Test" type="Node3D" unique_id=1398038663]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=844223804]
-environment = SubResource("Environment_1b8xo")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1878968226]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-shadow_blur = 0.5
 
 [node name="Ambient" type="Node3D" parent="." unique_id=1202091710]
 
@@ -788,3 +772,14 @@ mesh = SubResource("PlaneMesh_6ccxt")
 surface_material_override/0 = SubResource("StandardMaterial3D_07wyd")
 
 [node name="mechanics_scenario" parent="." unique_id=561048485 instance=ExtResource("16_daw2p")]
+
+[node name="LightsAndEnviromentManager" type="Node3D" parent="." unique_id=146936003]
+script = ExtResource("17_07wyd")
+metadata/_custom_type_script = "uid://ckjcaicwv1ofu"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightsAndEnviromentManager" unique_id=368752906]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LightsAndEnviromentManager" unique_id=1886340548]
+environment = SubResource("Environment_i8wqn")

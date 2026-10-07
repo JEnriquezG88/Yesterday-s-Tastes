@@ -39,7 +39,115 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Adornos 01": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Adornos 01.tres",
+"use_external/path": "uid://c5cvv1jg613kb"
+},
+"Adornos 02": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Adornos 02.tres",
+"use_external/path": "uid://b54trowenc0e3"
+},
+"Alfombra": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Alfombra.tres",
+"use_external/path": "uid://ckw0i883hnlko"
+},
+"Apple": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Apple.tres",
+"use_external/path": "uid://b8cpmjsrg4at6"
+},
+"Books": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Books.tres",
+"use_external/path": "uid://sv8fv0vipb6n"
+},
+"Caldero": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Caldero.tres",
+"use_external/path": "uid://bp5w4sw5eucor"
+},
+"Candelabro": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Candelabro.tres",
+"use_external/path": "uid://xxs7xc8krjrf"
+},
+"Chimenea": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Chimenea.tres",
+"use_external/path": "uid://cafmaw6gefxxp"
+},
+"Escoba": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Escoba.tres",
+"use_external/path": "uid://becgy063dcl2u"
+},
+"EsferaLuz": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/EsferaLuz.tres",
+"use_external/path": "uid://dpgpnen5a7co5"
+},
+"Estante": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Estante.tres",
+"use_external/path": "uid://dc58p22mixuag"
+},
+"Jarron": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Jarron.tres",
+"use_external/path": "uid://dyp04cpqi346b"
+},
+"Kitchen": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Kitchen.tres",
+"use_external/path": "uid://cfh7dpla0aoks"
+},
+"LavaLosa": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/LavaLosa.tres",
+"use_external/path": "uid://dao60polgy4qy"
+},
+"MagicBall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/MagicBall.tres",
+"use_external/path": "uid://dd786ai4ampeu"
+},
+"MagicBall.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/MagicBall.001.tres",
+"use_external/path": "uid://c2at7wdrjdgt5"
+},
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Material.tres",
+"use_external/path": "uid://bbxcmeiipdtwa"
+},
+"Mesa 02": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Mesa 02.tres",
+"use_external/path": "uid://cf5iy818i0a1w"
+},
+"Mesa De Cocina": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Mesa De Cocina.tres",
+"use_external/path": "uid://cbs4xs1bhp7k"
+},
+"Pocima": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Pocima.tres",
+"use_external/path": "uid://cjsuwo4jy083b"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Cinematics/Scenarios/Kitchen/Wood.tres",
+"use_external/path": "uid://bbgoih437kgkj"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1

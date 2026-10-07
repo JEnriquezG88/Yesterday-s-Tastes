@@ -16,6 +16,8 @@ func play_next_song() -> void:
 		current_stream = load(_01_FOREST_ADVENTURE)
 	elif not CurrentGamePersistence.current_game_data["CheeseObtained"]:
 		current_stream = load(_02_ROCKY_PEAKS)
+	elif not CurrentGamePersistence.current_game_data["CoffeObtained"]:
+		current_stream = load(_02_ROCKY_PEAKS)
 	else:
 		pass
 	volume_db = -10.0
